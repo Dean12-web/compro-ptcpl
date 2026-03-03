@@ -1,5 +1,10 @@
 @extends('front.layouts.app')
-@section('title', __('general.contact') . ' | PT CPL')
+@section('title', __('seo.contact.title'))
+@section('meta_description', __('seo.contact.description'))
+@section('meta_keywords',__('seo.contact.keywords'))
+@section('og_title', __('seo.contact.title'))
+@section('og_description', __('seo.contact.description'))
+
 @section('content')
     <div class="flex-grow">
         <section class="relative h-64 w-full overflow-hidden">

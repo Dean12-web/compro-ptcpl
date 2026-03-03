@@ -1,5 +1,6 @@
 @extends('front.layouts.app')
 @section('title', 'Produk Detail | PT CPL')
+
 @section('content')
     <div class="flex-1 max-w-7xl mx-auto w-full px-4 md:px-20 py-8">
         <nav class="flex items-center gap-2 text-sm text-slate-500 mb-8">

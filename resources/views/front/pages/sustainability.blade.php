@@ -1,6 +1,9 @@
 @extends('front.layouts.app')
-@section('title', __('general.sustainability') . ' | PT CPL')
-@section('meta_description', 'Indonesia leading sustainable egg tray manufacture')
+@section('title', __('seo.sustainability.title'))
+@section('meta_description', __('seo.sustainability.description'))
+@section('meta_keywords',__('seo.sustainability.keywords'))
+@section('og_title', __('seo.sustainability.title'))
+@section('og_description', __('seo.sustainability.description'))
 
 @section('content')
 <div class="flex-1">

@@ -1,6 +1,9 @@
 @extends('front.layouts.app')
-@section('title', __('general.home') . ' | PT CPL')
-@section('meta_description', 'Indonesia leading sustainable egg tray manufacture')
+@section('title', __('seo.home.title'))
+@section('meta_description', __('seo.home.description'))
+@section('meta_keywords',__('seo.home.keywords'))
+@section('og_title', __('seo.home.title'))
+@section('og_description', __('seo.home.description'))
 
 @section('content')
     <section class="relative bg-white overflow-hidden">

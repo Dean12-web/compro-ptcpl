@@ -1,5 +1,9 @@
 @extends('front.layouts.app')
-@section('title', __('general.export') . ' | PT CPL')
+@section('title', __('seo.exports.title'))
+@section('meta_description', __('seo.exports.description'))
+@section('meta_keywords',__('seo.exports.keywords'))
+@section('og_title', __('seo.exports.title'))
+@section('og_description', __('seo.exports.description'))
 
 @section('content')
     <div class="flex-grow">

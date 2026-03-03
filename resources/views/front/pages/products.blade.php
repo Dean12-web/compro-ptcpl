@@ -1,6 +1,10 @@
 @extends('front.layouts.app')
-@section('title', __('general.product') . ' | PT CPL')
-@section('meta_description', 'Indonesia leading sustainable egg tray manufacture')
+@section('title', __('seo.products.title'))
+@section('meta_description', __('seo.products.description'))
+@section('meta_keywords',__('seo.products.keywords'))
+@section('og_title', __('seo.products.title'))
+@section('og_description', __('seo.products.description'))
+
 @section('content')
     <div class="flex-1 lg:px-40 py-8 px-6">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-10">

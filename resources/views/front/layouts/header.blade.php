@@ -2,12 +2,10 @@
     class="flex items-center justify-between whitespace-nowrap border-b border-primary/10 bg-white/80 backdrop-blur-md px-6 md:px-20 py-4 sticky top-0 z-50">
     <div class="flex items-center gap-3 text-primary">
         <div class="size-8">
-            <svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"></path>
-            </svg>
+           <img src="{{ asset('images/logo/icon_cpl.png') }}" alt="log_cendana_paper_egg_tray">
         </div>
-        <h2 class="text-slate-900 text-xl font-bold leading-tight tracking-tight uppercase">
-            PT CPL</h2>
+        <h2 class="text-slate-600 text-xl font-bold leading-tight tracking-tight uppercase">
+            <a href="{{ route('home', app()->getLocale()) }}">Cendana Paper Egg Tray</a></h2>
     </div>
     <nav class="hidden lg:flex items-center gap-6">
         <a class="text-slate-700 hover:text-primary text-sm font-semibold transition-colors"

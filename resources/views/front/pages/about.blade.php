@@ -1,6 +1,9 @@
 @extends('front.layouts.app')
-@section('title', __('general.about') . ' | PT CPL')
-@section('meta_description', 'Indonesia leading sustainable egg tray manufacture')
+@section('title', __('seo.about.title'))
+@section('meta_description', __('seo.about.description'))
+@section('meta_keywords',__('seo.about.keywords'))
+@section('og_title', __('seo.about.title'))
+@section('og_description', __('seo.about.description'))
 
 @section('content')
 <div class="flex flex-col items-center">
