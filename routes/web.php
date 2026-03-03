@@ -42,6 +42,6 @@ Route::middleware('auth')->group(function () {
 // Route::view('/sustainability','front.pages.sutainability');
 // Route::view('/gallery','front.pages.gallery');
 
-// Route::view('/dashboard','admin.pages.home');
+Route::view('/dashboard-sampel','admin.pages.home');
 
 require __DIR__ . '/auth.php';
