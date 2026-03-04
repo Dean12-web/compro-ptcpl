@@ -1,6 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\ContentBlockController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ExportCountryController;
+use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\InquiryController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PageController;
@@ -33,12 +39,13 @@ Route::group(['prefix' => '{locale}',   'where' => ['locale' => 'en|id'], 'middl
 
 Route::prefix('cpl-admin')->middleware(['auth','verified'])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('cpl.dashboard');
-    Route::view('/products', 'admin.pages.products')->name('cpl.products');
-    Route::view('/gallery', 'admin.pages.gallery')->name('cpl.gallery');
-    Route::view('/inquiry-view', 'admin.pages.inquiry-view')->name('cpl.inquiry-view');
-    Route::view('/web-content', 'admin.pages.website-content')->name('cpl.web-content');
-    Route::view('/export-country', 'admin.pages.export-country')->name('cpl.export-country');
-});
+    Route::get('/products', [AdminProductController::class,'index'])->name('cpl.products');
+    Route::get('/gallery', [GalleryController::class,'index'])->name('cpl.gallery');
+    Route::get('/inquiry-view', [InquiryController::class,'index'])->name('cpl.inquiry-view');
+    Route::get('/web-content', [ContentBlockController::class,'index'])->name('cpl.web-content');
+    Route::get('/export-country', [ExportCountryController::class,'index'])->name('cpl.export-country');
+    Route::get('/setting', [SettingController::class,'index'])->name('cpl.setting');
+    });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

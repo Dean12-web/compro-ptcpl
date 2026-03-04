@@ -9,35 +9,40 @@
         </div>
     </div>
     <nav class="flex-1 px-4 space-y-1 overflow-y-auto">
-        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors {{ is_active('cpl.dashboard') }}" href="{{ route('cpl.dashboard') }}">
+        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors {{ is_active('cpl.dashboard') }}"
+            href="{{ route('cpl.dashboard') }}">
             <span class="material-symbols-outlined text-[20px]">dashboard</span>
-            <span class="text-sm font-medium">Dashboard</span> 
+            <span class="text-sm font-medium">Dashboard</span>
         </a>
-        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors"
+        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors {{ is_active('cpl.products') }}"
             href="{{ route('cpl.products') }}">
             <span class="material-symbols-outlined text-[20px]">inventory_2</span>
             <span class="text-sm font-medium">Products</span>
         </a>
-        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors"
+        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors {{ is_active('cpl.gallery') }}"
             href="{{ route('cpl.gallery') }}">
             <span class="material-symbols-outlined text-[20px]">photo_library</span>
             <span class="text-sm font-medium">Gallery</span>
         </a>
-        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors"
+        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors {{ is_active('cpl.export-country') }}"
             href="{{ route('cpl.export-country') }}">
             <span class="material-symbols-outlined text-[20px]">public</span>
             <span class="text-sm font-medium">Export Countries</span>
         </a>
-        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors"
+        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors {{ is_active('cpl.web-content') }}"
             href="{{ route('cpl.web-content') }}">
             <span class="material-symbols-outlined text-[20px]">view_quilt</span>
             <span class="text-sm font-medium">Web Sections</span>
         </a>
-        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors"
+        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors {{ is_active('cpl.inquiry-view') }}"
             href="{{ route('cpl.inquiry-view') }}">
             <span class="material-symbols-outlined text-[20px]">chat_bubble</span>
             <span class="text-sm font-medium">Inquiries</span>
-            <span class="ml-auto bg-primary/20 text-primary text-[10px] px-1.5 py-0.5 rounded-full font-bold">18</span>
+        </a>
+        <a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-primary/5 rounded-lg transition-colors {{ is_active('cpl.setting') }}"
+            href="{{ route('cpl.setting') }}">
+            <span class="material-symbols-outlined text-[22px]">settings</span>
+            <span class="text-sm font-medium">Settings</span>
         </a>
     </nav>
     <div class="p-4 border-t border-primary/10">
