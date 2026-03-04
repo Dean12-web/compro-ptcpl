@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PageController;
@@ -22,9 +23,14 @@ Route::group(['prefix' => '{locale}',   'where' => ['locale' => 'en|id'], 'middl
     Route::get('/gallery',[PageController::class,'gallery'] )->name('gallery');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::prefix('cpl')->middleware(['auth','verified'])->group(function(){
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('cpl.dashboard');
+    Route::view('/products', 'admin.pages.products')->name('cpl.products');
+    Route::view('/gallery', 'admin.pages.gallery')->name('cpl.gallery');
+    Route::view('/inquiry-view', 'admin.pages.inquiry-view')->name('cpl.inquiry-view');
+    Route::view('/web-content', 'admin.pages.website-content')->name('cpl.web-content');
+    Route::view('/export-country', 'admin.pages.export-country')->name('cpl.export-country');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
