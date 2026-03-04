@@ -18,13 +18,22 @@ class Product extends Model
         'created_by'
     ];
 
+    protected $casts = [
+        'is_active' => 'boolean'
+    ];
+
     public function images()
     {
-        // return $this->hasMany();
+        return $this->hasMany(ProductImage::class);
     }
 
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function primaryImage()
+    {
+        return $this->hasOne(ProductImage::class)->where('is_primary',true);
     }
 }
