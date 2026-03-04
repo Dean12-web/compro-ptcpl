@@ -1,15 +1,9 @@
 @extends('admin.layouts.app')
 @section('title', 'Galeri')
+@section('page-header')
+    <h2 class="text-lg font-bold text-primary">Gallery</h2>
+@endsection
 @section('content')
-    <header
-        class="h-16 border-b border-primary/10 bg-white dark:bg-background-dark flex items-center justify-between px-8 z-10">
-        <div class="flex items-center gap-4">
-            <span class="text-slate-400">/</span>
-            <span class="text-sm font-medium text-slate-600 dark:text-slate-300">Management</span>
-            <span class="text-slate-400">/</span>
-            <span class="text-sm font-bold text-primary">Countries</span>
-        </div>
-    </header>
     <div class="flex-1 flex flex-col min-w-0 bg-background-light dark:bg-background-dark overflow-y-auto">
         <div class="flex flex-wrap justify-between items-end gap-4 p-6 md:p-8">
             <div class="flex flex-col gap-1">

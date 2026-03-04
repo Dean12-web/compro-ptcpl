@@ -1,15 +1,9 @@
 @extends('admin.layouts.app')
 @section('title','Products')
+@section('page-header')
+    <h2 class="text-lg font-bold text-primary">Products</h2>
+@endsection
 @section('content')
-    <header
-        class="h-16 border-b border-primary/10 bg-white dark:bg-background-dark flex items-center justify-between px-8 z-10">
-        <div class="flex items-center gap-4">
-            <span class="text-slate-400">/</span>
-            <span class="text-sm font-medium text-slate-600 dark:text-slate-300">Management</span>
-            <span class="text-slate-400">/</span>
-            <span class="text-sm font-bold text-primary">Countries</span>
-        </div>
-    </header>
             <div class="p-8 max-w-7xl mx-auto w-full space-y-6">
                 <!-- Page Title & Stats -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">

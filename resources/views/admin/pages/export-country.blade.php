@@ -1,18 +1,10 @@
 @extends('admin.layouts.app')
 @section('title', 'Export country')
+@section('page-header')
+    <h2 class="text-lg font-bold text-primary">Export Country</h2>
+@endsection
 @section('content')
-    <header
-        class="h-16 border-b border-primary/10 bg-white dark:bg-background-dark flex items-center justify-between px-8 z-10">
-        <div class="flex items-center gap-4">
-            <span class="text-slate-400">/</span>
-            <span class="text-sm font-medium text-slate-600 dark:text-slate-300">Management</span>
-            <span class="text-slate-400">/</span>
-            <span class="text-sm font-bold text-primary">Countries</span>
-        </div>
-    </header>
-    <!-- Page Content -->
     <div class="flex-1 overflow-y-auto p-8">
-        <!-- Header Actions -->
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
             <div>
                 <h1 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Export Country

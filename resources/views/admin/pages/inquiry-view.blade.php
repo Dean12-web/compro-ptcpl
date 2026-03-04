@@ -1,15 +1,9 @@
 @extends('admin.layouts.app')
 @section('title', 'Inquiry')
+@section('page-header')
+    <h2 class="text-lg font-bold text-primary">Inquiry</h2>
+@endsection
 @section('content')
-    <header
-        class="h-16 border-b border-primary/10 bg-white dark:bg-background-dark flex items-center justify-between px-8 z-10">
-        <div class="flex items-center gap-4">
-            <span class="text-slate-400">/</span>
-            <span class="text-sm font-medium text-slate-600 dark:text-slate-300">Management</span>
-            <span class="text-slate-400">/</span>
-            <span class="text-sm font-bold text-primary">Countries</span>
-        </div>
-    </header>
     <div class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-6 md:p-10">
         
             <!-- Header Actions -->

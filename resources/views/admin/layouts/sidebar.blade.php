@@ -1,4 +1,7 @@
-<aside class="w-64 flex-shrink-0 bg-white dark:bg-zinc-900 border-r border-primary/10 flex flex-col">
+<aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-zinc-900 
+    border-r border-primary/10 flex flex-col
+    transform -translate-x-full transition-transform duration-300 ease-in-out
+    lg:static lg:translate-x-0">
     <div class="p-6 flex items-center gap-3">
         <div class="size-10 rounded-lg flex items-center justify-center text-white">
             <img src="{{ asset('images/logo/icon_cpl.png') }}" alt="log_cendana_paper_egg_tray">
