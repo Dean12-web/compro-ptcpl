@@ -5,25 +5,31 @@
 @endsection
 @section('content')
     <div class="flex-1 flex flex-col min-w-0 bg-background-light dark:bg-background-dark overflow-y-auto">
-        <div class="flex flex-wrap justify-between items-end gap-4 p-6 md:p-8">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 p-6 md:p-8">
             <div class="flex flex-col gap-1">
-                <h2 class="text-slate-900 dark:text-slate-100 text-3xl font-black leading-tight tracking-tight">
-                    Gallery Management</h2>
-                <p class="text-slate-500 text-base font-normal">Review, categorize, and update public
-                    industrial assets</p>
+                <h2 class="text-slate-900 dark:text-slate-100 text-2xl sm:text-3xl font-black leading-tight tracking-tight">
+                    Gallery Management
+                </h2>
+
+                <p class="text-slate-500 text-sm sm:text-base">
+                    Review, categorize, and update public industrial assets
+                </p>
             </div>
-            <div class="flex gap-3">
+            <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
                 <button
-                    class="flex items-center gap-2 rounded-lg h-10 px-4 bg-white border border-primary/20 text-slate-700 font-bold text-sm shadow-sm hover:bg-slate-50 transition-all">
+                    class="flex items-center justify-center gap-2 rounded-lg h-10 px-4 w-full sm:w-auto bg-white border border-primary/20 text-slate-700 font-bold text-sm shadow-sm hover:bg-slate-50 transition-all">
                     <span class="material-symbols-outlined text-sm">download</span>
                     Export Data
                 </button>
+
                 <button
-                    class="flex items-center gap-2 rounded-lg h-10 px-4 bg-primary text-white font-bold text-sm shadow-lg shadow-primary/20 hover:brightness-110 transition-all">
+                    class="flex items-center justify-center gap-2 rounded-lg h-10 px-4 w-full sm:w-auto bg-primary text-white font-bold text-sm shadow-lg shadow-primary/20 hover:brightness-110 transition-all">
                     <span class="material-symbols-outlined text-sm">add_photo_alternate</span>
                     Upload Assets
                 </button>
+
             </div>
+
         </div>
         <div class="px-6 md:px-8 pb-4">
             <div class="flex flex-wrap gap-2 border-b border-primary/10 pb-4">
@@ -227,28 +233,51 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-10 flex items-center justify-between border-t border-primary/10 pt-6">
-                <p class="text-sm text-slate-500">Showing <span
-                        class="font-bold text-slate-900 dark:text-slate-100">1</span> to <span
-                        class="font-bold text-slate-900 dark:text-slate-100">12</span> of <span
-                        class="font-bold text-slate-900 dark:text-slate-100">48</span> assets</p>
-                <div class="flex gap-2">
+            <div
+                class="mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-t border-primary/10 pt-6">
+
+                <!-- Info -->
+                <p class="text-sm text-slate-500 text-center sm:text-left">
+                    Showing
+                    <span class="font-bold text-slate-900 dark:text-slate-100">1</span>
+                    to
+                    <span class="font-bold text-slate-900 dark:text-slate-100">12</span>
+                    of
+                    <span class="font-bold text-slate-900 dark:text-slate-100">48</span>
+                    assets
+                </p>
+
+                <!-- Pagination -->
+                <div class="flex items-center justify-center sm:justify-end gap-2 flex-wrap">
+
                     <button
                         class="size-9 flex items-center justify-center rounded border border-primary/10 bg-white text-slate-400 hover:text-primary transition-colors disabled:opacity-50"
-                        disabled="">
+                        disabled>
                         <span class="material-symbols-outlined">chevron_left</span>
                     </button>
+
                     <button
-                        class="size-9 flex items-center justify-center rounded border border-primary/10 bg-primary text-white font-bold text-sm">1</button>
+                        class="size-9 flex items-center justify-center rounded border border-primary/10 bg-primary text-white font-bold text-sm">
+                        1
+                    </button>
+
                     <button
-                        class="size-9 flex items-center justify-center rounded border border-primary/10 bg-white text-slate-600 hover:bg-primary/5 font-bold text-sm">2</button>
+                        class="size-9 flex items-center justify-center rounded border border-primary/10 bg-white text-slate-600 hover:bg-primary/5 font-bold text-sm">
+                        2
+                    </button>
+
                     <button
-                        class="size-9 flex items-center justify-center rounded border border-primary/10 bg-white text-slate-600 hover:bg-primary/5 font-bold text-sm">3</button>
+                        class="size-9 flex items-center justify-center rounded border border-primary/10 bg-white text-slate-600 hover:bg-primary/5 font-bold text-sm">
+                        3
+                    </button>
+
                     <button
                         class="size-9 flex items-center justify-center rounded border border-primary/10 bg-white text-slate-400 hover:text-primary transition-colors">
                         <span class="material-symbols-outlined">chevron_right</span>
                     </button>
+
                 </div>
+
             </div>
         </div>
     </div>

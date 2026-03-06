@@ -58,151 +58,100 @@
         </div>
         <!-- Recent Inquiries Table -->
         <div class="bg-white dark:bg-zinc-900 rounded-xl border border-primary/10 shadow-sm overflow-hidden">
-            <div class="px-6 py-4 border-b border-primary/10 flex items-center justify-between">
+
+            <!-- Header -->
+            <div
+                class="px-6 py-4 border-b border-primary/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                 <h3 class="font-bold text-lg">Recent Inquiry Messages</h3>
-                <button class="text-primary text-sm font-bold hover:underline">View all inquiries</button>
+
+                <button class="text-primary text-sm font-bold hover:underline self-start sm:self-auto">
+                    View all inquiries
+                </button>
             </div>
+
+            <!-- Table -->
             <div class="overflow-x-auto">
-                <table class="w-full text-left">
+                <table class="w-full text-left min-w-[600px]">
                     <thead class="bg-background-light dark:bg-zinc-800/50">
                         <tr>
                             <th class="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">
-                                Sender</th>
+                                Sender
+                            </th>
                             <th class="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">
-                                Subject</th>
-                            <th class="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Date
+                                Subject
+                            </th>
+                            <th class="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">
+                                Date
                             </th>
                             <th class="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">
-                                Status</th>
+                                Status
+                            </th>
                         </tr>
                     </thead>
+
                     <tbody class="divide-y divide-primary/5">
+
+                        <!-- ROW -->
                         <tr class="hover:bg-primary/5 transition-colors">
                             <td class="px-6 py-4">
                                 <div class="flex items-center gap-3">
                                     <div
                                         class="size-8 rounded-full bg-secondary/20 flex items-center justify-center text-primary font-bold text-xs uppercase">
-                                        JD</div>
-                                    <div>
-                                        <p class="text-sm font-semibold text-slate-900 dark:text-white">John Doe
+                                        JD
+                                    </div>
+
+                                    <div class="min-w-0">
+                                        <p class="text-sm font-semibold text-slate-900 dark:text-white truncate">
+                                            John Doe
                                         </p>
-                                        <p class="text-xs text-slate-500">j.doe@example.com</p>
+                                        <p class="text-xs text-slate-500 truncate">
+                                            j.doe@example.com
+                                        </p>
                                     </div>
                                 </div>
                             </td>
-                            <td class="px-6 py-4">
-                                <p class="text-sm text-slate-700 dark:text-slate-300">Product Inquiry:
-                                    Industrial Valves</p>
-                                <p class="text-xs text-slate-400 truncate max-w-xs">Interested in bulk pricing
-                                    for the new valve series...</p>
+
+                            <td class="px-6 py-4 max-w-[260px]">
+                                <p class="text-sm text-slate-700 dark:text-slate-300 truncate">
+                                    Product Inquiry: Industrial Valves
+                                </p>
+                                <p class="text-xs text-slate-400 truncate">
+                                    Interested in bulk pricing for the new valve series...
+                                </p>
                             </td>
-                            <td class="px-6 py-4 text-sm text-slate-500">
+
+                            <td class="px-6 py-4 text-sm text-slate-500 whitespace-nowrap">
                                 Oct 24, 2023
                             </td>
-                            <td class="px-6 py-4 text-right">
+
+                            <td class="px-6 py-4 text-right whitespace-nowrap">
                                 <span
                                     class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">
                                     New
                                 </span>
                             </td>
                         </tr>
-                        <tr class="hover:bg-primary/5 transition-colors">
-                            <td class="px-6 py-4">
-                                <div class="flex items-center gap-3">
-                                    <div
-                                        class="size-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs uppercase">
-                                        GT</div>
-                                    <div>
-                                        <p class="text-sm font-semibold text-slate-900 dark:text-white">Global
-                                            Trade Co</p>
-                                        <p class="text-xs text-slate-500">procurement@globaltrade.de</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <p class="text-sm text-slate-700 dark:text-slate-300">Export Request:
-                                    Asia-Pacific Region</p>
-                                <p class="text-xs text-slate-400 truncate max-w-xs">Seeking details on shipping
-                                    logistics to Singapore...</p>
-                            </td>
-                            <td class="px-6 py-4 text-sm text-slate-500">
-                                Oct 23, 2023
-                            </td>
-                            <td class="px-6 py-4 text-right">
-                                <span
-                                    class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700">
-                                    Pending
-                                </span>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-primary/5 transition-colors">
-                            <td class="px-6 py-4">
-                                <div class="flex items-center gap-3">
-                                    <div
-                                        class="size-8 rounded-full bg-secondary/20 flex items-center justify-center text-primary font-bold text-xs uppercase">
-                                        AS</div>
-                                    <div>
-                                        <p class="text-sm font-semibold text-slate-900 dark:text-white">Anna
-                                            Smith</p>
-                                        <p class="text-xs text-slate-500">anna.s@logistics.net</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <p class="text-sm text-slate-700 dark:text-slate-300">Bulk Order Quote</p>
-                                <p class="text-xs text-slate-400 truncate max-w-xs">Need a formal quote for the
-                                    Q4 supply inventory...</p>
-                            </td>
-                            <td class="px-6 py-4 text-sm text-slate-500">
-                                Oct 22, 2023
-                            </td>
-                            <td class="px-6 py-4 text-right">
-                                <span
-                                    class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-primary/10 text-primary">
-                                    Responded
-                                </span>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-primary/5 transition-colors">
-                            <td class="px-6 py-4">
-                                <div class="flex items-center gap-3">
-                                    <div
-                                        class="size-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs uppercase">
-                                        MI</div>
-                                    <div>
-                                        <p class="text-sm font-semibold text-slate-900 dark:text-white">Mark
-                                            Industrial</p>
-                                        <p class="text-xs text-slate-500">m.industrial@tech.com</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <p class="text-sm text-slate-700 dark:text-slate-300">Technical Specifications
-                                    Inquiry</p>
-                                <p class="text-xs text-slate-400 truncate max-w-xs">Requesting CAD files for the
-                                    heavy-duty pump model...</p>
-                            </td>
-                            <td class="px-6 py-4 text-sm text-slate-500">
-                                Oct 20, 2023
-                            </td>
-                            <td class="px-6 py-4 text-right">
-                                <span
-                                    class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-primary/10 text-primary">
-                                    Responded
-                                </span>
-                            </td>
-                        </tr>
+                        <!-- rows lain tetap sama -->
                     </tbody>
                 </table>
             </div>
+            <!-- Footer -->
             <div
-                class="px-6 py-4 bg-background-light dark:bg-zinc-800/20 border-t border-primary/5 flex items-center justify-between">
-                <p class="text-sm text-slate-500 font-medium">Showing 4 of 18 messages</p>
-                <div class="flex gap-2">
+                class="px-6 py-4 bg-background-light dark:bg-zinc-800/20 border-t border-primary/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+
+                <p class="text-sm text-slate-500 font-medium text-center sm:text-left">
+                    Showing 4 of 18 messages
+                </p>
+
+                <div class="flex gap-2 justify-center sm:justify-end">
                     <button
-                        class="px-3 py-1 bg-white dark:bg-zinc-900 border border-primary/10 rounded-lg text-sm disabled:opacity-50">Previous</button>
-                    <button
-                        class="px-3 py-1 bg-white dark:bg-zinc-900 border border-primary/10 rounded-lg text-sm">Next</button>
+                        class="px-3 py-1 bg-white dark:bg-zinc-900 border border-primary/10 rounded-lg text-sm disabled:opacity-50">
+                        Previous
+                    </button>
+
+                    <button class="px-3 py-1 bg-white dark:bg-zinc-900 border border-primary/10 rounded-lg text-sm">
+                        Next
+                    </button>
                 </div>
             </div>
         </div>

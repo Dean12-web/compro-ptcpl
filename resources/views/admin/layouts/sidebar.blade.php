@@ -17,8 +17,8 @@
             <span class="material-symbols-outlined text-[20px]">dashboard</span>
             <span class="text-sm font-medium">Dashboard</span>
         </a>
-        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors {{ is_active('cpl.products') }}"
-            href="{{ route('cpl.products') }}">
+        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors {{ is_active('products.index') }}"
+            href="{{ route('products.index') }}">
             <span class="material-symbols-outlined text-[20px]">inventory_2</span>
             <span class="text-sm font-medium">Products</span>
         </a>

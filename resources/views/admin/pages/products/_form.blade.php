@@ -1,0 +1,323 @@
+<x-admin.modal name="add-product" title="Add New Product">
+    <form method="POST" id="productForm" action="{{ route('products.store') }}" enctype="multipart/form-data"
+        x-data="productForm()" @submit.prevent="submitForm" @reset-product-form.window="resetForm()"
+        @close-modal.window="resetForm()">
+        @csrf
+        <x-slot name="icon">
+            <span class="material-symbols-outlined">add_box</span>
+        </x-slot>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-1.5 col-span-full">
+                <label class="text-xs font-bold uppercase tracking-wider text-slate-500">
+                    Product Name
+                </label>
+
+                <input
+                    class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all"
+                    placeholder="Standard Egg Tray 30s" name="name" type="text" x-model="name" required />
+                <p x-show="errors.name" x-text="errors.name" class="text-xs text-red-500 mt-1"></p>
+            </div>
+        </div><br>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Material -->
+            <div class="space-y-1.5">
+                <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Material</label>
+                <select name="material" x-model="material"
+                    class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all">
+                    <option>Pilih Material</option>
+                    <option value="paper-pulp">Paper Pulp</option>
+                    <option value="plastic-egg-tray">Plastic Egg Tray</option>
+                    <option value="styrofoam-tray">Styrofoam Tray</option>
+                    <option value="natural-fiber">Natural Fiber</option>
+                </select>
+                <p x-show="errors.material" x-text="errors.material" class="text-xs text-red-500 mt-1"></p>
+            </div>
+            <!-- Capacity -->
+            <div class="space-y-1.5">
+                <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Capacity</label>
+                <div class="relative">
+                    <input name="capacity" x-model="capacity"
+                        class="w-full pl-4 pr-12 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all"
+                        placeholder="30" type="number" />
+                    <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">Eggs</span>
+                </div>
+                <p x-show="errors.capacity" x-text="errors.capacity" class="text-xs text-red-500 mt-1"></p>
+            </div>
+        </div><br>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+                <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Dimension</label>
+                <input name="dimensions" x-model="dimensions"
+                    class="w-full pl-4 pr-12 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all"
+                    placeholder="300 x 300 mm" type="text" />
+                <p x-show="errors.dimensions" x-text="errors.dimensions" class="text-xs text-red-500 mt-1"></p>
+            </div>
+            <div class="space-y-1.5">
+                <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Weight</label>
+                <div class="relative">
+                    <input name="weight" x-model="weight"
+                        class="w-full pl-4 pr-12 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all"
+                        placeholder="80 g" type="text" />
+                    <p x-show="errors.weight" x-text="errors.weight" class="text-xs text-red-500 mt-1"></p>
+                </div>
+            </div>
+        </div><br>
+        <!-- Description -->
+        <div class="space-y-1.5">
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Description</label>
+            <textarea name="description" x-model="description"
+                class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all resize-none"
+                placeholder="Detailed product specifications..." rows="3"></textarea>
+            <p x-show="errors.description" x-text="errors.description" class="text-xs text-red-500 mt-1"></p>
+        </div><br>
+        <!-- Image Upload -->
+        <div class="space-y-1.5">
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-500">
+                Product images
+            </label>
+            <div class="space-y-4">
+                <input type="file" name="images[]" multiple accept="image/png,image/jpeg,image/jpg" class="hidden"
+                    x-ref="fileinput" @change="handleFiles($event)">
+                <div @click="files.length < maxImages && $refs.fileinput.click()" @dragover.prevent
+                    @drop.prevent="files.length < maxImages && handleDrop($event)" :class="files.length >= maxImages 
+        ? 'opacity-40 cursor-not-allowed border-slate-200 bg-slate-100'
+        : 'cursor-pointer hover:bg-primary/10'"
+                    class="border-2 border-dashed border-primary/20 rounded-xl p-12 flex flex-col items-center justify-center bg-primary/5 transition-colors">
+
+                    <span class="material-symbols-outlined text-3xl text-primary">
+                        add_photo_alternate
+                    </span>
+
+                    <p class="text-sm font-bold mt-2">
+                        Drag & drop product images
+                    </p>
+
+                    <p class="text-xs text-slate-400">
+                        Max <span x-text="maxImages"></span> images
+                    </p>
+
+                </div>
+                <!-- Image Grid Preview -->
+                <div class="grid grid-cols-4 gap-3" x-show="previews.length">
+                    <template x-for="(image, index) in previews" :key="index">
+
+                        <div class="relative aspect-square rounded-lg border border-primary/10 overflow-hidden group">
+
+                            <img :src="image" class="w-full h-full object-cover">
+
+                            <button type="button" @click="removeImage(index)"
+                                class="absolute top-1 right-1 size-5 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                <span class="material-symbols-outlined !text-[14px]">close</span>
+                            </button>
+
+                        </div>
+
+                    </template>
+                    <!-- Placeholder / Add More -->
+                    <div @click="files.length < maxImages && $refs.fileinput.click()" @dragover.prevent
+                        @drop.prevent="files.length < maxImages && handleDrop($event)" :class="files.length >= maxImages 
+        ? 'opacity-40 cursor-not-allowed border-slate-200 bg-slate-100'
+        : 'cursor-pointer hover:bg-primary/10'"
+                        class="aspect-square rounded-lg border border-dashed border-primary/20 bg-slate-50 dark:bg-slate-900/50 flex flex-col items-center justify-center text-slate-400 hover:text-primary hover:border-primary/40 transition-colors cursor-pointer">
+                        <span class="material-symbols-outlined">add</span>
+                        <span class="text-[10px] font-bold uppercase mt-1">Add</span>
+                    </div>
+                </div>
+            </div>
+            <div x-show="imageErrors.length" class="space-y-1">
+                <template x-for="error in imageErrors">
+                    <p class="text-xs text-red-500" x-text="error"></p>
+                </template>
+            </div>
+        </div>
+        <br>
+        <!-- Status Toggle -->
+        <div
+            class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-primary/10">
+            <div class="flex flex-col">
+                <p class="text-sm font-bold">Product Status</p>
+                <p class="text-xs text-slate-500">Set if the product is available for production orders</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="text-xs font-bold uppercase" :class="active ? 'text-slate-400' : 'text-red-500'">
+                    Inactive
+                </span>
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="hidden" name="is_active" value="0">
+                    <input name="is_active" value="1" x-model="active" class="sr-only peer" type="checkbox">
+                    <div
+                        class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
+                    </div>
+                </label>
+                <span class="text-xs font-bold uppercase text-primary"
+                    :class="active ? 'text-primary' : 'text-slate-400'">
+                    Active
+                </span>
+            </div>
+        </div>
+    </form>
+    <x-slot name="footer">
+        <button @click="$dispatch('reset-product-form'); $dispatch('close-modal','add-product')"
+            class="px-5 py-2 text-sm font-bold text-slate-600 hover:bg-slate-200 rounded-lg">
+            Cancel
+        </button>
+
+        <button type="submit" form="productForm"
+            class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg text-sm font-bold flex items-center gap-2">
+            <span class="material-symbols-outlined !text-lg">save</span>
+            Save Product
+        </button>
+
+    </x-slot>
+</x-admin.modal>
+<script>
+    function productForm() {
+
+        return {
+
+            active: true,
+
+            name: '',
+            capacity: '',
+            dimensions: '',
+            weight: '',
+            description: '',
+            material: '',
+
+            files: [],
+            previews: [],
+            errors: {},
+            imageErrors: [],
+
+            maxImages: 4,
+            maxSize: 2 * 1024 * 1024,
+
+            resetForm() {
+
+                this.name = ''
+                this.capacity = ''
+                this.dimensions = ''
+                this.weight = ''
+                this.description = ''
+
+                this.active = true
+
+                this.files = []
+                this.previews = []
+
+                this.errors = {}
+                this.imageErrors = []
+
+                if (this.$refs.fileinput) {
+                    this.$refs.fileinput.value = ''
+                }
+
+            },
+
+            validate() {
+                this.errors = {}
+
+                if (!this.name.trim()) {
+                    this.errors.name = 'Nama Produk dibutuhkan'
+                }
+
+                if (!this.capacity && this.capacity <= 0) {
+                    this.errors.capacity = 'Kapasitas harus lebih besar dari 0'
+                }
+
+                if (this.files.length === 0) {
+                    this.imageErrors.push('Gambar tidak boleh kosong')
+                }
+
+                if (!this.weight) {
+                    this.errors.weight = 'Berat tidak boleh kosong'
+                }
+
+                if (!this.dimensions) {
+                    this.errors.dimensions = 'Deskripsi tidak boleh kosong'
+                }
+
+                if (!this.description) {
+                    this.errors.description = 'Deskripsi tidak boleh kosong'
+                }
+
+                if (!this.material) {
+                    this.errors.material = 'Material tidak boleh kosong'
+                }
+
+                return Object.keys(this.errors).length === 0 && this.imageErrors.length === 0
+
+                console.log('Selected material:', this.material);
+            },
+
+            submitForm(event) {
+                this.imageErrors = []
+
+                if (!this.validate()) {
+                    event.preventDefault()
+                    return
+                }
+
+                event.target.submit()
+            },
+
+            handleFiles(event) {
+                this.addFiles(event.target.files)
+            },
+
+            handleDrop(event) {
+                this.addFiles(event.dataTransfer.files)
+            },
+
+            addFiles(fileList) {
+
+                this.imageErrors = []
+
+                for (let file of fileList) {
+
+                    if (!file.type.startsWith('image/')) {
+                        this.imageErrors.push(file.name + " is not an image")
+                        continue
+                    }
+
+                    if (file.size > this.maxSize) {
+                        this.imageErrors.push(file.name + " exceeds 2MB limit")
+                        continue
+                    }
+
+                    if (this.files.length >= this.maxImages) {
+                        this.imageErrors.push("Maximum " + this.maxImages + " images allowed")
+                        break
+                    }
+
+                    this.files.push(file)
+                    this.previews.push(URL.createObjectURL(file))
+                }
+
+                this.syncInput()
+            },
+
+            removeImage(index) {
+
+                this.files.splice(index, 1)
+                this.previews.splice(index, 1)
+
+                this.syncInput()
+
+            },
+
+            syncInput() {
+
+                const dataTransfer = new DataTransfer()
+
+                this.files.forEach(file => {
+                    dataTransfer.items.add(file)
+                })
+
+                this.$refs.fileinput.files = dataTransfer.files
+            }
+
+        }
+
+    }
+</script>
