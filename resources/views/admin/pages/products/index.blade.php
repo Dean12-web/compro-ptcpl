@@ -4,7 +4,7 @@
     <h2 class="text-lg font-bold text-primary">Products</h2>
 @endsection
 @section('page-actions')
-    <button x-data @click="console.log('clicked'); $dispatch('open-modal','add-product')"
+    <button x-data @click="$dispatch('open-modal','add-product')"
         class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-bold transition-all shadow-sm">
 
         <span class="material-symbols-outlined !text-lg">add</span>
@@ -112,8 +112,8 @@
 
                     <template x-for="page in pagination.last_page" :key="page">
                         <button @click="goTo(page)" :class="page === pagination.current_page
-            ? 'bg-primary text-white'
-            : 'border'" class="px-3 py-1 rounded text-xs">
+                ? 'bg-primary text-white'
+                : 'border'" class="px-3 py-1 rounded text-xs">
 
                             <span x-text="page"></span>
 
@@ -162,6 +162,12 @@
                 this.$watch('search', () => {
                     this.page = 1
                     this.load()
+                })
+                
+                //reload pages
+                window.addEventListener('product-updated', () => {
+                    this.load()
+                    this.loadStats()
                 })
             },
 

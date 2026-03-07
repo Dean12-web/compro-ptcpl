@@ -1,7 +1,6 @@
-<x-admin.modal name="add-product" title="Add New Product">
-    <form method="POST" id="productForm" action="{{ route('products.store') }}" enctype="multipart/form-data"
-        x-data="productForm()" @submit.prevent="submitForm" @reset-product-form.window="resetForm()"
-        @close-modal.window="resetForm()">
+<x-admin.modal name="add-product" title="Product">
+    <form id="productForm" enctype="multipart/form-data" x-data="productForm()" @submit.prevent="submitForm"
+        @reset-product-form.window="resetForm()" @close-modal.window="resetForm()">
         @csrf
         <x-slot name="icon">
             <span class="material-symbols-outlined">add_box</span>
@@ -103,10 +102,11 @@
 
                         <div class="relative aspect-square rounded-lg border border-primary/10 overflow-hidden group">
 
-                            <img :src="image" class="w-full h-full object-cover">
+                            <img :src="image.url ?? image" class="w-full h-full object-cover">
 
-                            <button type="button" @click="removeImage(index)"
-                                class="absolute top-1 right-1 size-5 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100">
+                            <button type="button" @click="image.id ? deleteImage(image.id,index) : removeImage(index)"
+                                class=" absolute top-1 right-1 size-5 bg-red-500 text-white rounded-full flex
+                                items-center justify-center opacity-0 group-hover:opacity-100">
                                 <span class="material-symbols-outlined !text-[14px]">close</span>
                             </button>
 
@@ -175,6 +175,9 @@
 
         return {
 
+            mode: 'create',
+            product_id: null,
+
             active: true,
 
             name: '',
@@ -186,24 +189,40 @@
 
             files: [],
             previews: [],
+            existingImages: [],
+
             errors: {},
             imageErrors: [],
 
             maxImages: 4,
             maxSize: 2 * 1024 * 1024,
 
+            init() {
+
+                window.addEventListener('edit-product', e => {
+                    this.openEdit(e.detail)
+                })
+
+            },
+
+
             resetForm() {
+
+                this.mode = 'create'
+                this.product_id = null
 
                 this.name = ''
                 this.capacity = ''
                 this.dimensions = ''
                 this.weight = ''
                 this.description = ''
+                this.material = ''
 
                 this.active = true
 
                 this.files = []
                 this.previews = []
+                this.existingImages = []
 
                 this.errors = {}
                 this.imageErrors = []
@@ -214,19 +233,62 @@
 
             },
 
+            async openEdit(id) {
+
+                const res = await fetch(`/cpl-admin/products-data/${id}`)
+                const data = await res.json()
+
+                this.mode = 'edit'
+                this.product_id = data.id
+
+                this.name = data.name
+                this.capacity = data.capacity
+                this.dimensions = data.dimensions
+                this.weight = data.weight
+                this.description = data.description
+                this.material = data.material
+                this.active = data.is_active
+
+                this.existingImages = data.images
+                this.previews = data.images.map(img => ({
+                    id: img.id,
+                    url: img.url,
+                    new: false
+                }))
+
+                window.dispatchEvent(
+                    new CustomEvent('open-modal', { detail: 'add-product' })
+                )
+
+            },
+
+            async deleteImage(id, index) {
+
+                if (!confirm('Delete image?')) return
+
+                await fetch(`/cpl-admin/products-image/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': document
+                            .querySelector('meta[name="csrf-token"]').content
+                    }
+                })
+
+                this.previews.splice(index, 1)
+
+            },
+
             validate() {
+
                 this.errors = {}
+                this.imageErrors = []
 
                 if (!this.name.trim()) {
                     this.errors.name = 'Nama Produk dibutuhkan'
                 }
 
-                if (!this.capacity && this.capacity <= 0) {
+                if (!this.capacity || this.capacity <= 0) {
                     this.errors.capacity = 'Kapasitas harus lebih besar dari 0'
-                }
-
-                if (this.files.length === 0) {
-                    this.imageErrors.push('Gambar tidak boleh kosong')
                 }
 
                 if (!this.weight) {
@@ -234,7 +296,7 @@
                 }
 
                 if (!this.dimensions) {
-                    this.errors.dimensions = 'Deskripsi tidak boleh kosong'
+                    this.errors.dimensions = 'Dimensi tidak boleh kosong'
                 }
 
                 if (!this.description) {
@@ -245,20 +307,68 @@
                     this.errors.material = 'Material tidak boleh kosong'
                 }
 
+                if (this.mode === 'create' && this.files.length === 0) {
+                    this.imageErrors.push('Gambar tidak boleh kosong')
+                }
+
                 return Object.keys(this.errors).length === 0 && this.imageErrors.length === 0
 
-                console.log('Selected material:', this.material);
             },
 
-            submitForm(event) {
-                this.imageErrors = []
+            async submitForm(event) {
 
                 if (!this.validate()) {
-                    event.preventDefault()
                     return
                 }
 
-                event.target.submit()
+                let formData = new FormData()
+
+                formData.append('name', this.name)
+                formData.append('capacity', this.capacity)
+                formData.append('dimensions', this.dimensions)
+                formData.append('weight', this.weight)
+                formData.append('description', this.description)
+                formData.append('material', this.material)
+                formData.append('is_active', this.active ? 1 : 0)
+
+                this.files.forEach(file => {
+                    formData.append('images[]', file)
+                })
+
+                let url = '/cpl-admin/products-data'
+                let method = 'POST'
+
+                if (this.mode === 'edit') {
+                    url = `/cpl-admin/products-data/${this.product_id}`
+                    formData.append('_method', 'PUT')
+                }
+
+                const res = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document
+                            .querySelector('meta[name="csrf-token"]').content
+                    },
+                    body: formData
+                })
+
+                const data = await res.json()
+
+                if (data.success) {
+
+                    this.resetForm()
+
+                    window.dispatchEvent(
+                        new CustomEvent('close-modal', { detail: 'add-product' })
+                    )
+
+                    //send reload page
+                    window.dispatchEvent(
+                        new CustomEvent('product-updated')
+                    )
+
+                }
+
             },
 
             handleFiles(event) {
@@ -275,6 +385,15 @@
 
                 for (let file of fileList) {
 
+                    const totalImages = this.files.length + this.existingImages.length
+
+                    if (totalImages >= this.maxImages) {
+
+                        this.imageErrors.push("Maximum " + this.maxImages + " images allowed")
+                        break
+
+                    }
+
                     if (!file.type.startsWith('image/')) {
                         this.imageErrors.push(file.name + " is not an image")
                         continue
@@ -285,21 +404,35 @@
                         continue
                     }
 
-                    if (this.files.length >= this.maxImages) {
-                        this.imageErrors.push("Maximum " + this.maxImages + " images allowed")
-                        break
-                    }
-
                     this.files.push(file)
-                    this.previews.push(URL.createObjectURL(file))
+
+                    this.previews.push({
+                        url: URL.createObjectURL(file),
+                        new: true
+                    })
+
                 }
 
                 this.syncInput()
+
             },
 
             removeImage(index) {
 
-                this.files.splice(index, 1)
+                const image = this.previews[index]
+
+                if (image.new) {
+
+                    this.files.splice(index, 1)
+
+                } else {
+
+                    this.deleteImage(image.id, index)
+
+                    return
+
+                }
+
                 this.previews.splice(index, 1)
 
                 this.syncInput()
@@ -315,6 +448,7 @@
                 })
 
                 this.$refs.fileinput.files = dataTransfer.files
+
             }
 
         }
