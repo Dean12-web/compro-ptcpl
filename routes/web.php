@@ -40,19 +40,27 @@ Route::group(['prefix' => '{locale}',   'where' => ['locale' => 'en|id'], 'middl
 
 Route::prefix('cpl-admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('cpl.dashboard');
-    
-    Route::get('/gallery', [GalleryController::class, 'index'])->name('cpl.gallery');
+
     Route::get('/inquiry-view', [InquiryController::class, 'index'])->name('cpl.inquiry-view');
     Route::get('/web-content', [ContentBlockController::class, 'index'])->name('cpl.web-content');
     Route::get('/export-country', [ExportCountryController::class, 'index'])->name('cpl.export-country');
     Route::get('/setting', [SettingController::class, 'index'])->name('cpl.setting');
 
+    Route::resource('/gallery', GalleryController::class);
+    Route::post('/gallery-store', [GalleryController::class, 'store'])->name('cpl.gallery-store');
+    Route::put(
+        '/gallery-update-status/{gallery}',
+        [GalleryController::class, 'updateStatus']
+    )->name('cpl.gallery-update-status');
+
+    Route::delete('/gallery-delete/{gallery}', [GalleryController::class, 'destroy'])->name('cpl.gallery-delete');
+
     Route::resource('/products', AdminProductController::class)->except(['create']);
-    Route::get('/products-data', [ProductApiController::class,'index'])->name('cpl.products-data');
-    Route::get('/products-data/{product}', [ProductApiController::class,'show'])->name('cpl.products-data.show');
-    Route::get('/products-stats',[ProductApiController::class,'stats']);
-    Route::put('/products-data/{product}',[ProductApiController::class,'update'] );
-    Route::delete('/products-image/{image}', [ProductApiController::class,'deleteImage']);
+    Route::get('/products-data', [ProductApiController::class, 'index'])->name('cpl.products-data');
+    Route::get('/products-data/{product}', [ProductApiController::class, 'show'])->name('cpl.products-data.show');
+    Route::get('/products-stats', [ProductApiController::class, 'stats']);
+    Route::put('/products-data/{product}', [ProductApiController::class, 'update']);
+    Route::delete('/products-image/{image}', [ProductApiController::class, 'deleteImage']);
     Route::delete('/products-data/{product}', [ProductApiController::class, 'destroy']);
 });
 
