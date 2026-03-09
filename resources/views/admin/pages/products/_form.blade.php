@@ -8,7 +8,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="space-y-1.5 col-span-full">
                 <label class="text-xs font-bold uppercase tracking-wider text-slate-500">
-                    Product Name
+                    Nama Produk
                 </label>
 
                 <input
@@ -24,35 +24,35 @@
                 <select name="material" x-model="material"
                     class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all">
                     <option>Pilih Material</option>
-                    <option value="paper-pulp">Paper Pulp</option>
-                    <option value="plastic-egg-tray">Plastic Egg Tray</option>
-                    <option value="styrofoam-tray">Styrofoam Tray</option>
-                    <option value="natural-fiber">Natural Fiber</option>
+                    <option value="paper-pulp">Pulp Kertas</option>
+                    <option value="plastic-egg-tray">Rak Telur Plastik</option>
+                    <option value="styrofoam-tray">Rak Telur Styrofoam</option>
+                    <option value="natural-fiber">Serat Alami</option>
                 </select>
                 <p x-show="errors.material" x-text="errors.material" class="text-xs text-red-500 mt-1"></p>
             </div>
             <!-- Capacity -->
             <div class="space-y-1.5">
-                <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Capacity</label>
+                <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Kapasitas</label>
                 <div class="relative">
                     <input name="capacity" x-model="capacity"
                         class="w-full pl-4 pr-12 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all"
                         placeholder="30" type="number" />
-                    <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">Eggs</span>
+                    <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">Telur</span>
                 </div>
                 <p x-show="errors.capacity" x-text="errors.capacity" class="text-xs text-red-500 mt-1"></p>
             </div>
         </div><br>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="space-y-1.5">
-                <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Dimension</label>
+                <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Dimensi</label>
                 <input name="dimensions" x-model="dimensions"
                     class="w-full pl-4 pr-12 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all"
                     placeholder="300 x 300 mm" type="text" />
                 <p x-show="errors.dimensions" x-text="errors.dimensions" class="text-xs text-red-500 mt-1"></p>
             </div>
             <div class="space-y-1.5">
-                <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Weight</label>
+                <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Berat</label>
                 <div class="relative">
                     <input name="weight" x-model="weight"
                         class="w-full pl-4 pr-12 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all"
@@ -63,16 +63,16 @@
         </div><br>
         <!-- Description -->
         <div class="space-y-1.5">
-            <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Description</label>
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Deskripsi</label>
             <textarea name="description" x-model="description"
                 class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all resize-none"
-                placeholder="Detailed product specifications..." rows="3"></textarea>
+                placeholder="Detail spesifikasi produk..." rows="3"></textarea>
             <p x-show="errors.description" x-text="errors.description" class="text-xs text-red-500 mt-1"></p>
         </div><br>
         <!-- Image Upload -->
         <div class="space-y-1.5">
             <label class="text-xs font-bold uppercase tracking-wider text-slate-500">
-                Product images
+                Gambar Produk
             </label>
             <div class="space-y-4">
                 <input type="file" name="images[]" multiple accept="image/png,image/jpeg,image/jpg" class="hidden"
@@ -87,12 +87,8 @@
                         add_photo_alternate
                     </span>
 
-                    <p class="text-sm font-bold mt-2">
-                        Drag & drop product images
-                    </p>
-
                     <p class="text-xs text-slate-400">
-                        Max <span x-text="maxImages"></span> images
+                        Maksimum <span x-text="maxImages"></span> Gambar
                     </p>
 
                 </div>
@@ -135,12 +131,11 @@
         <div
             class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-primary/10">
             <div class="flex flex-col">
-                <p class="text-sm font-bold">Product Status</p>
-                <p class="text-xs text-slate-500">Set if the product is available for production orders</p>
+                <p class="text-sm font-bold">Status produk</p>
             </div>
             <div class="flex items-center gap-3">
                 <span class="text-xs font-bold uppercase" :class="active ? 'text-slate-400' : 'text-red-500'">
-                    Inactive
+                    Tidak Aktif
                 </span>
                 <label class="relative inline-flex items-center cursor-pointer">
                     <input type="hidden" name="is_active" value="0">
@@ -151,7 +146,7 @@
                 </label>
                 <span class="text-xs font-bold uppercase text-primary"
                     :class="active ? 'text-primary' : 'text-slate-400'">
-                    Active
+                    Aktif
                 </span>
             </div>
         </div>
@@ -159,13 +154,13 @@
     <x-slot name="footer">
         <button @click="$dispatch('reset-product-form'); $dispatch('close-modal','add-product')"
             class="px-5 py-2 text-sm font-bold text-slate-600 hover:bg-slate-200 rounded-lg">
-            Cancel
+            Batal
         </button>
 
         <button type="submit" form="productForm"
             class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg text-sm font-bold flex items-center gap-2">
             <span class="material-symbols-outlined !text-lg">save</span>
-            Save Product
+            Simpan
         </button>
 
     </x-slot>

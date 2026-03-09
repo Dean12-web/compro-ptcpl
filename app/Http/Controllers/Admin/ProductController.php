@@ -19,13 +19,13 @@ class ProductController extends Controller
 
             [
                 'key' => 'name',
-                'label' => 'Product',
+                'label' => 'Produk',
                 'sortable' => true
             ],
 
             [
                 'key' => 'weight',
-                'label' => 'Weight'
+                'label' => 'Berat'
             ],
             [
                 'key' => 'material',
@@ -34,7 +34,7 @@ class ProductController extends Controller
 
             [
                 'key' => 'capacity',
-                'label' => 'Capacity'
+                'label' => 'Kapasitas'
             ],
 
             [
@@ -44,7 +44,7 @@ class ProductController extends Controller
 
             [
                 'key' => 'action',
-                'label' => 'Action'
+                'label' => 'Aksi'
             ]
 
         ];

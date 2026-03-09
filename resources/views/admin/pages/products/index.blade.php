@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 @section('title', 'Products')
 @section('page-header')
-    <h2 class="text-lg font-bold text-primary">Products</h2>
+    <h2 class="text-lg font-bold text-primary">Produk</h2>
 @endsection
 @section('page-actions')
     <button x-data @click="$dispatch('open-modal','add-product')"
@@ -10,7 +10,7 @@
         <span class="material-symbols-outlined !text-lg">add</span>
 
         <span class="hidden sm:inline">
-            Add New Product
+            Tambah Produk
         </span>
 
     </button>
@@ -32,7 +32,7 @@
         <!-- Page Title & Stats -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/10 shadow-sm">
-                <p class="text-sm text-slate-500 font-medium">Total Products</p>
+                <p class="text-sm text-slate-500 font-medium">Total Produk</p>
                 <h3 class="text-3xl font-black mt-1" x-text="stats.total_products"></h3>
                 <div class="mt-2 flex items-center gap-1 text-xs text-primary font-bold">
                     <span class="material-symbols-outlined !text-sm">trending_up</span>
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/10 shadow-sm">
-                <p class="text-sm text-slate-500 font-medium">Active Trays</p>
+                <p class="text-sm text-slate-500 font-medium">Produk Aktif</p>
                 <h3 class="text-3xl font-black mt-1 text-primary" x-text="stats.active_products"></h3>
                 <div class="mt-2 flex items-center gap-1 text-xs text-slate-400">
                     <span x-text="stats.active_percent + '% dari total trays'"></span>
@@ -57,7 +57,7 @@
                     search
                 </span>
 
-                <input type="text" placeholder="Search product name" x-model.debounce.400ms="search"
+                <input type="text" placeholder="Cari nama produk..." x-model.debounce.400ms="search"
                     class="w-full pl-10 pr-4 py-2 bg-background-light dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all">
             </div>
 
@@ -71,18 +71,18 @@
 
                 <select x-model="status" @change="page = 1; load()"
                     class="w-full sm:w-auto bg-background-light dark:bg-slate-900 border border-primary/10 rounded-lg py-2 px-3 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none">
-                    <option value="">All Status</option>
-                    <option value="1">Active</option>
-                    <option value="0">Inactive</option>
+                    <option value="">Semua status</option>
+                    <option value="1">Aktif</option>
+                    <option value="0">Tidak Aktif</option>
                 </select>
 
                 <select x-model="material" @change="page = 1; load()"
                     class="w-full sm:w-auto bg-background-light dark:bg-slate-900 border border-primary/10 rounded-lg py-2 px-3 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none">
-                    <option>All Material</option>
-                    <option>Paper Pulp</option>
-                    <option>Plastic Egg Tray</option>
-                    <option>Styrofoam Tray</option>
-                    <option>Natural Fiber</option>
+                    <option>Semua Material</option>
+                     <option value="paper-pulp">Pulp Kertas</option>
+                    <option value="plastic-egg-tray">Rak Telur Plastik</option>
+                    <option value="styrofoam-tray">Rak Telur Styrofoam</option>
+                    <option value="natural-fiber">Serat Alami</option>
                 </select>
 
             </div>

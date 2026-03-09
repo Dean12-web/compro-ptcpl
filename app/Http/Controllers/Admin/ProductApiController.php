@@ -38,8 +38,15 @@ class ProductApiController extends Controller
 
         $products = $query->paginate(10);
 
+        $materials = [
+            'paper-pulp' => 'Pulp Kertas',
+            'plastic-egg-tray' => 'Rak Telur Plastik',
+            'styrofoam-tray' => 'Rak Telur Styrofoam',
+            'natural-fiber' => 'Serat Alami',
+        ];
+
         return response()->json([
-            'rows' => $products->map(function ($product) {
+              'rows' => $products->map(function ($product) use ($materials) {
 
                 return [
 
@@ -67,15 +74,15 @@ class ProductApiController extends Controller
                     ',
 
                     'dimensions' => $product->dimensions,
-                    'material' => $product->material,
+                    'material' => $materials[$product->material] ?? $product->material,
 
                     'weight' => $product->weight,
 
                     'capacity' => $product->capacity,
 
                     'status' => $product->is_active
-                        ? '<span class="text-[10px] font-bold uppercase text-primary">Active</span>'
-                        : '<span class="text-[10px] font-bold uppercase text-slate-400">Inactive</span>',
+                        ? '<span class="text-[10px] font-bold uppercase text-primary">Aktif</span>'
+                        : '<span class="text-[10px] font-bold uppercase text-slate-400">Tidak aktif</span>',
 
                     'action' => '<button 
                                     @click="$dispatch(\'edit-product\',' . $product->id . ')"
