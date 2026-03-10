@@ -3,7 +3,7 @@
 
         <table class="w-full text-left">
 
-            <thead class="bg-slate-50 dark:bg-white/5 border-b border-primary/10">
+            <thead class="dark:bg-white/5 border-b border-primary/10">
 
                 <tr>
 
@@ -28,7 +28,7 @@
             </thead>
 
 
-            <tbody class="divide-y divide-primary/5">
+            <tbody class="divide-y bg-slate-50 ">
 
                 <template x-for="row in rows" :key="row.id">
                     <tr class="hover:bg-primary/5">

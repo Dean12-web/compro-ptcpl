@@ -52,10 +52,6 @@ class ProductApiController extends Controller
 
                     'id' => $product->id,
 
-                    'image' => $product->primaryImage
-                        ? '<img src="' . asset('storage/' . $product->primaryImage->image_path) . '" class="w-10 h-10 rounded">'
-                        : '',
-
                     'name' => '
                     <div class="flex items-center gap-3">
 
@@ -102,7 +98,9 @@ class ProductApiController extends Controller
 
                 'current_page' => $products->currentPage(),
                 'last_page' => $products->lastPage(),
-                'total' => $products->total()
+                'total' => $products->total(),
+                'from' => $products->firstItem(),
+                'to' => $products->lastItem()
 
             ]
         ]);

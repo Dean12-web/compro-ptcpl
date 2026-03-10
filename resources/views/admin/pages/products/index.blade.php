@@ -79,7 +79,7 @@
                 <select x-model="material" @change="page = 1; load()"
                     class="w-full sm:w-auto bg-background-light dark:bg-slate-900 border border-primary/10 rounded-lg py-2 px-3 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none">
                     <option>Semua Material</option>
-                     <option value="paper-pulp">Pulp Kertas</option>
+                    <option value="paper-pulp">Pulp Kertas</option>
                     <option value="plastic-egg-tray">Rak Telur Plastik</option>
                     <option value="styrofoam-tray">Rak Telur Styrofoam</option>
                     <option value="natural-fiber">Serat Alami</option>
@@ -99,8 +99,15 @@
 
                 <!-- Info -->
                 <p class="text-xs text-slate-500 text-center sm:text-left">
-                    Showing 1 to 4 of 124 products
+                    Showing
+                    <span x-text="pagination.from ?? 0"></span>
+                    to
+                    <span x-text="pagination.to ?? 0"></span>
+                    of
+                    <span x-text="pagination.total ?? 0"></span>
+                    products
                 </p>
+
 
                 <!-- Pagination -->
                 <div class="flex items-center justify-center sm:justify-end gap-1 flex-wrap">
@@ -112,8 +119,8 @@
 
                     <template x-for="page in pagination.last_page" :key="page">
                         <button @click="goTo(page)" :class="page === pagination.current_page
-                ? 'bg-primary text-white'
-                : 'border'" class="px-3 py-1 rounded text-xs">
+                    ? 'bg-primary text-white'
+                    : 'border'" class="px-3 py-1 rounded text-xs">
 
                             <span x-text="page"></span>
 
@@ -163,7 +170,7 @@
                     this.page = 1
                     this.load()
                 })
-                
+
                 //reload pages
                 window.addEventListener('product-updated', () => {
                     this.load()

@@ -43,7 +43,6 @@ Route::prefix('cpl-admin')->middleware(['auth', 'verified'])->group(function () 
 
     Route::get('/inquiry-view', [InquiryController::class, 'index'])->name('cpl.inquiry-view');
     Route::get('/web-content', [ContentBlockController::class, 'index'])->name('cpl.web-content');
-    Route::get('/export-country', [ExportCountryController::class, 'index'])->name('cpl.export-country');
     Route::get('/setting', [SettingController::class, 'index'])->name('cpl.setting');
 
     Route::resource('/gallery', GalleryController::class);
@@ -62,6 +61,12 @@ Route::prefix('cpl-admin')->middleware(['auth', 'verified'])->group(function () 
     Route::put('/products-data/{product}', [ProductApiController::class, 'update']);
     Route::delete('/products-image/{image}', [ProductApiController::class, 'deleteImage']);
     Route::delete('/products-data/{product}', [ProductApiController::class, 'destroy']);
+
+
+    Route::get('/export-country', [ExportCountryController::class, 'index'])->name('cpl.export-country');
+    Route::post('/export-country-store', [ExportCountryController::class, 'store'])->name('cpl.export-country-store');
+    Route::get('/export-country-data', [ExportCountryController::class, 'view']);
+    Route::delete('/export-country-delete/{export_country}',[ExportCountryController::class,'destroy']);
 });
 
 Route::middleware('auth')->group(function () {

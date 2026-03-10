@@ -9,7 +9,7 @@ class ExportCountry extends Model
     protected $fillable = [ 
         'name',
         'iso_code',
-        'flag_image',
+        'region',
         'is_active',
     ];
 
