@@ -20,6 +20,7 @@ class ExportContentBlockSeeder extends Seeder
             $hero = ContentBlock::create([
                 'key' => 'export_hero',
                 'block_type' => 'single',
+                'title' => 'EXPORT',
                 'sort_order' => 1,
                 'locale' => $locale,
                 'is_active' => true
@@ -41,6 +42,7 @@ class ExportContentBlockSeeder extends Seeder
             $stats = ContentBlock::create([
                 'key' => 'export_stats',
                 'block_type' => 'multiple',
+                'title' => 'EXPORT',
                 'sort_order' => 2,
                 'locale' => $locale,
                 'is_active' => true
@@ -62,6 +64,7 @@ class ExportContentBlockSeeder extends Seeder
             $markets = ContentBlock::create([
                 'key' => 'export_markets',
                 'block_type' => 'single',
+                'title' => 'EXPORT',
                 'sort_order' => 3,
                 'locale' => $locale,
                 'is_active' => true
@@ -85,6 +88,7 @@ class ExportContentBlockSeeder extends Seeder
             $shipping = ContentBlock::create([
                 'key' => 'shipping_methods',
                 'block_type' => 'multiple',
+                'title' => 'EXPORT',
                 'sort_order' => 4,
                 'locale' => $locale,
                 'is_active' => true
@@ -105,6 +109,7 @@ class ExportContentBlockSeeder extends Seeder
             $lead = ContentBlock::create([
                 'key' => 'lead_times',
                 'block_type' => 'multiple',
+                'title' => 'EXPORT',
                 'sort_order' => 5,
                 'locale' => $locale,
                 'is_active' => true
@@ -125,6 +130,7 @@ class ExportContentBlockSeeder extends Seeder
             $packaging = ContentBlock::create([
                 'key' => 'packaging_standards',
                 'block_type' => 'multiple',
+                'title' => 'EXPORT',
                 'sort_order' => 6,
                 'locale' => $locale,
                 'is_active' => true
@@ -145,6 +151,7 @@ class ExportContentBlockSeeder extends Seeder
             $cta = ContentBlock::create([
                 'key' => 'export_cta',
                 'block_type' => 'single',
+                'title' => 'EXPORT',
                 'sort_order' => 7,
                 'locale' => $locale,
                 'is_active' => true

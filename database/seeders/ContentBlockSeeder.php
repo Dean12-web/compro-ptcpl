@@ -22,6 +22,7 @@ class ContentBlockSeeder extends Seeder
             $hero = ContentBlock::create([
                 'key' => 'home_hero_section',
                 'block_type' => 'single',
+                'title' => 'HOME',
                 'sort_order' => 1,
                 'locale' => $locale,
                 'is_active' => true
@@ -49,6 +50,7 @@ class ContentBlockSeeder extends Seeder
             $highlight = ContentBlock::create([
                 'key' => 'home_highlights_section',
                 'block_type' => 'multiple',
+                'title' => 'HOME',
                 'sort_order' => 2,
                 'locale' => $locale,
                 'is_active' => true
@@ -73,6 +75,7 @@ class ContentBlockSeeder extends Seeder
             $global = ContentBlock::create([
                 'key' => 'home_global_reach_section',
                 'block_type' => 'single',
+                'title' => 'HOME',
                 'sort_order' => 3,
                 'locale' => $locale,
                 'is_active' => true
@@ -93,6 +96,7 @@ class ContentBlockSeeder extends Seeder
             $contact = ContentBlock::create([
                 'key' => 'contact_cta_section',
                 'block_type' => 'single',
+                'title' => 'HOME',
                 'sort_order' => 4,
                 'locale' => $locale,
                 'is_active' => true

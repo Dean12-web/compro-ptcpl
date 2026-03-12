@@ -20,6 +20,7 @@ class ProductContentBlockSeeder extends Seeder
             $hero = ContentBlock::create([
                 'key' => 'products_hero_section',
                 'block_type' => 'single',
+                'title' => 'PRODUCT',
                 'sort_order' => 1,
                 'locale' => $locale,
                 'is_active' => true

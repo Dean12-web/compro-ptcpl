@@ -21,10 +21,6 @@ class ContentBlockController extends Controller
                 'sortable' => true
             ],
             [
-                'key' => 'title',
-                'label' => 'title'
-            ],
-            [
                 'key' => 'locale',
                 'label' => 'locale'
             ],
@@ -39,7 +35,7 @@ class ContentBlockController extends Controller
         ];
 
         $rows = [];
-        return view('admin.pages.content-blocks.index');
+        return view('admin.pages.content-blocks.index',compact('columns','rows'));
     }
 
     /**

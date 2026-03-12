@@ -22,351 +22,89 @@
                 <span>Tambah Section Baru</span>
             </button>
         </div>
-        <div class="lg:col-span-8 flex flex-col gap-6">
+        <div class="lg:col-span-8 flex flex-col gap-6" x-data="{tab:'home'}">
             <!-- Tabs -->
             <div class="flex border-b border-primary/10 gap-8">
-                <button class="border-b-2 border-primary text-primary pb-3 font-bold text-sm">All
-                    Sections</button>
-                <button class="text-slate-400 pb-3 font-medium text-sm hover:text-slate-600">Live</button>
-                <button class="text-slate-400 pb-3 font-medium text-sm hover:text-slate-600">Drafts</button>
+                <button @click="tab='home'" :class="tab==='home' 
+                        ? 'border-b-2 border-primary text-primary'
+                        : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-bold text-sm">
+                    Home
+                </button>
+                <button @click="tab='about'" :class="tab==='about'
+                        ? 'border-b-2 border-primary text-primary'
+                        : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
+                    About
+                </button>
+                <button @click="tab='product'" :class="tab==='product'
+                        ? 'border-b-2 border-primary text-primary'
+                        : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
+                    Product</button>
+                <button @click="tab='production'" :class="tab==='production'
+                        ? 'border-b-2 border-primary text-primary'
+                        : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
+                    Production</button>
+                <button @click="tab='export'" :class="tab==='export'
+                        ? 'border-b-2 border-primary text-primary'
+                        : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
+                    Export</button>
+                <button @click="tab='sustainability'" :class="tab==='sustainability'
+                        ? 'border-b-2 border-primary text-primary'
+                        : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
+                    Sustainability
+                </button>
+                <button @click="tab='gallery'" :class="tab==='gallery'
+                        ? 'border-b-2 border-primary text-primary'
+                        : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
+                    Gallery</button>
             </div>
             <!-- Table -->
-            <div class="bg-white dark:bg-slate-900 rounded-xl border border-primary/10 shadow-sm">
+            <div class="bg-white dark:bg-background-dark border border-primary/10 rounded-xl shadow-sm overflow-hidden">
 
-                <!-- Desktop / Tablet Table -->
-                <div class="hidden md:block overflow-x-auto">
-                    <table class="w-full min-w-[700px] text-left">
-                        <thead class="bg-slate-50 dark:bg-white/5 border-b border-primary/10">
-                            <tr>
-                                <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Section Name</th>
-                                <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Last Updated</th>
-                                <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase text-center">Status</th>
-                                <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase text-right">Actions</th>
-                            </tr>
-                        </thead>
-
-                        <tbody class="divide-y divide-primary/5">
-
-                            <tr class="hover:bg-primary/5">
-                                <td class="px-6 py-5">
-                                    <div class="flex flex-col">
-                                        <span class="font-bold text-slate-900 dark:text-white">
-                                            Hero Tagline
-                                        </span>
-                                        <span class="text-xs text-slate-400">
-                                            Homepage - Header Section
-                                        </span>
-                                    </div>
-                                </td>
-
-                                <td class="px-6 py-5 text-sm text-slate-600 dark:text-slate-400">
-                                    Oct 24, 2023
-                                </td>
-
-                                <td class="px-6 py-5 text-center">
-                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">
-                                        Live
-                                    </span>
-                                </td>
-
-                                <td class="px-6 py-5 text-right">
-                                    <button class="text-primary font-bold text-sm hover:underline">
-                                        Edit
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-primary/5">
-                                <td class="px-6 py-5">
-                                    <div class="flex flex-col">
-                                        <span class="font-bold text-slate-900 dark:text-white">
-                                            Hero Tagline
-                                        </span>
-                                        <span class="text-xs text-slate-400">
-                                            Homepage - Header Section
-                                        </span>
-                                    </div>
-                                </td>
-
-                                <td class="px-6 py-5 text-sm text-slate-600 dark:text-slate-400">
-                                    Oct 24, 2023
-                                </td>
-
-                                <td class="px-6 py-5 text-center">
-                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">
-                                        Live
-                                    </span>
-                                </td>
-
-                                <td class="px-6 py-5 text-right">
-                                    <button class="text-primary font-bold text-sm hover:underline">
-                                        Edit
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-primary/5">
-                                <td class="px-6 py-5">
-                                    <div class="flex flex-col">
-                                        <span class="font-bold text-slate-900 dark:text-white">
-                                            Hero Tagline
-                                        </span>
-                                        <span class="text-xs text-slate-400">
-                                            Homepage - Header Section
-                                        </span>
-                                    </div>
-                                </td>
-
-                                <td class="px-6 py-5 text-sm text-slate-600 dark:text-slate-400">
-                                    Oct 24, 2023
-                                </td>
-
-                                <td class="px-6 py-5 text-center">
-                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">
-                                        Live
-                                    </span>
-                                </td>
-
-                                <td class="px-6 py-5 text-right">
-                                    <button class="text-primary font-bold text-sm hover:underline">
-                                        Edit
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-primary/5">
-                                <td class="px-6 py-5">
-                                    <div class="flex flex-col">
-                                        <span class="font-bold text-slate-900 dark:text-white">
-                                            Hero Tagline
-                                        </span>
-                                        <span class="text-xs text-slate-400">
-                                            Homepage - Header Section
-                                        </span>
-                                    </div>
-                                </td>
-
-                                <td class="px-6 py-5 text-sm text-slate-600 dark:text-slate-400">
-                                    Oct 24, 2023
-                                </td>
-
-                                <td class="px-6 py-5 text-center">
-                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">
-                                        Live
-                                    </span>
-                                </td>
-
-                                <td class="px-6 py-5 text-right">
-                                    <button class="text-primary font-bold text-sm hover:underline">
-                                        Edit
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-primary/5">
-                                <td class="px-6 py-5">
-                                    <div class="flex flex-col">
-                                        <span class="font-bold text-slate-900 dark:text-white">
-                                            Hero Tagline
-                                        </span>
-                                        <span class="text-xs text-slate-400">
-                                            Homepage - Header Section
-                                        </span>
-                                    </div>
-                                </td>
-
-                                <td class="px-6 py-5 text-sm text-slate-600 dark:text-slate-400">
-                                    Oct 24, 2023
-                                </td>
-
-                                <td class="px-6 py-5 text-center">
-                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">
-                                        Live
-                                    </span>
-                                </td>
-
-                                <td class="px-6 py-5 text-right">
-                                    <button class="text-primary font-bold text-sm hover:underline">
-                                        Edit
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-primary/5">
-                                <td class="px-6 py-5">
-                                    <div class="flex flex-col">
-                                        <span class="font-bold text-slate-900 dark:text-white">
-                                            Hero Tagline
-                                        </span>
-                                        <span class="text-xs text-slate-400">
-                                            Homepage - Header Section
-                                        </span>
-                                    </div>
-                                </td>
-
-                                <td class="px-6 py-5 text-sm text-slate-600 dark:text-slate-400">
-                                    Oct 24, 2023
-                                </td>
-
-                                <td class="px-6 py-5 text-center">
-                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">
-                                        Live
-                                    </span>
-                                </td>
-
-                                <td class="px-6 py-5 text-right">
-                                    <button class="text-primary font-bold text-sm hover:underline">
-                                        Edit
-                                    </button>
-                                </td>
-                            </tr>
-
-                        </tbody>
-                    </table>
+                <!-- Table Wrapper -->
+                <div class="overflow-x-auto">
+                    <x-admin.table :columns="$columns" />
                 </div>
 
+                <!-- Pagination -->
+                <div
+                    class="px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-t border-primary/10">
 
-                <!-- Mobile Card Layout -->
-                <div class="md:hidden divide-y divide-primary/10">
+                    <!-- Info -->
+                    <p class="text-xs text-slate-500 text-center sm:text-left">
+                        Showing
+                        <span x-text="pagination.from ?? 0"></span>
+                        to
+                        <span x-text="pagination.to ?? 0"></span>
+                        of
+                        <span x-text="pagination.total ?? 0"></span>
+                        countries
+                    </p>
 
-                    <div class="p-5 flex flex-col gap-3">
 
-                        <div>
-                            <p class="font-bold text-slate-900 dark:text-white">
-                                Hero Tagline
-                            </p>
-                            <p class="text-xs text-slate-400">
-                                Homepage - Header Section
-                            </p>
-                        </div>
+                    <!-- Pagination -->
+                    <div class="flex items-center justify-center sm:justify-end gap-1 flex-wrap">
 
-                        <div class="flex justify-between text-sm">
-                            <span class="text-slate-500">Updated</span>
-                            <span class="text-slate-700 dark:text-slate-300">
-                                Oct 24, 2023
-                            </span>
-                        </div>
+                        <button @click="goTo(pagination.current_page - 1)" :disabled="pagination.current_page <= 1"
+                            class="px-2 py-1 rounded border border-primary/10 text-slate-400 hover:bg-primary/5 transition-colors">
+                            <span class="material-symbols-outlined !text-lg">chevron_left</span>
+                        </button>
 
-                        <div class="flex justify-between items-center">
-                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">
-                                Live
-                            </span>
+                        <template x-for="page in pagination.last_page" :key="page">
+                            <button @click="goTo(page)" :class="page === pagination.current_page
+                            ? 'bg-primary text-white'
+                            : 'border'" class="px-3 py-1 rounded text-xs">
 
-                            <button class="text-primary font-bold text-sm">
-                                Edit
+                                <span x-text="page"></span>
+
                             </button>
-                        </div>
 
-                    </div>
-                    <div class="p-5 flex flex-col gap-3">
+                        </template>
 
-                        <div>
-                            <p class="font-bold text-slate-900 dark:text-white">
-                                Hero Tagline
-                            </p>
-                            <p class="text-xs text-slate-400">
-                                Homepage - Header Section
-                            </p>
-                        </div>
-
-                        <div class="flex justify-between text-sm">
-                            <span class="text-slate-500">Updated</span>
-                            <span class="text-slate-700 dark:text-slate-300">
-                                Oct 24, 2023
-                            </span>
-                        </div>
-
-                        <div class="flex justify-between items-center">
-                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">
-                                Live
-                            </span>
-
-                            <button class="text-primary font-bold text-sm">
-                                Edit
-                            </button>
-                        </div>
-
-                    </div>
-                    <div class="p-5 flex flex-col gap-3">
-
-                        <div>
-                            <p class="font-bold text-slate-900 dark:text-white">
-                                Hero Tagline
-                            </p>
-                            <p class="text-xs text-slate-400">
-                                Homepage - Header Section
-                            </p>
-                        </div>
-
-                        <div class="flex justify-between text-sm">
-                            <span class="text-slate-500">Updated</span>
-                            <span class="text-slate-700 dark:text-slate-300">
-                                Oct 24, 2023
-                            </span>
-                        </div>
-
-                        <div class="flex justify-between items-center">
-                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">
-                                Live
-                            </span>
-
-                            <button class="text-primary font-bold text-sm">
-                                Edit
-                            </button>
-                        </div>
-
-                    </div>
-                    <div class="p-5 flex flex-col gap-3">
-
-                        <div>
-                            <p class="font-bold text-slate-900 dark:text-white">
-                                Hero Tagline
-                            </p>
-                            <p class="text-xs text-slate-400">
-                                Homepage - Header Section
-                            </p>
-                        </div>
-
-                        <div class="flex justify-between text-sm">
-                            <span class="text-slate-500">Updated</span>
-                            <span class="text-slate-700 dark:text-slate-300">
-                                Oct 24, 2023
-                            </span>
-                        </div>
-
-                        <div class="flex justify-between items-center">
-                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">
-                                Live
-                            </span>
-
-                            <button class="text-primary font-bold text-sm">
-                                Edit
-                            </button>
-                        </div>
-
-                    </div>
-                    <div class="p-5 flex flex-col gap-3">
-
-                        <div>
-                            <p class="font-bold text-slate-900 dark:text-white">
-                                Hero Tagline
-                            </p>
-                            <p class="text-xs text-slate-400">
-                                Homepage - Header Section
-                            </p>
-                        </div>
-
-                        <div class="flex justify-between text-sm">
-                            <span class="text-slate-500">Updated</span>
-                            <span class="text-slate-700 dark:text-slate-300">
-                                Oct 24, 2023
-                            </span>
-                        </div>
-
-                        <div class="flex justify-between items-center">
-                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">
-                                Live
-                            </span>
-
-                            <button class="text-primary font-bold text-sm">
-                                Edit
-                            </button>
-                        </div>
+                        <button @click="goTo(pagination.current_page + 1)"
+                            :disabled="pagination.current_page >= pagination.last_page"
+                            class="px-2 py-1 rounded border border-primary/10 text-slate-400 hover:bg-primary/5 transition-colors">
+                            <span class="material-symbols-outlined !text-lg">chevron_right</span>
+                        </button>
 
                     </div>
 

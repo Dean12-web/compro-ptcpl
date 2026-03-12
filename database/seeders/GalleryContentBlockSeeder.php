@@ -20,6 +20,7 @@ class GalleryContentBlockSeeder extends Seeder
             $hero = ContentBlock::create([
                 'key' => 'gallery_hero_section',
                 'block_type' => 'single',
+                'title' => 'GALLERY',
                 'sort_order' => 1,
                 'locale' => $locale,
                 'is_active' => true
@@ -39,6 +40,7 @@ class GalleryContentBlockSeeder extends Seeder
             $factory = ContentBlock::create([
                 'key' => 'gallery_factory_facilities_section',
                 'block_type' => 'multiple',
+                'title' => 'GALLERY',
                 'sort_order' => 2,
                 'locale' => $locale,
                 'is_active' => true
@@ -60,6 +62,7 @@ class GalleryContentBlockSeeder extends Seeder
             $process = ContentBlock::create([
                 'key' => 'gallery_production_process_section',
                 'block_type' => 'multiple',
+                'title' => 'GALLERY',
                 'sort_order' => 3,
                 'locale' => $locale,
                 'is_active' => true
@@ -81,6 +84,7 @@ class GalleryContentBlockSeeder extends Seeder
             $packaging = ContentBlock::create([
                 'key' => 'gallery_packaging_loading_section',
                 'block_type' => 'multiple',
+                'title' => 'GALLERY',
                 'sort_order' => 4,
                 'locale' => $locale,
                 'is_active' => true

@@ -20,6 +20,7 @@ class SustainabilityContentBlockSeeder extends Seeder
             $hero = ContentBlock::create([
                 'key' => 'sustainability_hero_section',
                 'block_type' => 'single',
+                'title' => 'SUSTAINABILITY',
                 'sort_order' => 1,
                 'locale' => $locale,
                 'is_active' => true
@@ -42,6 +43,7 @@ class SustainabilityContentBlockSeeder extends Seeder
             $sourcing = ContentBlock::create([
                 'key' => 'sustainability_conscious_sourcing_section',
                 'block_type' => 'single',
+                'title' => 'SUSTAINABILITY',
                 'sort_order' => 2,
                 'locale' => $locale,
                 'is_active' => true
@@ -63,6 +65,7 @@ class SustainabilityContentBlockSeeder extends Seeder
             $loop = ContentBlock::create([
                 'key' => 'sustainability_circular_production_section',
                 'block_type' => 'multiple',
+                'title' => 'SUSTAINABILITY',
                 'sort_order' => 3,
                 'locale' => $locale,
                 'is_active' => true
@@ -84,6 +87,7 @@ class SustainabilityContentBlockSeeder extends Seeder
             $goals = ContentBlock::create([
                 'key' => 'sustainability_earth_goals_section',
                 'block_type' => 'multiple',
+                'title' => 'SUSTAINABILITY',
                 'sort_order' => 4,
                 'locale' => $locale,
                 'is_active' => true
@@ -119,6 +123,7 @@ class SustainabilityContentBlockSeeder extends Seeder
             $cta = ContentBlock::create([
                 'key' => 'sustainability_cta_section',
                 'block_type' => 'single',
+                'title' => 'SUSTAINABILITY',
                 'sort_order' => 5,
                 'locale' => $locale,
                 'is_active' => true

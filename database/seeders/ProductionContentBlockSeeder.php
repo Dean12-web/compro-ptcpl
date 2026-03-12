@@ -20,6 +20,7 @@ class ProductionContentBlockSeeder extends Seeder
             $hero = ContentBlock::create([
                 'key' => 'production_hero_section',
                 'block_type' => 'single',
+                'title' => 'PRODUCTION',
                 'sort_order' => 1,
                 'locale' => $locale,
                 'is_active' => true
@@ -40,6 +41,7 @@ class ProductionContentBlockSeeder extends Seeder
             $steps = ContentBlock::create([
                 'key' => 'production_steps_section',
                 'block_type' => 'multiple',
+                'title' => 'PRODUCTION',
                 'sort_order' => 2,
                 'locale' => $locale,
                 'is_active' => true
@@ -61,6 +63,7 @@ class ProductionContentBlockSeeder extends Seeder
             $capacity = ContentBlock::create([
                 'key' => 'factory_capacity_section',
                 'block_type' => 'multiple',
+                'title' => 'PRODUCTION',
                 'sort_order' => 3,
                 'locale' => $locale,
                 'is_active' => true
@@ -90,6 +93,7 @@ class ProductionContentBlockSeeder extends Seeder
             $quality = ContentBlock::create([
                 'key' => 'quality_control_section',
                 'block_type' => 'multiple',
+                'title' => 'PRODUCTION',
                 'sort_order' => 4,
                 'locale' => $locale,
                 'is_active' => true
@@ -120,6 +124,7 @@ class ProductionContentBlockSeeder extends Seeder
             $workflow = ContentBlock::create([
                 'key' => 'workflow_visual_section',
                 'block_type' => 'multiple',
+                'title' => 'PRODUCTION',
                 'sort_order' => 5,
                 'locale' => $locale,
                 'is_active' => true
@@ -140,6 +145,7 @@ class ProductionContentBlockSeeder extends Seeder
             $cta = ContentBlock::create([
                 'key' => 'production_cta_section',
                 'block_type' => 'single',
+                'title' => 'PRODUCTION',
                 'sort_order' => 6,
                 'locale' => $locale,
                 'is_active' => true

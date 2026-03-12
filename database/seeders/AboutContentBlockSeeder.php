@@ -20,6 +20,7 @@ class AboutContentBlockSeeder extends Seeder
             $hero = ContentBlock::create([
                 'key' => 'about_hero_section',
                 'block_type' => 'single',
+                'title' => 'ABOUT',
                 'sort_order' => 1,
                 'locale' => $locale,
                 'is_active' => true
@@ -38,6 +39,7 @@ class AboutContentBlockSeeder extends Seeder
             $profile = ContentBlock::create([
                 'key' => 'about_company_profile_section',
                 'block_type' => 'single',
+                'title' => 'ABOUT',
                 'sort_order' => 2,
                 'locale' => $locale,
                 'is_active' => true
@@ -61,6 +63,7 @@ class AboutContentBlockSeeder extends Seeder
             $values = ContentBlock::create([
                 'key' => 'about_core_values_section',
                 'block_type' => 'multiple',
+                'title' => 'ABOUT',
                 'sort_order' => 3,
                 'locale' => $locale,
                 'is_active' => true
@@ -82,6 +85,7 @@ class AboutContentBlockSeeder extends Seeder
             $certifications = ContentBlock::create([
                 'key' => 'about_certifications_section',
                 'block_type' => 'multiple',
+                'title' => 'ABOUT',
                 'sort_order' => 4,
                 'locale' => $locale,
                 'is_active' => true
@@ -102,6 +106,7 @@ class AboutContentBlockSeeder extends Seeder
             $stats = ContentBlock::create([
                 'key' => 'about_company_stats_section',
                 'block_type' => 'multiple',
+                'title' => 'ABOUT',
                 'sort_order' => 5,
                 'locale' => $locale,
                 'is_active' => true

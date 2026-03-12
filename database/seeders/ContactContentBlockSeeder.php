@@ -20,6 +20,7 @@ class ContactContentBlockSeeder extends Seeder
             $hero = ContentBlock::create([
                 'key' => 'contact_hero_section',
                 'block_type' => 'single',
+                'title' => 'CONTACT',
                 'sort_order' => 1,
                 'locale' => $locale,
                 'is_active' => true
@@ -38,6 +39,7 @@ class ContactContentBlockSeeder extends Seeder
             $form = ContentBlock::create([
                 'key' => 'contact_form_section',
                 'block_type' => 'single',
+                'title' => 'CONTACT',
                 'sort_order' => 2,
                 'locale' => $locale,
                 'is_active' => true
@@ -55,6 +57,7 @@ class ContactContentBlockSeeder extends Seeder
             $info = ContentBlock::create([
                 'key' => 'contact_information_section',
                 'block_type' => 'single',
+                'title' => 'CONTACT',
                 'sort_order' => 3,
                 'locale' => $locale,
                 'is_active' => true
