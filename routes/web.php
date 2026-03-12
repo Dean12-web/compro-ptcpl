@@ -42,8 +42,10 @@ Route::prefix('cpl-admin')->middleware(['auth', 'verified'])->group(function () 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('cpl.dashboard');
 
     Route::get('/inquiry-view', [InquiryController::class, 'index'])->name('cpl.inquiry-view');
-    Route::get('/web-content', [ContentBlockController::class, 'index'])->name('cpl.web-content');
     Route::get('/setting', [SettingController::class, 'index'])->name('cpl.setting');
+
+
+    Route::resource('/web-content', ContentBlockController::class);
 
     Route::resource('/gallery', GalleryController::class);
     Route::post('/gallery-store', [GalleryController::class, 'store'])->name('cpl.gallery-store');
