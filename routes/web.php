@@ -46,6 +46,7 @@ Route::prefix('cpl-admin')->middleware(['auth', 'verified'])->group(function () 
 
 
     Route::resource('/web-content', ContentBlockController::class);
+    Route::get('/web-content-view',[ContentBlockController::class,'view']);
 
     Route::resource('/gallery', GalleryController::class);
     Route::post('/gallery-store', [GalleryController::class, 'store'])->name('cpl.gallery-store');

@@ -12,7 +12,9 @@
                 </label>
                 <input
                     class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all"
-                    placeholder="home_about, home_hero, about_company" name="key" type="text" x-model="key" required />
+                    placeholder="home_about, home_hero, about_company" name="key" type="text" x-model="key"
+                    :disabled="mode === 'edit'"
+                    :class="mode === 'edit' ? 'cursor-not-allowed bg-gray-100' : 'cursor-text'" />
                 <p class="text-xs text-gray-500 mt-1">
                     Key unik untuk section konten ini.
                     Gunakan huruf kecil dan underscore.
@@ -24,22 +26,18 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="space-y-1.5">
                 <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Block Type</label>
-                <select name="block_type" x-model="block_type"
-                    class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all">
-                    <option>Pilih block type</option>
-                    <option value="single">Single</option>
-                    <option value="multiple">Multiple</option>
-                </select>
+                <input
+                    class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all"
+                    name="block_type" type="text" x-model="block_type" :disabled="mode === 'edit'"
+                    :class="mode === 'edit' ? 'cursor-not-allowed bg-gray-100' : 'cursor-text'" />
                 <p x-show="errors.block_type" x-text="errors.block_type" class="text-xs text-red-500 mt-1"></p>
             </div>
             <div class="space-y-1.5">
                 <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Locale</label>
-                <select name="locale" x-model="locale"
-                    class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all">
-                    <option>Pilih bahasa</option>
-                    <option value="en">EN</option>
-                    <option value="id">ID</option>
-                </select>
+                <input
+                    class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all"
+                    name="locale" type="text" x-model="locale" :disabled="mode === 'edit'"
+                    :class="mode === 'edit' ? 'cursor-not-allowed bg-gray-100' : 'cursor-text'" />
                 <p x-show="errors.locale" x-text="errors.locale" class="text-xs text-red-500 mt-1"></p>
             </div>
         </div><br>
@@ -53,9 +51,11 @@
                 <span class="text-xs font-bold uppercase" :class="active ? 'text-slate-400' : 'text-red-500'">
                     Tidak aktif
                 </span>
-                <label class="relative inline-flex items-center cursor-pointer">
+                <label class="relative inline-flex items-center cursor-pointer"
+                    :class="mode === 'edit' ? 'cursor-not-allowed opacity-60' : 'cursor-pointer'">
                     <input type="hidden" name="is_active" value="0">
-                    <input name="is_active" value="1" x-model="active" class="sr-only peer" type="checkbox">
+                    <input name="is_active" value="1" x-model="active" class="sr-only peer" type="checkbox"
+                        :disabled="mode === 'edit'">
                     <div
                         class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
                     </div>
@@ -79,7 +79,9 @@
                     <div>
                         <label class="text-xs font-bold uppercase text-slate-500">Field Key</label>
 
-                        <input type="text" :name="`items[${index}][field_key]`" x-model="field.field_key" :disabled="mode === 'edit'"
+                        <input type="text" :name="`items[${index}][field_key]`" x-model="field.field_key"
+                            :disabled="mode === 'edit'"
+                            :class="mode === 'edit' ? 'cursor-not-allowed bg-gray-100' : 'cursor-text'"
                             class="w-full px-4 py-2 bg-slate-50 border border-primary/10 rounded-lg"
                             placeholder="judul, deskripsi, image">
 
@@ -90,40 +92,62 @@
 
                         <input type="text" :name="`items[${index}][field_label]`" x-model="field.field_label"
                             class="w-full px-4 py-2 bg-slate-50 border border-primary/10 rounded-lg"
-                            placeholder="Title / Deskripsi / Gambar">
+                            placeholder="Title / Deskripsi / Gambar" :disabled="mode === 'edit'"
+                            :class="mode === 'edit' ? 'cursor-not-allowed bg-gray-100' : 'cursor-text'">
 
                     </div>
 
                     <div>
                         <label class="text-xs font-bold uppercase text-slate-500">Field Type</label>
 
-                        <select :name="`items[${index}][field_type]`" x-model="field.field_type" :disabled="mode === 'edit'"
-                            class="w-full px-4 py-2 bg-slate-50 border border-primary/10 rounded-lg">
-
-                            <option value="">Pilih Field Type</option>
-                            <option value="text">Text</option>
-                            <option value="textarea">Textarea</option>
-                            <option value="image">Image</option>
-                            <option value="number">Number</option>
-                            <option value="link">Link</option>
-
-                        </select>
+                        <input
+                            class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all"
+                            :name="`items[${index}][field_type]`" type="text" x-model="field.field_type"
+                            :disabled="mode==='edit'"
+                            :class="mode === 'edit' ? 'cursor-not-allowed bg-gray-100' : 'cursor-text'" />
 
                     </div>
 
                     <div x-show="mode === 'edit'">
-                        <label class="text-xs font-bold uppercase text-slate-500">Field Value</label>
 
-                        <input type="text" :name="`items[${index}][field_value]`" x-model="field.field_value"
-                            class="w-full px-4 py-2 bg-slate-50 border border-primary/10 rounded-lg"
-                            placeholder="Isi konten">
+                        <label class="text-xs font-bold uppercase text-slate-500">
+                            Field Value
+                        </label>
+
+                        <template x-if="field.field_type === 'text'">
+                            <input type="text" :name="`items[${index}][field_value]`" x-model="field.field_value"
+                                class="w-full px-4 py-2 bg-slate-50 border border-primary/10 rounded-lg">
+                        </template>
+
+                        <template x-if="field.field_type === 'textarea'">
+                            <textarea :name="`items[${index}][field_value]`" x-model="field.field_value"
+                                class="w-full px-4 py-2 bg-slate-50 border border-primary/10 rounded-lg">
+                            </textarea>
+                        </template>
+
+                        <template x-if="field.field_type === 'number'">
+                            <input type="number" :name="`items[${index}][field_value]`" x-model="field.field_value"
+                                class="w-full px-4 py-2 bg-slate-50 border border-primary/10 rounded-lg">
+                        </template>
+
+                        <template x-if="field.field_type === 'link'">
+                            <input type="url" placeholder="https://..." :name="`items[${index}][field_value]`"
+                                x-model="field.field_value"
+                                class="w-full px-4 py-2 bg-slate-50 border border-primary/10 rounded-lg">
+                        </template>
+
+                        <template x-if="field.field_type === 'image'">
+                            <div class="space-y-2">
+
+                                <input type="file" accept="image/*" @change="handleImage($event,index)"
+                                    class="w-full text-sm">
+
+                                <img x-show="field.field_value" :src="field.field_value" class="w-32 rounded-lg border">
+
+                            </div>
+                        </template>
+
                     </div>
-
-                    <button type="button" @click="removeField(index)" class="text-xs text-red-500 hover:text-red-700">
-
-                        Hapus Field
-
-                    </button>
 
                 </div>
 
@@ -159,6 +183,7 @@
         return {
 
             mode: 'create',
+            id: '',
             key: '',
             locale: '',
             block_type: '',
@@ -170,31 +195,56 @@
                     field_key: '',
                     field_label: '',
                     field_type: 'text',
-                    field_value: ''
+                    field_value: '',
+                    field_file: ''
                 }
             ],
             async submitForm(event) {
                 this.errors = {}
                 let formData = new FormData()
 
-                formData.append('key', this.key)
-                formData.append('locale', this.locale)
-                formData.append('block_type', this.block_type)
-                formData.append('is_active', this.active ? 1 : 0)
+                if (this.mode === 'create') {
+                    formData.append('key', this.key)
+                    formData.append('locale', this.locale)
+                    formData.append('block_type', this.block_type)
+                    formData.append('is_active', this.active ? 1 : 0)
 
-                this.fields.forEach((field, index) => {
-                    formData.append(`items[${index}][field_key]`, field.field_key)
-                    formData.append(`items[${index}][field_label]`, field.field_label)
-                    formData.append(`items[${index}][field_type]`, field.field_type)
-                    formData.append(`items[${index}][field_value]`, field.field_value)
-                });
-
-                for (let [key, value] of formData.entries()) {
-                    console.log(key, value)
+                    this.fields.forEach((field, index) => {
+                        formData.append(`items[${index}][field_key]`, field.field_key)
+                        formData.append(`items[${index}][field_label]`, field.field_label)
+                        formData.append(`items[${index}][field_type]`, field.field_type)
+                        formData.append(`items[${index}][field_value]`, field.field_value)
+                    })
                 }
+
+                if (this.mode === 'edit') {
+                    this.fields.forEach((field, index) => {
+                        formData.append(`items[${index}][field_key]`, field.field_key)
+                        if (field.field_type === 'image' && field.field_file) {
+
+                            formData.append(`items[${index}][field_value]`, field.field_file)
+
+                        } else {
+
+                            formData.append(`items[${index}][field_value]`, field.field_value ?? '')
+
+                        }
+                    })
+
+                    formData.append('_method', 'PUT')
+                }
+
+
+                // for (let [key, value] of formData.entries()) {
+                //     console.log(key, value)
+                // }
 
                 let url = `/cpl-admin/web-content`
                 let method = 'POST'
+
+                if (this.mode === 'edit') {
+                    url = `/cpl-admin/web-content/${this.id}`
+                }
 
                 const res = await fetch(url, {
                     method: method,
@@ -209,7 +259,9 @@
                 if (data.success) {
                     window.dispatchEvent(
                         new CustomEvent('notify', {
-                            detail: 'Web Content Berhasil dibuat!'
+                            detail: this.mode === 'edit'
+                                ? 'Web Content berhasil diperbarui!'
+                                : 'Web Content berhasil dibuat!'
                         })
                     )
 
@@ -222,6 +274,53 @@
                     )
                 }
             },
+            handleImage(event, index) {
+
+                const file = event.target.files[0]
+
+                if (!file) return
+
+                this.fields[index].field_file = file
+
+                const reader = new FileReader()
+
+                reader.onload = e => {
+                    this.fields[index].field_value = e.target.result
+                }
+
+                reader.readAsDataURL(file)
+
+            },
+
+            async openEdit(id) {
+                this.mode = 'edit'
+
+                this.id = id
+
+                const res = await fetch(`/cpl-admin/web-content/${id}`)
+                const data = await res.json()
+
+                this.key = data.key
+                this.locale = data.locale
+                this.block_type = data.block_type
+                this.active = data.is_active
+
+                this.fields = data.items.map(item => {
+
+                    if (item.field_type === 'image' && item.field_value) {
+                        item.field_value = `/storage/${item.field_value}`
+                    }
+
+                    return item
+                })
+
+                this.$nextTick(() => {
+                    window.dispatchEvent(
+                        new CustomEvent('open-modal', { detail: 'add-web-section' })
+                    )
+                })
+            },
+
             resetForm() {
                 this.mode = 'create'
 
@@ -243,7 +342,12 @@
             },
 
             init() {
+                window.addEventListener('edit-web-section', e => {
+                    this.openEdit(e.detail)
+                })
                 this.$watch('block_type', (value) => {
+                    if (this.mode === 'edit') return
+
                     if (value === 'single') {
                         this.fields = [
                             {
