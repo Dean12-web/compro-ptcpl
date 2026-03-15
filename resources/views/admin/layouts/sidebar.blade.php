@@ -1,6 +1,9 @@
-<aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-zinc-900 
+<aside id="sidebar"
+    x-cloak
+    :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
+    class="fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-zinc-900 
     border-r border-primary/10 flex flex-col
-    transform -translate-x-full transition-transform duration-300 ease-in-out
+    transform transition-transform duration-300 ease-in-out
     lg:static lg:translate-x-0">
     <div class="p-6 flex items-center gap-3">
         <div class="size-10 rounded-lg flex items-center justify-center text-white">

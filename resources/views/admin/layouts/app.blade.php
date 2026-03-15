@@ -29,14 +29,24 @@
         .form-input {
             @apply w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all;
         }
+        [x-cloak] {
+            display: none !important;
+        }
     </style>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100" x-data="{
+        sidebarOpen: window.innerWidth >= 1024
+    }" @resize.window="sidebarOpen = $event.target.innerWidth >= 1024" x-cloak>
     <div class="flex h-screen overflow-hidden relative">
         @include('admin.layouts.sidebar')
 
-        <div id="sidebarOverlay" class="fixed inset-0 bg-black/40 z-40 hidden lg:hidden"></div>
+        <div id="sidebarOverlay"
+            class="fixed inset-0 bg-black/40 z-40 lg:hidden"
+            x-show="sidebarOpen"
+            x-transition.opacity
+            x-cloak
+            @click="sidebarOpen = false"></div>
         <main class="flex-1 flex flex-col overflow-hidden w-full">
             @include('admin.layouts.header')
             @yield('content')

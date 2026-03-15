@@ -51,6 +51,10 @@
                         ? 'border-b-2 border-primary text-primary'
                         : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
                     Gallery</button>
+                <button @click="changeTab('contact')" :class="tab==='contact'
+                        ? 'border-b-2 border-primary text-primary'
+                        : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
+                    Contact</button>
             </div>
             <!-- Table -->
             <div class="bg-white dark:bg-background-dark border border-primary/10 rounded-xl shadow-sm overflow-hidden">

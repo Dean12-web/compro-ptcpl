@@ -41,6 +41,9 @@ Route::group(['prefix' => '{locale}',   'where' => ['locale' => 'en|id'], 'middl
 Route::prefix('cpl-admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('cpl.dashboard');
 
+    Route::resource('/inquiries',InquiryController::class);
+    Route::patch('/inquiries/{inquiry}/mark-read', [InquiryController::class, 'markRead'])->name('cpl.inquiries.mark-read');
+    Route::get('/inquiries-data', [InquiryController::class, 'view'])->name('cpl.inquiries-data');
     Route::get('/inquiry-view', [InquiryController::class, 'index'])->name('cpl.inquiry-view');
     Route::get('/setting', [SettingController::class, 'index'])->name('cpl.setting');
 
