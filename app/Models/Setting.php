@@ -6,5 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
 {
-    //
+    protected $fillable = [
+        'company_name',
+        'company_email',
+        'company_phone',
+        'company_address',
+        'whatsapp',
+        'facebook',
+        'tiktok',
+        'google_maps',
+        'logo',
+        'favicon'
+    ];
 }

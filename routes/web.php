@@ -45,7 +45,10 @@ Route::prefix('cpl-admin')->middleware(['auth', 'verified'])->group(function () 
     Route::patch('/inquiries/{inquiry}/mark-read', [InquiryController::class, 'markRead'])->name('cpl.inquiries.mark-read');
     Route::get('/inquiries-data', [InquiryController::class, 'view'])->name('cpl.inquiries-data');
     Route::get('/inquiry-view', [InquiryController::class, 'index'])->name('cpl.inquiry-view');
+    
     Route::get('/setting', [SettingController::class, 'index'])->name('cpl.setting');
+    Route::patch('/setting/general', [SettingController::class, 'updateGeneral'])->name('cpl.setting.update.general');
+    Route::patch('/setting/social', [SettingController::class, 'updateSocial'])->name('cpl.setting.update.social');
 
 
     Route::resource('/web-content', ContentBlockController::class);
