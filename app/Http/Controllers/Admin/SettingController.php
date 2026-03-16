@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Password as PasswordRule;
 
 class SettingController extends Controller
 {
@@ -70,5 +72,33 @@ class SettingController extends Controller
         return redirect()->route('cpl.setting')
             ->with('status', 'Link media sosial berhasil disimpan.')
             ->with('activeSection', 'social');
+    }
+
+    public function updateAdminPassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', PasswordRule::defaults(), 'confirmed'],
+        ], [
+            'current_password.required' => 'Password saat ini wajib diisi.',
+            'current_password.current_password' => 'Password saat ini tidak cocok.',
+            'password.required' => 'Password baru wajib diisi.',
+            'password.confirmed' => 'Konfirmasi password tidak sama.',
+            'password.min' => 'Password minimal :min karakter.',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('cpl.setting')
+                ->withErrors($validator, 'updatePassword')
+                ->withInput()
+                ->with('activeSection', 'admin');
+        }
+
+        $request->user()->update([
+            'password' => Hash::make($validator->validated()['password']),
+        ]);
+
+        return redirect()->route('cpl.setting')
+            ->with('success', 'Password admin berhasil diperbarui.')
+            ->with('activeSection', 'admin');
     }
 }

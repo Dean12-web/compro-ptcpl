@@ -8,11 +8,7 @@
             <h1 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">Pengaturan Sistem</h1>
             <p class="text-sm text-slate-500 dark:text-slate-400">Kelola pengaturan sistem website</p>
         </div>
-        <div x-data='{
-                            section: @json(old('_section', session('activeSection', 'general'))),
-                            editingGeneral: @json((bool) (old('_editing_general') ?? session('editingGeneral', false))),
-                            editingSocial: @json((bool) (old('_editing_social') ?? session('editingSocial', false)))
-                        }' class="flex flex-col lg:flex-row gap-6">
+        <div x-data="settingsPage()" class="flex flex-col lg:flex-row gap-6">
 
             <!-- Sidebar Navigation -->
             <aside class="w-full lg:w-64 flex-shrink-0">
@@ -37,9 +33,9 @@
             </aside>
 
             <!-- Content -->
-            <div class="flex-1 space-y-6">
+                <div class="flex-1 space-y-6">
 
-                @if (session('status'))
+                    @if (session('status'))
                     <div class="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
                         {{ session('status') }}
                     </div>
@@ -238,14 +234,172 @@
                     </section>
                 </form>
 
-                <section x-show="section === 'admin'" x-cloak
-                    class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
-                    <div class="p-6 text-sm text-slate-500 dark:text-slate-400">
-                        Opsi admin akan ditambahkan nanti.
-                    </div>
-                </section>
+                <form action="{{ route('cpl.setting.update.password') }}" method="POST" class="space-y-6"
+                    x-show="section === 'admin'"
+                    x-cloak
+                    x-ref="adminPasswordForm"
+                    @submit.prevent="if (validateAdminForm()) $refs.adminPasswordForm.submit()">
+                    @csrf
+                    @method('PATCH')
+                     @if(session('success'))
+                        <div x-data="{ show:true }" x-show="show" x-transition
+                            class="mt-4 rounded-lg bg-green-50 border border-green-200 text-green-700 flex justify-between px-4 py-3 space-x-4">
+
+                            <span>{{ session('success') }}</span>
+
+                            <button type="button" @click="show=false" class="text-xl leading-none">✕</button>
+
+                        </div>
+                    @endif
+                    <section
+                        class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+
+                        <div
+                            class="px-6 py-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                            <h3 class="text-sm font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">
+                                Admin Password
+                            </h3>
+                        </div>
+
+                        <div class="p-6 space-y-4">
+
+                            <div class="space-y-1">
+                                <label class="text-xs font-bold text-slate-500 uppercase">Kata Sandi Saat Ini</label>
+                                <div class="relative">
+                                    <input
+                                        name="current_password"
+                                        x-model="adminForm.current"
+                                        @input="adminClientErrors.current = ''"
+                                        :type="showCurrentPassword ? 'text' : 'password'"
+                                        class="w-full text-sm rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary pr-10"
+                                    />
+                                    <button
+                                        type="button"
+                                        @click="showCurrentPassword = !showCurrentPassword"
+                                        class="absolute inset-y-0 right-2 flex items-center justify-center text-slate-500 hover:text-primary"
+                                    >
+                                        <span class="material-symbols-outlined" x-text="showCurrentPassword ? 'visibility_off' : 'visibility'"></span>
+                                    </button>
+                                </div>
+                                <p class="text-xs text-red-600 mt-1" x-text="adminClientErrors.current" x-show="adminClientErrors.current"></p>
+                                @error('current_password', 'updatePassword')
+                                    <p class="text-xs text-red-600 mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="space-y-1">
+                                <label class="text-xs font-bold text-slate-500 uppercase">Kata Sandi Baru</label>
+                                <div class="relative">
+                                    <input
+                                        name="password"
+                                        x-model="adminForm.password"
+                                        @input="adminClientErrors.password = ''"
+                                        :type="showNewPassword ? 'text' : 'password'"
+                                        class="w-full text-sm rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary pr-10"
+                                    />
+                                    <button
+                                        type="button"
+                                        @click="showNewPassword = !showNewPassword"
+                                        class="absolute inset-y-0 right-2 flex items-center justify-center text-slate-500 hover:text-primary"
+                                    >
+                                        <span class="material-symbols-outlined" x-text="showNewPassword ? 'visibility_off' : 'visibility'"></span>
+                                    </button>
+                                </div>
+                                <p class="text-xs text-red-600 mt-1" x-text="adminClientErrors.password" x-show="adminClientErrors.password"></p>
+                                @error('password', 'updatePassword')
+                                    <p class="text-xs text-red-600 mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="space-y-1">
+                                <label class="text-xs font-bold text-slate-500 uppercase">Konfirmasi Kata Sandi Baru</label>
+                                <div class="relative">
+                                    <input
+                                        name="password_confirmation"
+                                        x-model="adminForm.confirmation"
+                                        @input="adminClientErrors.confirmation = ''"
+                                        :type="showConfirmPassword ? 'text' : 'password'"
+                                        class="w-full text-sm rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary pr-10"
+                                    />
+                                    <button
+                                        type="button"
+                                        @click="showConfirmPassword = !showConfirmPassword"
+                                        class="absolute inset-y-0 right-2 flex items-center justify-center text-slate-500 hover:text-primary"
+                                    >
+                                        <span class="material-symbols-outlined" x-text="showConfirmPassword ? 'visibility_off' : 'visibility'"></span>
+                                    </button>
+                                </div>
+                                <p class="text-xs text-red-600 mt-1" x-text="adminClientErrors.confirmation" x-show="adminClientErrors.confirmation"></p>
+                                @error('password_confirmation', 'updatePassword')
+                                    <p class="text-xs text-red-600 mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                        </div>
+
+                        <div class="px-6 py-4 border-t border-slate-100 dark:border-slate-800 flex justify-end">
+                            <button
+                                type="submit"
+                                class="px-6 py-2 bg-primary text-white rounded-lg text-sm font-bold shadow-md shadow-primary/20 hover:bg-primary/90 transition-all flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined text-sm">lock</span>
+                                Perbarui Password Admin
+                            </button>
+                        </div>
+                    </section>
+                   
+                </form>
 
             </div>
         </div>
     </div>
 @endsection
+<script>
+function settingsPage() {
+    return {
+        section: @json(old('_section', session('activeSection', 'general'))),
+        editingGeneral: @json((bool) (old('_editing_general') ?? session('editingGeneral', false))),
+        editingSocial: @json((bool) (old('_editing_social') ?? session('editingSocial', false))),
+
+        showCurrentPassword: false,
+        showNewPassword: false,
+        showConfirmPassword: false,
+
+        adminForm: {
+            current: "",
+            password: "",
+            confirmation: ""
+        },
+
+        adminClientErrors: {
+            current: "",
+            password: "",
+            confirmation: ""
+        },
+
+        validateAdminForm() {
+            this.adminClientErrors = { current: "", password: "", confirmation: "" };
+            let valid = true;
+
+            if (!this.adminForm.current) {
+                this.adminClientErrors.current = "Password saat ini wajib diisi.";
+                valid = false;
+            }
+
+            if (!this.adminForm.password) {
+                this.adminClientErrors.password = "Password baru wajib diisi.";
+                valid = false;
+            } else if (this.adminForm.password.length < 8) {
+                this.adminClientErrors.password = "Password baru minimal 8 karakter.";
+                valid = false;
+            }
+
+            if (this.adminForm.password !== this.adminForm.confirmation) {
+                this.adminClientErrors.confirmation = "Konfirmasi password tidak sama.";
+                valid = false;
+            }
+
+            return valid;
+        }
+    }
+}
+</script>

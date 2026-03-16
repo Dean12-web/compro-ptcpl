@@ -49,6 +49,7 @@ Route::prefix('cpl-admin')->middleware(['auth', 'verified'])->group(function () 
     Route::get('/setting', [SettingController::class, 'index'])->name('cpl.setting');
     Route::patch('/setting/general', [SettingController::class, 'updateGeneral'])->name('cpl.setting.update.general');
     Route::patch('/setting/social', [SettingController::class, 'updateSocial'])->name('cpl.setting.update.social');
+    Route::patch('/setting/admin-password', [SettingController::class, 'updateAdminPassword'])->name('cpl.setting.update.password');
 
 
     Route::resource('/web-content', ContentBlockController::class);
