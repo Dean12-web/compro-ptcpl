@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 @section('title', __('seo.contact.title'))
 @section('meta_description', __('seo.contact.description'))
-@section('meta_keywords',__('seo.contact.keywords'))
+@section('meta_keywords', __('seo.contact.keywords'))
 @section('og_title', __('seo.contact.title'))
 @section('og_description', __('seo.contact.description'))
 
@@ -14,8 +14,8 @@
             </div>
             <div class="relative flex h-full items-center justify-center px-6">
                 <div class="text-center">
-                    <h2 class="text-4xl font-bold text-white md:text-5xl"> {{ $contact_hero->items->firstWhere('field_key','title')?->field_value }}</h2>
-                    <p class="mt-4 text-lg text-white/90">{{ $contact_hero->items->firstWhere('field_key','description')?->field_value }}</p>
+                    <h2 class="text-4xl font-bold text-white md:text-5xl"> {{ __('general.contact_hero_title') }}</h2>
+                    <p class="mt-4 text-lg text-white/90">{{ __('general.contact_hero_subtitle') }}</p>
                 </div>
             </div>
         </section>
@@ -23,9 +23,8 @@
         <section class="mx-auto max-w-7xl px-6 py-16">
             <div class="grid grid-cols-1 gap-12 lg:grid-cols-12">
 
-                <div
-                    class="lg:col-span-7 bg-white p-8 rounded-2xl shadow-sm border border-primary/5">
-                    <h3 class="text-2xl font-bold mb-6">{{ $contact_form->items->firstWhere('field_key','form_title')?->field_value }}</h3>
+                <div class="lg:col-span-7 bg-white p-8 rounded-2xl shadow-sm border border-primary/5">
+                    <h3 class="text-2xl font-bold mb-6">{{ __('general.contact_form_title')}}</h3>
                     <form class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="flex flex-col gap-2">
@@ -38,7 +37,7 @@
                                 <label class="text-sm font-semibold text-primary/80">{{__('general.company_name')}}</label>
                                 <input
                                     class="rounded-lg border-primary/10 bg-background-light/50 p-3 focus:border-primary focus:ring-primary"
-                                    placeholder="Your Organization" type="text" />
+                                    placeholder="Perusahaan anda" type="text" />
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -70,7 +69,7 @@
                         <button
                             class="w-full rounded-lg bg-[#F98F2A] py-4 text-lg font-bold text-white shadow-lg transition-transform hover:scale-[1.01] active:scale-[0.99]"
                             type="submit">
-                            {{ $contact_form->items->firstWhere('field_key','submit_button_text')?->field_value }}
+                            {{ __('general.contact_form_submit') }}
                         </button>
                     </form>
                 </div>
@@ -83,7 +82,7 @@
                                 <span class="material-symbols-outlined">location_on</span>
                             </div>
                             <div>
-                                <h4 class="font-bold">{{ $contact_information->items->firstWhere('field_key','office_title')?->field_value }}</h4>
+                                <h4 class="font-bold">{{ __('general.contact_headquarters') }}</h4>
                                 <p class="text-sm text-slate-600 mt-1">{{ $contact_detail->company_address }}</p>
                             </div>
                         </div>
@@ -92,7 +91,7 @@
                                 <span class="material-symbols-outlined">mail</span>
                             </div>
                             <div>
-                                <h4 class="font-bold">{{ $contact_information->items->firstWhere('field_key','email_title')?->field_value }}</h4>
+                                <h4 class="font-bold">{{ __('general.contact_email_us') }}</h4>
                                 <p class="text-sm text-slate-600 mt-1">
                                     {{ $contact_detail->company_email }}
                             </div>
@@ -102,19 +101,23 @@
                                 <span class="material-symbols-outlined">call</span>
                             </div>
                             <div>
-                                <h4 class="font-bold">{{ $contact_information->items->firstWhere('field_key','phone_title')?->field_value }}</h4>
+                                <h4 class="font-bold">{{ __('general.contact_phone_us') }}</h4>
                                 <p class="text-sm text-slate-600 mt-1">{{ $contact_detail->company_phone }}<br />
-                                    {{ $contact_information->items->firstWhere('field_key','phone_hours')?->field_value }}</p>
+                                    {{ $contact_information->items->firstWhere('field_key', 'phone_hours')?->field_value }}
+                                </p>
                             </div>
                         </div>
                     </div>
 
                     <div
                         class="h-64 rounded-2xl overflow-hidden shadow-inner bg-slate-200 relative group border border-primary/10">
-                        <div class="absolute inset-0 bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-500"
-                            data-alt="Map showing Jakarta city center location" data-location="Sumatera Utara, Indonesia"
-                            style="background-image: url('{{ asset('storage/' . $contact_information->items->firstWhere('field_key', 'map_image')?->field_value) }}')">
-                        </div>
+                        <a href="{{ $contact_detail->google_maps }}" target="_blank">
+                            <div class="absolute inset-0 bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-500"
+                                data-alt="Map showing Jakarta city center location"
+                                data-location="Sumatera Utara, Indonesia"
+                                style="background-image: url('{{ asset('storage/' . $contact_information->items->firstWhere('field_key', 'map_image')?->field_value) }}')">
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
