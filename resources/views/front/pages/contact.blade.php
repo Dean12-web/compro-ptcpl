@@ -14,9 +14,8 @@
             </div>
             <div class="relative flex h-full items-center justify-center px-6">
                 <div class="text-center">
-                    <h2 class="text-4xl font-bold text-white md:text-5xl">Contact Our Team</h2>
-                    <p class="mt-4 text-lg text-white/90">We're here to help your business grow with expert
-                        solutions.</p>
+                    <h2 class="text-4xl font-bold text-white md:text-5xl"> {{ $contact_hero->items->firstWhere('field_key','title')?->field_value }}</h2>
+                    <p class="mt-4 text-lg text-white/90">{{ $contact_hero->items->firstWhere('field_key','description')?->field_value }}</p>
                 </div>
             </div>
         </section>
@@ -26,17 +25,17 @@
 
                 <div
                     class="lg:col-span-7 bg-white p-8 rounded-2xl shadow-sm border border-primary/5">
-                    <h3 class="text-2xl font-bold mb-6">Send an Inquiry</h3>
+                    <h3 class="text-2xl font-bold mb-6">{{ $contact_form->items->firstWhere('field_key','form_title')?->field_value }}</h3>
                     <form class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="flex flex-col gap-2">
-                                <label class="text-sm font-semibold text-primary/80">Full Name</label>
+                                <label class="text-sm font-semibold text-primary/80">{{__('general.full_name')}}</label>
                                 <input
                                     class="rounded-lg border-primary/10 bg-background-light/50 p-3 focus:border-primary focus:ring-primary"
                                     placeholder="John Doe" type="text" />
                             </div>
                             <div class="flex flex-col gap-2">
-                                <label class="text-sm font-semibold text-primary/80">Company Name</label>
+                                <label class="text-sm font-semibold text-primary/80">{{__('general.company_name')}}</label>
                                 <input
                                     class="rounded-lg border-primary/10 bg-background-light/50 p-3 focus:border-primary focus:ring-primary"
                                     placeholder="Your Organization" type="text" />
@@ -44,39 +43,34 @@
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="flex flex-col gap-2">
-                                <label class="text-sm font-semibold text-primary/80">Country</label>
-                                <select
-                                    class="rounded-lg border-primary/10 bg-background-light/50 p-3 focus:border-primary focus:ring-primary">
-                                    <option>Select Country</option>
-                                    <option>Indonesia</option>
-                                    <option>Singapore</option>
-                                    <option>Malaysia</option>
-                                    <option>Other</option>
-                                </select>
+                                <label class="text-sm font-semibold text-primary/80">{{__('general.country')}}</label>
+                                <input
+                                    class="rounded-lg border-primary/10 bg-background-light/50 p-3 focus:border-primary focus:ring-primary"
+                                    placeholder="Indonesia" type="text" />
                             </div>
                             <div class="flex flex-col gap-2">
-                                <label class="text-sm font-semibold text-primary/80">Email Address</label>
+                                <label class="text-sm font-semibold text-primary/80">{{__('general.email_address')}}</label>
                                 <input
                                     class="rounded-lg border-primary/10 bg-background-light/50 p-3 focus:border-primary focus:ring-primary"
                                     placeholder="john@company.com" type="email" />
                             </div>
                         </div>
                         <div class="flex flex-col gap-2">
-                            <label class="text-sm font-semibold text-primary/80">Phone Number</label>
+                            <label class="text-sm font-semibold text-primary/80">{{__('general.phone_number')}}</label>
                             <input
                                 class="rounded-lg border-primary/10 bg-background-light/50 p-3 focus:border-primary focus:ring-primary"
                                 placeholder="+62 812 3456 7890" type="tel" />
                         </div>
                         <div class="flex flex-col gap-2">
-                            <label class="text-sm font-semibold text-primary/80">Inquiry Message</label>
+                            <label class="text-sm font-semibold text-primary/80">{{__('general.inquiry_message')}}</label>
                             <textarea
                                 class="rounded-lg border-primary/10 bg-background-light/50 p-3 focus:border-primary focus:ring-primary"
-                                placeholder="How can we assist you today?" rows="4"></textarea>
+                                placeholder="{{ __('general.placeholder_message') }}" rows="4"></textarea>
                         </div>
                         <button
                             class="w-full rounded-lg bg-[#F98F2A] py-4 text-lg font-bold text-white shadow-lg transition-transform hover:scale-[1.01] active:scale-[0.99]"
                             type="submit">
-                            Submit Inquiry
+                            {{ $contact_form->items->firstWhere('field_key','submit_button_text')?->field_value }}
                         </button>
                     </form>
                 </div>
@@ -89,9 +83,8 @@
                                 <span class="material-symbols-outlined">location_on</span>
                             </div>
                             <div>
-                                <h4 class="font-bold">Our Headquarters</h4>
-                                <p class="text-sm text-slate-600 mt-1">Sona Topas Tower, 15th
-                                    Floor, Jl. Jend. Sudirman No.Kav 26, Jakarta, Indonesia</p>
+                                <h4 class="font-bold">{{ $contact_information->items->firstWhere('field_key','office_title')?->field_value }}</h4>
+                                <p class="text-sm text-slate-600 mt-1">{{ $contact_detail->company_address }}</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-4 p-5 rounded-xl bg-primary/5 border border-primary/10">
@@ -99,9 +92,9 @@
                                 <span class="material-symbols-outlined">mail</span>
                             </div>
                             <div>
-                                <h4 class="font-bold">Email Us</h4>
+                                <h4 class="font-bold">{{ $contact_information->items->firstWhere('field_key','email_title')?->field_value }}</h4>
                                 <p class="text-sm text-slate-600 mt-1">
-                                    support@ptcpl.com<br />info@ptcpl.com</p>
+                                    {{ $contact_detail->company_email }}
                             </div>
                         </div>
                         <div class="flex items-start gap-4 p-5 rounded-xl bg-primary/5 border border-primary/10">
@@ -109,9 +102,9 @@
                                 <span class="material-symbols-outlined">call</span>
                             </div>
                             <div>
-                                <h4 class="font-bold">Call Anytime</h4>
-                                <p class="text-sm text-slate-600 mt-1">+62 21 555 0123<br />Mon
-                                    - Fri, 09:00 - 18:00</p>
+                                <h4 class="font-bold">{{ $contact_information->items->firstWhere('field_key','phone_title')?->field_value }}</h4>
+                                <p class="text-sm text-slate-600 mt-1">{{ $contact_detail->company_phone }}<br />
+                                    {{ $contact_information->items->firstWhere('field_key','phone_hours')?->field_value }}</p>
                             </div>
                         </div>
                     </div>
@@ -119,13 +112,8 @@
                     <div
                         class="h-64 rounded-2xl overflow-hidden shadow-inner bg-slate-200 relative group border border-primary/10">
                         <div class="absolute inset-0 bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-500"
-                            data-alt="Map showing Jakarta city center location" data-location="Jakarta"
-                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA3eorY3LEd1OKG_MPXZxQ_WX_gq0H1dTC_2l5EKG8gkmGINBLntKXsqlZeKqAijO2xmsbWr2KTCBrFgjAseICZ_EH3vm8mKBxCotrceQhUqrH8F8VKebSGTAgQyo99_IqV79hVAJJkzlDk0Hr-5uWRxjT5vnvXdUwpewQNRCL-KTrMjQWb-WdTtesBXmtp9zTPb55N1tGoCaWMIKLQyOyQZKfxfx6t55rXaNZgc6GXI6UkPNLNJ-PAY77pYfwrcF3iJm0kxtbrObPK')">
-                        </div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="bg-primary text-white p-3 rounded-full shadow-xl">
-                                <span class="material-symbols-outlined scale-150">location_on</span>
-                            </div>
+                            data-alt="Map showing Jakarta city center location" data-location="Sumatera Utara, Indonesia"
+                            style="background-image: url('{{ asset('storage/' . $contact_information->items->firstWhere('field_key', 'map_image')?->field_value) }}')">
                         </div>
                     </div>
                 </div>
