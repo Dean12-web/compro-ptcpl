@@ -3,58 +3,61 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div class="col-span-1 md:col-span-1 flex flex-col gap-4">
                 <div class="flex items-center gap-3 text-primary">
-                    <div class="size-6">
-                        <svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"></path>
-                        </svg>
+                    <div class="size-12">
+                        <img src="{{ asset('images/logo/icon_cpl.png') }}" alt="log_cendana_paper_egg_tray">
                     </div>
-                    <h2 class="text-white text-lg font-bold uppercase tracking-tight">PT CPL</h2>
+                    <h2 class="text-white text-lg font-bold uppercase tracking-tight">Cendana Paper Egg Tray</h2>
                 </div>
-                <p class="text-slate-400 text-sm leading-relaxed">
-                    A global leader in sustainable paper packaging. Committed to zero-waste production and
-                    excellence in industrial egg tray manufacturing.
+                <p class="text-slate-400 text-xs leading-relaxed">
+                    {{ __('general.footer_title') }}
                 </p>
             </div>
             <div>
-                <h4 class="text-white font-bold mb-6">Quick Links</h4>
+                <h4 class="text-white font-bold mb-6">{{ __('general.footer_quick_links') }}</h4>
                 <ul class="flex flex-col gap-3 text-slate-400 text-sm">
-                    <li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="#">Our Products</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="#">Production Process</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="#">Export Map</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">{{ __('general.footer_about_us') }}</a>
+                    </li>
+                    <li><a class="hover:text-primary transition-colors"
+                            href="#">{{ __('general.footer_our_products') }}</a></li>
+                    <li><a class="hover:text-primary transition-colors"
+                            href="#">{{ __('general.footer_production_process') }}</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">{{ __('general.footer_export') }}</a>
+                    </li>
                 </ul>
             </div>
             <div>
-                <h4 class="text-white font-bold mb-6">Compliance</h4>
+                <h4 class="text-white font-bold mb-6">{{ __('general.footer_complience') }}</h4>
                 <ul class="flex flex-col gap-3 text-slate-400 text-sm">
-                    <li><a class="hover:text-primary transition-colors" href="#">Sustainability Report</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="#">ISO Certifications</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="#">Terms of Trade</a></li>
+                    <li><a class="hover:text-primary transition-colors"
+                            href="#">{{ __('general.footer_sustainability') }}</a></li>
+                    <li><a class="hover:text-primary transition-colors"
+                            href="#">{{ __('general.footer_pricacy_policy') }}</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="text-white font-bold mb-6">Newsletter</h4>
-                <p class="text-slate-400 text-sm mb-4">Stay updated with our latest production expansions and
-                    export news.</p>
-                <div class="flex gap-2">
-                    <input
-                        class="bg-white/5 border-white/10 rounded-lg text-sm flex-1 focus:ring-primary focus:border-primary"
-                        placeholder="Email address" type="email" />
-                    <button class="bg-primary px-4 rounded-lg">
-                        <span class="material-symbols-outlined">send</span>
-                    </button>
+                <h4 class="text-white font-bold mb-6">{{ __('general.footer_social_media') }}</h4>
+                @php
+                    $socialLinks = [
+                        'facebook' => $setting?->facebook,
+                        'instagram' => $setting?->instagram,
+                        'tiktok' => $setting?->tiktok,
+                    ];
+                @endphp
+                <div class="flex gap-6 items-center">
+                    @foreach ($socialLinks as $network => $url)
+                        @if ($url)
+                            <a href="{{ $url }}" class="hover:opacity-80 transition" target="_blank" rel="noreferrer noopener">
+                                <img src="https://cdn.simpleicons.org/{{ $network }}/ffffff" alt="{{ $network }}"
+                                    class="w-10 h-10">
+                            </a>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>
         <div
             class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-xs">
-            <p>© 2024 PT CPL. All rights reserved.</p>
-            <div class="flex gap-6">
-                <a class="hover:text-white" href="#">LinkedIn</a>
-                <a class="hover:text-white" href="#">Facebook</a>
-                <a class="hover:text-white" href="#">Instagram</a>
-            </div>
+            <p>© 2026 PT Cendana Putera Lestari. All rights reserved.</p>
         </div>
     </div>
 </footer>

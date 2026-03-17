@@ -13,10 +13,8 @@
             style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCulQGpPIQhhJEK9ldJ0COsvo0BUSimkce9Rr0V89H2tSl4BtrsFrdRg0634p5YprsxBIdNR_Ic6eIM2KAMU-lsR0d7X3Liunnio_RY-kNRjfke7e_9ADGX2mEQdc9UuArxU3ydiG9SPawOR36jY5ocpWVOy44ZIfnX4q_S6Ygvqsv9pakTqd0YUnUhgvnugygqbMOlWdVwzUKUOc-CaemPP9YxrCntO46U5J3u3aZmcwNr6Aa1mAQF5geSU4h-IzkE7ZYc8EG4L7zn");'>
         </div>
         <div class="relative z-20 text-center px-6 max-w-4xl">
-            <span class="text-accent font-bold uppercase tracking-widest text-sm mb-4 block">Visual
-                Tour</span>
-            <h1 class="text-white text-4xl md:text-6xl font-black leading-tight mb-6">Our Facilities &amp;
-                Operations</h1>
+            <span class="text-accent font-bold uppercase tracking-widest text-sm mb-4 block">{{ __('general.gallery_hero_banner') }}</span>
+            <h1 class="text-white text-4xl md:text-6xl font-black leading-tight mb-6">{{ __('general.gallery_hero_title') }}</h1>
             <p class="text-white/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
                 Discover the intersection of high-tech automation and sustainable manufacturing at
                 Indonesia's premier industrial egg tray facility.
@@ -27,8 +25,7 @@
         <section>
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
                 <div>
-                    <h2 class="text-primary text-3xl font-black uppercase tracking-tight mb-2">01. Factory
-                        Facilities</h2>
+                    <h2 class="text-primary text-3xl font-black uppercase tracking-tight mb-2">01. {{ __('general.gallery_factory_title') }}</h2>
                     <p class="text-slate-500 max-w-lg">Advanced machinery and expansive
                         industrial spaces designed for maximum output efficiency.</p>
                 </div>
@@ -80,7 +77,7 @@
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
                 <div>
                     <h2 class="text-primary text-3xl font-black uppercase tracking-tight mb-2">02.
-                        Production Process</h2>
+                        {{ __('general.gallery_production_title') }}</h2>
                     <p class="text-slate-500 max-w-lg">A seamless transition from liquid
                         pulp to rigid, durable protection for global poultry markets.</p>
                 </div>
@@ -154,8 +151,7 @@
         <section>
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
                 <div>
-                    <h2 class="text-primary text-3xl font-black uppercase tracking-tight mb-2">03. Packaging
-                        &amp; Loading</h2>
+                    <h2 class="text-primary text-3xl font-black uppercase tracking-tight mb-2">03. {{ __('general.gallery_packaging_title') }}</h2>
                     <p class="text-slate-500 max-w-lg">Ready for the world. Efficient
                         palletizing and secure container loading for international export.</p>
                 </div>
@@ -187,6 +183,44 @@
                         <div
                             class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-primary">
                             Global Export</div>
+                    </div>
+                    <p class="text-slate-700">
+                        Optimized container loading maximize space efficiency for international sea freight
+                        and regional trucking.
+                    </p>
+                </div>
+            </div>
+        </section>
+         <section class="bg-primary/5 -mx-6 px-6 py-16 rounded-3xl">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                <div>
+                    <h2 class="text-primary text-3xl font-black uppercase tracking-tight mb-2">04.
+                        {{ __('general.gallery_quality_title') }}</h2>
+                    <p class="text-slate-500 max-w-lg">A seamless transition from liquid
+                        pulp to rigid, durable protection for global poultry markets.</p>
+                </div>
+                <div class="h-1 flex-grow mx-8 bg-primary/20 mb-4 hidden md:block"></div>
+                <span class="material-symbols-outlined text-4xl text-primary/20">repeat</span>
+            </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-4 rounded-2xl shadow-sm border border-primary/5 group">
+                    <div class="relative rounded-xl overflow-hidden mb-4">
+                        <div class="aspect-[4/3] bg-center bg-cover group-hover:scale-105 transition-transform duration-500"
+                            data-alt="Stacked egg trays on a wooden pallet"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDWzu-3FeusFTNON1y4-b8FEMYvCOBIW-BkinQFxXaf2ef5z39YGT_N0NDsuRidCGBvzr1p5_OzTjC-Yl4oQmIGJmh_JBSbrxVbnVZqXaOebLQFy36i-O2xn8OYphCsrIYPz1jqGaxa1dk0GSAAXdYn6F2ueYQEbCnMdUbRbuh_s0yWyVKWmdz7P832iPD9wRT8QpWkKoFkt3reYQlWCL8544SMGummROZDiFaONsYp5B1ROTlYlolnX4td2dv5pu78P9x3NIo2ERaP");'>
+                        </div>
+                    </div>
+                    <p class="text-slate-700">
+                        Standardized pallet configurations ensure stability during transit and easy handling
+                        for our customers.
+                    </p>
+                </div>
+                <div class="bg-white p-4 rounded-2xl shadow-sm border border-primary/5 group">
+                    <div class="relative rounded-xl overflow-hidden mb-4">
+                        <div class="aspect-[4/3] bg-center bg-cover group-hover:scale-105 transition-transform duration-500"
+                            data-alt="Forklift loading a shipping container"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAz7Cgtf4u29f4waW4H1sOjtfFp-AXNnBsw3nKwnwsII3w25ZsvSk7KpdzsacAG6wR2hfgK9mwvHvDu7iZ9RFkazQyYksxxfgv1LOTUHuQapc7LZsYg1zUKi4p1MrOhCldRuIYyllvN4tqTirskjn5DfuluObTiaTKF5XKwsgQmZyspB7tIbsQSoBEWxM-u76XTSNt1rhjPYVcP4O0ryYb2VnRiDzDpU4NVy3tXBJyD0iDKZG4ZBV0X7nbEUAduCs4Mp2E9Dne7pdnR");'>
+                        </div>
                     </div>
                     <p class="text-slate-700">
                         Optimized container loading maximize space efficiency for international sea freight

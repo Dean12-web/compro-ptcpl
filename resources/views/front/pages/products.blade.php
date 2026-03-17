@@ -9,13 +9,9 @@
     <div class="flex-1 lg:px-40 py-8 px-6">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-10">
             <div class="flex flex-col gap-2">
-                <span class="text-primary font-bold tracking-widest text-xs uppercase">Industrial
-                    Packaging</span>
-                <h1 class="text-slate-900 text-5xl font-black leading-tight tracking-tight">Egg
-                    Tray Solutions</h1>
-                <p class="text-slate-500 text-lg max-w-2xl">High-durability, eco-conscious
-                    trays designed for global logistics and retail display. Engineering the future of safe egg
-                    transportation.</p>
+                <span class="text-primary font-bold tracking-widest text-xs uppercase">{{ __('general.product_hero_title') }}</span>
+                <h1 class="text-slate-900 text-5xl font-black leading-tight tracking-tight">{{ __('general.product_hero_subtitle') }}</h1>
+                <p class="text-slate-500 text-lg max-w-2xl">{{ __('general.product_hero_content') }}</p>
             </div>
         </div>
         <div

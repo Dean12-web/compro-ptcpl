@@ -19,18 +19,13 @@
                 Setting the gold standard in sustainable egg tray production through cutting-edge technology
                 and precision engineering.
             </p>
-            <button
-                class="bg-primary text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary/90 transition-all">
-                View Our Process
-            </button>
         </div>
     </section>
     <section class="py-24 px-6 md:px-20 bg-white">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-primary text-sm font-bold uppercase tracking-widest mb-3">Our Workflow</h2>
-                <h3 class="text-slate-900 text-3xl md:text-4xl font-bold">The Production
-                    Process</h3>
+                <h2 class="text-primary text-sm font-bold uppercase tracking-widest mb-3">{{ __('general.production_work_flow') }}</h2>
+                <h3 class="text-slate-900 text-3xl md:text-4xl font-bold">{{ __('general.production_process') }}</h3>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
                 <div class="absolute top-12 left-0 w-full h-0.5 bg-primary/10 hidden md:block"></div>
@@ -129,10 +124,9 @@
     <section class="py-24 px-6 md:px-20 bg-background-light">
         <div class="max-w-6xl mx-auto">
             <div class="flex flex-col md:flex-row gap-16 items-center">
-                <div class="md:w-1/2">
-                    <h2 class="text-primary text-sm font-bold uppercase tracking-widest mb-3">Quality
-                        Control</h2>
-                    <h3 class="text-slate-900 text-4xl font-bold mb-6 leading-tight">
+                <div class="md:w-full">
+                    <h2 class="text-primary text-center text-sm font-bold uppercase tracking-widest mb-3">{{ __('general.production_quality_control') }}</h2>
+                    <h3 class="text-slate-900 text-4xl font-bold mb-6 leading-tight text-center">
                         Rigorous Standards for Uncompromising Safety</h3>
                     <p class="text-slate-600 text-lg mb-8">
                         We don't just manufacture; we engineer safety. Our quality control lab conducts
@@ -165,40 +159,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="md:w-1/2 grid grid-cols-2 gap-4">
-                    <div
-                        class="bg-primary/5 aspect-square rounded-2xl flex flex-col items-center justify-center p-8 text-center border border-primary/20">
-                        <span class="material-symbols-outlined text-5xl text-primary mb-4">workspace_premium</span>
-                        <p class="text-xs font-bold uppercase tracking-widest text-primary/60">Certified</p>
-                        <p class="text-lg font-bold">ISO 9001:2015</p>
-                    </div>
-                    <div
-                        class="bg-primary/5 aspect-square rounded-2xl flex flex-col items-center justify-center p-8 text-center border border-primary/20">
-                        <span class="material-symbols-outlined text-5xl text-primary mb-4">eco</span>
-                        <p class="text-xs font-bold uppercase tracking-widest text-primary/60">GreenTech</p>
-                        <p class="text-lg font-bold">Zero-Waste Prod</p>
-                    </div>
-                    <div
-                        class="bg-primary/5 aspect-square rounded-2xl flex flex-col items-center justify-center p-8 text-center border border-primary/20">
-                        <span class="material-symbols-outlined text-5xl text-primary mb-4">safety_check</span>
-                        <p class="text-xs font-bold uppercase tracking-widest text-primary/60">Safety</p>
-                        <p class="text-lg font-bold">OHSAS 18001</p>
-                    </div>
-                    <div
-                        class="bg-primary/5 aspect-square rounded-2xl flex flex-col items-center justify-center p-8 text-center border border-primary/20">
-                        <span class="material-symbols-outlined text-5xl text-primary mb-4">public</span>
-                        <p class="text-xs font-bold uppercase tracking-widest text-primary/60">Global</p>
-                        <p class="text-lg font-bold">Export Grade</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
     <section class="py-24 px-6 md:px-20 bg-white">
         <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-primary text-sm font-bold uppercase tracking-widest mb-3">Visual Flow</h2>
-            <h3 class="text-slate-900 text-4xl font-bold mb-16">End-to-End Workflow
-                Visualization</h3>
+            <h2 class="text-primary text-sm font-bold uppercase tracking-widest mb-3">{{ __('general.production_visual_flow_title') }}</h2>
+            <h3 class="text-slate-900 text-4xl font-bold mb-16">{{ __('general.production_visual_flow_subtitle') }}</h3>
             <div class="bg-slate-50 p-8 md:p-12 rounded-3xl border border-primary/10 shadow-inner">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4">
                     <div class="flex flex-col items-center text-center max-w-[150px]">
@@ -206,7 +173,7 @@
                             class="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center text-primary mb-4">
                             <span class="material-symbols-outlined text-3xl">inbox</span>
                         </div>
-                        <p class="font-bold text-sm">Collection</p>
+                        <p class="font-bold text-sm">{{ __('general.production_visual_flow_content_1') }}</p>
                     </div>
                     <span class="material-symbols-outlined text-slate-300 hidden md:block">arrow_forward</span>
                     <span class="material-symbols-outlined text-slate-300 md:hidden">arrow_downward</span>
@@ -215,7 +182,7 @@
                             class="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center text-primary mb-4">
                             <span class="material-symbols-outlined text-3xl">blender</span>
                         </div>
-                        <p class="font-bold text-sm">Pulping</p>
+                        <p class="font-bold text-sm">{{ __('general.production_visual_flow_content_2') }}</p>
                     </div>
                     <span class="material-symbols-outlined text-slate-300 hidden md:block">arrow_forward</span>
                     <span class="material-symbols-outlined text-slate-300 md:hidden">arrow_downward</span>
@@ -224,7 +191,7 @@
                             class="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center text-primary mb-4">
                             <span class="material-symbols-outlined text-3xl">layers</span>
                         </div>
-                        <p class="font-bold text-sm">Forming</p>
+                        <p class="font-bold text-sm">{{ __('general.production_visual_flow_content_3') }}</p>
                     </div>
                     <span class="material-symbols-outlined text-slate-300 hidden md:block">arrow_forward</span>
                     <span class="material-symbols-outlined text-slate-300 md:hidden">arrow_downward</span>
@@ -233,7 +200,7 @@
                             class="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center text-primary mb-4">
                             <span class="material-symbols-outlined text-3xl">oven_gen</span>
                         </div>
-                        <p class="font-bold text-sm">Drying</p>
+                        <p class="font-bold text-sm">{{ __('general.production_visual_flow_content_4') }}</p>
                     </div>
                     <span class="material-symbols-outlined text-slate-300 hidden md:block">arrow_forward</span>
                     <span class="material-symbols-outlined text-slate-300 md:hidden">arrow_downward</span>
@@ -242,7 +209,7 @@
                             class="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center text-primary mb-4">
                             <span class="material-symbols-outlined text-3xl">inventory_2</span>
                         </div>
-                        <p class="font-bold text-sm">Packing</p>
+                        <p class="font-bold text-sm">{{ __('general.production_visual_flow_content_5') }}</p>
                     </div>
                     <span class="material-symbols-outlined text-slate-300 hidden md:block">arrow_forward</span>
                     <span class="material-symbols-outlined text-slate-300 md:hidden">arrow_downward</span>
@@ -251,7 +218,7 @@
                             class="bg-accent/20 w-16 h-16 rounded-full flex items-center justify-center text-accent mb-4 border-2 border-accent">
                             <span class="material-symbols-outlined text-3xl">local_shipping</span>
                         </div>
-                        <p class="font-bold text-sm">Dispatch</p>
+                        <p class="font-bold text-sm">{{ __('general.production_visual_flow_content_6') }}</p>
                     </div>
                 </div>
             </div>
@@ -259,18 +226,13 @@
     </section>
     <section class="py-20 px-6 md:px-20 bg-primary/5">
         <div class="max-w-4xl mx-auto text-center">
-            <h3 class="text-3xl font-bold mb-8">Ready to enhance your supply chain?</h3>
+            <h3 class="text-3xl font-bold mb-8">{{ __('general.production_cta_title') }}</h3>
             <p class="text-slate-600 mb-10 text-lg">
-                Get in touch with our production team for a facility tour or a custom quotation tailored to
-                your volume requirements.
+                {{ __('general.production_cta_subtitle') }}
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
-                    class="bg-accent text-white px-8 py-4 rounded-lg font-bold shadow-lg shadow-accent/30 hover:bg-accent/90 transition-all">Request
-                    Bulk Quote</button>
-                <button
-                    class="border-2 border-primary text-primary px-8 py-4 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">Technical
-                    Specs Sheet</button>
+                    class="bg-accent text-white px-8 py-4 rounded-lg font-bold shadow-lg shadow-accent/30 hover:bg-accent/90 transition-all">{{ __('general.production_cta_button') }}</button>
             </div>
         </div>
     </section>

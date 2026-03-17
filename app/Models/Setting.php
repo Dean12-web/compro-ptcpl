@@ -13,6 +13,7 @@ class Setting extends Model
         'company_address',
         'whatsapp',
         'facebook',
+        'instagram',
         'tiktok',
         'google_maps',
         'logo',

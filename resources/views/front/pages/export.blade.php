@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 @section('title', __('seo.exports.title'))
 @section('meta_description', __('seo.exports.description'))
-@section('meta_keywords',__('seo.exports.keywords'))
+@section('meta_keywords', __('seo.exports.keywords'))
 @section('og_title', __('seo.exports.title'))
 @section('og_description', __('seo.exports.description'))
 
@@ -14,8 +14,7 @@
                 style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBbwPSjiw6f6T1vLpKwj9K4m5ymdfdABgg8Qbbz1Lo12-Co-puklRO0ZmObpiLWTAbbEZYYodMrTB8bk8FeOZSqrEIsw91JgY--FP2X_DsfRAy11nTxpa5nAFDljxBpPAjkdxQX_MFcTHeKOCziWm0ZZO-Yfa3zwP7wtmlaPk5I8hfbFgZcZMSecLECcMSUGjT_7yBQn2zxwamL2SEWcLsqNEw7l1gM3Jtk7h8BVJnC_rNpIGyekhXE3YzOSEfXT9IdZ35GnGGYH7OW');">
                 <div class="relative z-20 max-w-3xl flex flex-col gap-6">
                     <span
-                        class="px-3 py-1 bg-accent/90 text-white text-xs font-bold uppercase tracking-wider rounded-full w-fit mx-auto">Worldwide
-                        Shipping</span>
+                        class="px-3 py-1 bg-accent/90 text-white text-xs font-bold uppercase tracking-wider rounded-full w-fit mx-auto">{{ __('general.export_hero_button') }}</span>
                     <h1 class="text-white text-4xl md:text-6xl font-black leading-tight tracking-tight">
                         Global Logistics &amp; Export Excellence
                     </h1>
@@ -23,12 +22,6 @@
                         Delivering premium egg tray solutions to 20+ countries with reliable, efficient, and secure
                         shipping standards.
                     </p>
-                    <div class="pt-4">
-                        <button
-                            class="bg-primary hover:bg-[#4a5c30] text-white px-8 py-3 rounded-lg text-base font-bold tracking-wide transition-all shadow-lg hover:shadow-xl">
-                            Inquire Rates
-                        </button>
-                    </div>
                 </div>
             </div>
         </section>
@@ -97,8 +90,7 @@
                         </ul>
                     </div>
                     <div class="w-full md:w-1/2 relative">
-                        <div
-                            class="aspect-video w-full rounded-2xl overflow-hidden shadow-2xl bg-slate-100 relative">
+                        <div class="aspect-video w-full rounded-2xl overflow-hidden shadow-2xl bg-slate-100 relative">
                             <img alt="World map emphasizing global trade routes and connectivity"
                                 class="w-full h-full object-cover opacity-90"
                                 data-alt="World map showing connection nodes and flight paths glowing on dark background"
@@ -116,11 +108,9 @@
         <section class="py-16 px-6 lg:px-20 bg-background-light">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold text-slate-900 mb-4">Flexible Shipping Methods
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4">{{ __('general.export_shipping_title') }}
                     </h2>
-                    <p class="text-slate-600 max-w-2xl mx-auto">We offer versatile shipping
-                        solutions tailored to your volume requirements, ensuring cost-effectiveness and product
-                        safety.</p>
+                    <p class="text-slate-600 max-w-2xl mx-auto">{{ __('general.export_shipping_subtitle') }}</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div
@@ -201,8 +191,7 @@
                                     (Days)</th>
                             </tr>
                         </thead>
-                        <tbody
-                            class="divide-y divide-slate-200 bg-surface-light">
+                        <tbody class="divide-y divide-slate-200 bg-surface-light">
                             <tr class="hover:bg-slate-50 transition-colors">
                                 <td class="px-6 py-4 font-medium text-slate-900">Southeast Asia</td>
                                 <td class="px-6 py-4">Singapore, Port Klang, Manila</td>
@@ -243,14 +232,11 @@
             <div class="max-w-7xl mx-auto">
                 <div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
                     <div>
-                        <h2 class="text-3xl font-bold text-slate-900 mb-3">Packaging Standards</h2>
+                        <h2 class="text-3xl font-bold text-slate-900 mb-3">{{ __('general.sustainability_packaging_title') }}</h2>
                         <p class="text-slate-600 max-w-xl">We prioritize the integrity of your
                             product. Our multi-layer packaging system ensures zero damage during long-haul transit.
                         </p>
                     </div>
-                    <a class="text-primary font-bold hover:underline flex items-center gap-1" href="#">
-                        Download Packing Specs <span class="material-symbols-outlined text-sm">download</span>
-                    </a>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="group relative overflow-hidden rounded-xl h-64 md:h-80 shadow-md">
@@ -280,21 +266,15 @@
         </section>
         <section class="py-20 px-6 lg:px-20 bg-primary-light/20">
             <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-6">Ready to Ship?</h2>
+                <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-6">{{ __('general.export_cta_title') }}</h2>
                 <p class="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
-                    Contact our export team for a detailed quote including freight estimates to your destination
-                    port. We respond within 24 hours.
+                   {{ __('general.export_cta_subtitle') }}
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <button
                         class="bg-primary hover:bg-[#4a5c30] text-white px-8 py-4 rounded-lg text-lg font-bold tracking-wide transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
                         <span class="material-symbols-outlined">request_quote</span>
-                        Inquire Export Rates
-                    </button>
-                    <button
-                        class="bg-white border border-slate-200 hover:bg-slate-50 text-slate-900 px-8 py-4 rounded-lg text-lg font-bold tracking-wide transition-all shadow-sm flex items-center justify-center gap-2">
-                        <span class="material-symbols-outlined">call</span>
-                        Contact Sales
+                        {{ __('general.export_cta_button_2') }}
                     </button>
                 </div>
             </div>
