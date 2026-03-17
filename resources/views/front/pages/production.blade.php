@@ -13,11 +13,10 @@
         </div>
         <div class="relative z-10 text-center px-4 max-w-4xl">
             <h1 class="text-white text-5xl md:text-7xl font-black leading-tight tracking-tight mb-6">
-                Manufacturing Excellence &amp; Quality Assurance
+                {{ $production_hero->items->where('field_key', 'title')->first()->field_value ?? '' }}
             </h1>
             <p class="text-white/90 text-lg md:text-xl font-normal mb-8 max-w-2xl mx-auto">
-                Setting the gold standard in sustainable egg tray production through cutting-edge technology
-                and precision engineering.
+                {{ $production_hero->items->where('field_key', 'description')->first()->field_value ?? '' }}
             </p>
         </div>
     </section>
@@ -34,10 +33,9 @@
                         class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mb-6 relative z-10 shadow-lg group-hover:scale-110 transition-transform">
                         <span class="material-symbols-outlined">recycling</span>
                     </div>
-                    <h4 class="text-xl font-bold mb-3">1. Raw Material</h4>
+                    <h4 class="text-xl font-bold mb-3">{{ $production_steps->items->where('field_key', 'step_1_title')->first()->field_value ?? '' }}</h4>
                     <p class="text-slate-600 text-sm leading-relaxed">
-                        100% recycled paper pulp is sourced and filtered through multiple purification
-                        stages to ensure fiber purity.
+                        {{ $production_steps->items->where('field_key', 'step_1_description')->first()->field_value ?? '' }}
                     </p>
                 </div>
                 <div class="relative group">
@@ -45,10 +43,9 @@
                         class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mb-6 relative z-10 shadow-lg group-hover:scale-110 transition-transform">
                         <span class="material-symbols-outlined">precision_manufacturing</span>
                     </div>
-                    <h4 class="text-xl font-bold mb-3">2. Precision Molding</h4>
+                    <h4 class="text-xl font-bold mb-3">{{ $production_steps->items->where('field_key', 'step_2_title')->first()->field_value ?? '' }}</h4>
                     <p class="text-slate-600 text-sm leading-relaxed">
-                        High-pressure industrial molds form the pulp into structural shapes designed for
-                        maximum shock absorption.
+                        {{ $production_steps->items->where('field_key', 'step_2_description')->first()->field_value ?? '' }}
                     </p>
                 </div>
                 <div class="relative group">
@@ -56,10 +53,9 @@
                         class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mb-6 relative z-10 shadow-lg group-hover:scale-110 transition-transform">
                         <span class="material-symbols-outlined">thermostat</span>
                     </div>
-                    <h4 class="text-xl font-bold mb-3">3. Industrial Drying</h4>
+                    <h4 class="text-xl font-bold mb-3">{{ $production_steps->items->where('field_key', 'step_3_title')->first()->field_value ?? '' }}</h4>
                     <p class="text-slate-600 text-sm leading-relaxed">
-                        Automated temperature-controlled kilns remove moisture while divtaining structural
-                        rigidity and prevent warping.
+                        {{ $production_steps->items->where('field_key', 'step_3_description')->first()->field_value ?? '' }}
                     </p>
                 </div>
                 <div class="relative group">
@@ -67,10 +63,9 @@
                         class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mb-6 relative z-10 shadow-lg group-hover:scale-110 transition-transform">
                         <span class="material-symbols-outlined">verified</span>
                     </div>
-                    <h4 class="text-xl font-bold mb-3">4. Quality Check</h4>
+                    <h4 class="text-xl font-bold mb-3">{{ $production_steps->items->where('field_key', 'step_4_title')->first()->field_value ?? '' }}</h4>
                     <p class="text-slate-600 text-sm leading-relaxed">
-                        Every batch undergoes rigorous manual and automated inspections to meet
-                        international export standards.
+                        {{ $production_steps->items->where('field_key', 'step_4_description')->first()->field_value ?? '' }}
                     </p>
                 </div>
             </div>
@@ -80,16 +75,15 @@
         <div class="max-w-6xl mx-auto px-6 md:px-20">
             <div class="bg-primary rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl">
                 <div class="p-12 md:w-1/2 flex flex-col justify-center">
-                    <h3 class="text-white text-3xl font-bold mb-6">World-Class Factory Capacity</h3>
+                    <h3 class="text-white text-3xl font-bold mb-6">{{ $production_factory_capacity->items->where('field_key', 'section_title')->first()->field_value ?? '' }}</h3>
                     <div class="grid grid-cols-1 gap-8">
                         <div class="flex items-start gap-4">
                             <div class="text-accent">
                                 <span class="material-symbols-outlined text-4xl">speed</span>
                             </div>
                             <div>
-                                <p class="text-white text-3xl font-black">500,000+</p>
-                                <p class="text-white/70 text-sm uppercase tracking-wider">Units Produced
-                                    Daily</p>
+                                <p class="text-white text-3xl font-black">{{ $production_factory_capacity->items->where('field_key', 'capacity_1_value')->first()->field_value ?? '' }}</p>
+                                <p class="text-white/70 text-sm uppercase tracking-wider">{{ $production_factory_capacity->items->where('field_key', 'capacity_1_label')->first()->field_value ?? '' }}</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
@@ -97,9 +91,8 @@
                                 <span class="material-symbols-outlined text-4xl">settings_input_component</span>
                             </div>
                             <div>
-                                <p class="text-white text-3xl font-black">Fully Automated</p>
-                                <p class="text-white/70 text-sm uppercase tracking-wider">State-of-the-art
-                                    Machinery</p>
+                                <p class="text-white text-3xl font-black">{{ $production_factory_capacity->items->where('field_key', 'capacity_2_value')->first()->field_value ?? '' }}</p>
+                                <p class="text-white/70 text-sm uppercase tracking-wider">{{ $production_factory_capacity->items->where('field_key', 'capacity_2_label')->first()->field_value ?? '' }}</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
@@ -107,9 +100,8 @@
                                 <span class="material-symbols-outlined text-4xl">update</span>
                             </div>
                             <div>
-                                <p class="text-white text-3xl font-black">24 / 7</p>
-                                <p class="text-white/70 text-sm uppercase tracking-wider">Operational
-                                    Lifecycle</p>
+                                <p class="text-white text-3xl font-black">{{ $production_factory_capacity->items->where('field_key', 'capacity_3_value')->first()->field_value ?? '' }}</p>
+                                <p class="text-white/70 text-sm uppercase tracking-wider">{{ $production_factory_capacity->items->where('field_key', 'capacity_3_label')->first()->field_value ?? '' }}</p>
                             </div>
                         </div>
                     </div>
@@ -127,34 +119,31 @@
                 <div class="md:w-full">
                     <h2 class="text-primary text-center text-sm font-bold uppercase tracking-widest mb-3">{{ __('general.production_quality_control') }}</h2>
                     <h3 class="text-slate-900 text-4xl font-bold mb-6 leading-tight text-center">
-                        Rigorous Standards for Uncompromising Safety</h3>
+                        {{ $production_quality_control->items->where('field_key', 'title')->first()->field_value ?? '' }}
+                    </h3>
                     <p class="text-slate-600 text-lg mb-8">
-                        We don't just manufacture; we engineer safety. Our quality control lab conducts
-                        hourly stress tests to ensure your products reach consumers intact.
+                        {{ $production_quality_control->items->where('field_key', 'description')->first()->field_value ?? '' }}
                     </p>
                     <div class="space-y-6">
                         <div class="flex gap-4 p-4 bg-white rounded-lg shadow-sm">
                             <span class="material-symbols-outlined text-primary">fitness_center</span>
                             <div>
-                                <p class="font-bold">Weight Consistency</p>
-                                <p class="text-sm text-slate-500">Precise pulp density measurements within
-                                    0.1g tolerance.</p>
+                                <p class="font-bold">{{ $production_quality_control->items->where('field_key', 'check_1_title')->first()->field_value ?? '' }}</p>
+                                <p class="text-sm text-slate-500">{{ $production_quality_control->items->where('field_key', 'check_1_description')->first()->field_value ?? '' }}</p>
                             </div>
                         </div>
                         <div class="flex gap-4 p-4 bg-white rounded-lg shadow-sm">
                             <span class="material-symbols-outlined text-primary">bomb</span>
                             <div>
-                                <p class="font-bold">Drop Integrity Tests</p>
-                                <p class="text-sm text-slate-500">Multi-angle impact resistance verification
-                                    from 2-meter heights.</p>
+                                <p class="font-bold">{{ $production_quality_control->items->where('field_key', 'check_2_title')->first()->field_value ?? '' }}</p>
+                                <p class="text-sm text-slate-500">{{ $production_quality_control->items->where('field_key', 'check_2_description')->first()->field_value ?? '' }}</p>
                             </div>
                         </div>
                         <div class="flex gap-4 p-4 bg-white rounded-lg shadow-sm">
                             <span class="material-symbols-outlined text-primary">opacity</span>
                             <div>
-                                <p class="font-bold">Moisture Level Calibration</p>
-                                <p class="text-sm text-slate-500">Hygrometric sensors ensure optimal
-                                    humidity (below 8%).</p>
+                                <p class="font-bold">{{ $production_quality_control->items->where('field_key', 'check_3_title')->first()->field_value ?? '' }}</p>
+                                <p class="text-sm text-slate-500">{{ $production_quality_control->items->where('field_key', 'check_3_description')->first()->field_value ?? '' }}</p>
                             </div>
                         </div>
                     </div>
@@ -226,9 +215,9 @@
     </section>
     <section class="py-20 px-6 md:px-20 bg-primary/5">
         <div class="max-w-4xl mx-auto text-center">
-            <h3 class="text-3xl font-bold mb-8">{{ __('general.production_cta_title') }}</h3>
+            <h3 class="text-3xl font-bold mb-8">{{ $production_cta_section->items->where('field_key', 'title')->first()->field_value ?? '' }}</h3>
             <p class="text-slate-600 mb-10 text-lg">
-                {{ __('general.production_cta_subtitle') }}
+                {{ $production_cta_section->items->where('field_key', 'description')->first()->field_value ?? '' }}
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
