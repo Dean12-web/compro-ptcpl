@@ -18,8 +18,7 @@
                     <span
                         class="bg-primary text-white px-3 py-1 rounded text-xs font-bold uppercase tracking-widest mb-4 inline-block">Since
                         1995</span>
-                    <h1 class="text-white text-4xl md:text-6xl font-black tracking-tight max-w-2xl">Building
-                        the Future of Industrial Manufacturing</h1>
+                    <h1 class="text-white text-4xl md:text-6xl font-black tracking-tight max-w-4xl">{{ $about_hero->items->where('field_key', 'title')->first()->field_value ?? '' }}</h1>
                 </div>
             </div>
         </section>
@@ -28,32 +27,29 @@
                 <h2 class="text-primary text-sm font-bold uppercase tracking-widest mb-2">{{ __('general.about_company_profile') }}
                 </h2>
                 <h3 class="text-slate-900 text-3xl md:text-4xl font-black leading-tight mb-6">
-                    A Legacy of Innovation and Excellence.</h3>
+                    {{ $about_company_profile->items->where('field_key', 'title')->first()->field_value ?? '' }}
+                </h3>
                 <p class="text-slate-600 text-lg leading-relaxed mb-6">
-                    PT CPL stands at the forefront of the industrial manufacturing sector, providing
-                    integrated solutions that power global supply chains. For nearly three decades, we have
-                    evolved from a local parts manufacturer into a comprehensive industrial partner.
+                   {{ $about_company_profile->items->where('field_key', 'description_1')->first()->field_value ?? '' }}
                 </p>
                 <p class="text-slate-600 text-lg leading-relaxed">
-                    Our commitment to precision engineering and sustainable practices has made us a trusted
-                    name for Fortune 500 companies across aerospace, automotive, and renewable energy
-                    sectors.
+                   {{ $about_company_profile->items->where('field_key', 'description_2')->first()->field_value ?? '' }}
                 </p>
             </div>
             <div class="grid grid-cols-2 gap-4">
                 <div class="bg-primary/5 p-8 rounded-xl border border-primary/10">
                     <span class="material-symbols-outlined text-primary text-4xl mb-4">rocket_launch</span>
                     <h4 class="font-bold text-xl mb-2 text-slate-900">{{ __('general.about_mission') }}</h4>
-                    <p class="text-sm text-slate-600">To deliver precision-engineered
-                        industrial components while minimizing environmental impact through innovative
-                        manufacturing.</p>
+                    <p class="text-sm text-slate-600">
+                        {{ $about_company_profile->items->where('field_key', 'mission_description')->first()->field_value ?? '' }}
+                    </p>
                 </div>
                 <div class="bg-primary/5 p-8 rounded-xl border border-primary/10">
                     <span class="material-symbols-outlined text-primary text-4xl mb-4">visibility</span>
                     <h4 class="font-bold text-xl mb-2 text-slate-900">{{ __('general.about_vision') }}</h4>
-                    <p class="text-sm text-slate-600">To be the global benchmark for
-                        sustainable industrial excellence and the first choice for complex engineering
-                        challenges.</p>
+                    <p class="text-sm text-slate-600">
+                        {{ $about_company_profile->items->where('field_key', 'vision_description')->first()->field_value ?? '' }}
+                    </p>
                 </div>
             </div>
         </section>
@@ -71,8 +67,9 @@
                         <span class="material-symbols-outlined text-3xl">verified</span>
                     </div>
                     <h4 class="text-xl font-bold mb-3">{{ __('general.about_quality') }}</h4>
-                    <p class="text-slate-600">We adhere to the highest international
-                        standards, ensuring every product meeting our "Zero Defect" policy.</p>
+                    <p class="text-slate-600">
+                        {{ $about_core_values->items->where('field_key', 'value_1_description')->first()->field_value ?? '' }}
+                    </p>
                 </div>
                 <div
                     class="bg-white p-10 rounded-2xl shadow-sm border border-primary/5 text-center">
@@ -81,8 +78,9 @@
                         <span class="material-symbols-outlined text-3xl">eco</span>
                     </div>
                     <h4 class="text-xl font-bold mb-3">{{ __('general.about_sustainability') }}</h4>
-                    <p class="text-slate-600">Implementing circular economy principles
-                        and green energy in all our production facilities.</p>
+                    <p class="text-slate-600">
+                        {{ $about_core_values->items->where('field_key', 'value_2_description')->first()->field_value ?? '' }}
+                    </p>
                 </div>
                 <div
                     class="bg-white p-10 rounded-2xl shadow-sm border border-primary/5 text-center">
@@ -91,8 +89,9 @@
                         <span class="material-symbols-outlined text-3xl">gavel</span>
                     </div>
                     <h4 class="text-xl font-bold mb-3">{{ __('general.about_integrity') }}</h4>
-                    <p class="text-slate-600">Operating with absolute transparency and
-                        ethical standards in all business relationships and operations.</p>
+                    <p class="text-slate-600">
+                        {{ $about_core_values->items->where('field_key', 'value_3_description')->first()->field_value ?? '' }}
+                    </p>
                 </div>
             </div>
         </section>

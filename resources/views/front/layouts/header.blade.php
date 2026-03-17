@@ -1,5 +1,7 @@
 <header
-    class="flex items-center justify-between whitespace-nowrap border-b border-primary/10 bg-white/80 backdrop-blur-md px-6 md:px-20 py-4 sticky top-0 z-50">
+    class="flex items-center justify-between whitespace-nowrap border-b border-primary/10 bg-white/80 backdrop-blur-md px-6 md:px-20 py-4 sticky top-0 z-50"
+    x-data="{ current: '{{ Route::currentRouteName() }}' }"
+>
     <div class="flex items-center gap-3 text-primary">
         <div class="size-8">
             <img src="{{ asset('images/logo/icon_cpl.png') }}" alt="log_cendana_paper_egg_tray">
@@ -19,25 +21,35 @@
 
         </a>
     </div>
+    @php
+        $navLinks = [
+            'home' => __('general.home'),
+            'about' => __('general.about'),
+            'products' => __('general.products'),
+            'production' => __('general.production'),
+            'exports' => __('general.export'),
+            'sustainability' => __('general.sustainability'),
+            'gallery' => __('general.gallery'),
+        ];
+    @endphp
     <nav class="hidden lg:flex items-center gap-6">
-        <a class="text-slate-700 hover:text-primary text-sm font-semibold transition-colors"
-            href="{{ route('home', app()->getLocale()) }}">{{ __('general.home') }}</a>
-        <a class="text-slate-700 hover:text-primary text-sm font-semibold transition-colors"
-            href="{{ route('about', app()->getLocale()) }}">{{__('general.about')}}</a>
-        <a class="text-slate-700 hover:text-primary text-sm font-semibold transition-colors"
-            href="{{ route('products', app()->getLocale()) }}">{{__('general.products')}}</a>
-        <a class="text-slate-700 hover:text-primary text-sm font-semibold transition-colors"
-            href="{{ route('production', app()->getLocale()) }}">{{__('general.production')}}</a>
-        <a class="text-slate-700 hover:text-primary text-sm font-semibold transition-colors"
-            href="{{ route('exports', app()->getLocale()) }}">{{ __('general.export') }}</a>
-        <a class="text-slate-700 hover:text-primary text-sm font-semibold transition-colors"
-            href="{{ route('sustainability', app()->getLocale()) }}">{{__('general.sustainability')}}</a>
-        <a class="text-slate-700 hover:text-primary text-sm font-semibold transition-colors"
-            href="{{ route('gallery', app()->getLocale()) }}">{{__('general.gallery')}}</a>
+        @foreach ($navLinks as $name => $label)
+            <a
+                :class="current === '{{ $name }}' ? 'text-primary font-bold' : 'text-slate-700'"
+                class="hover:text-primary transition-colors text-sm font-semibold"
+                href="{{ route($name, app()->getLocale()) }}"
+            >
+                {{ $label }}
+            </a>
+        @endforeach
     </nav>
     <div class="flex items-center gap-3">
         <a href="{{ route('contact', app()->getLocale()) }}"
-            class="hidden sm:flex min-w-[100px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold transition-transform active:scale-95">
+            :class="[
+                'hidden sm:flex min-w-[100px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold transition-transform active:scale-95',
+                current === 'contact' ? 'ring-2 ring-offset-2 ring-primary/60 shadow-lg' : ''
+            ]"
+        >
             {{__('general.contact')}}
         </a>
         @php
