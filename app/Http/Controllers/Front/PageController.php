@@ -70,7 +70,50 @@ class PageController extends Controller
 
     public function exports($locale)
     {
-        return view('front.pages.export');
+        $export_hero = ContentBlock::where('key', 'export_hero')
+            ->where('locale', $locale)
+            ->where('is_active', true)
+            ->with('items')
+            ->first();
+
+        $export_stats = ContentBlock::where('key', 'export_stats')
+            ->where('locale', $locale)
+            ->where('is_active', true)
+            ->with('items')
+            ->first();
+
+        $export_markets = ContentBlock::where('key', 'export_markets')
+            ->where('locale', $locale)
+            ->where('is_active', true)
+            ->with('items')
+            ->first();
+        
+        $export_shipping = ContentBlock::where('key', 'shipping_methods')
+            ->where('locale', $locale)
+            ->where('is_active', true)
+            ->with('items')
+            ->first();
+        
+        $export_lead_times = ContentBlock::where('key', 'lead_times')
+            ->where('locale', $locale)
+            ->where('is_active', true)
+            ->with('items')
+            ->first();
+
+        $export_packaging = ContentBlock::where('key', 'packaging_standards')
+            ->where('locale', $locale)
+            ->where('is_active', true)
+            ->with('items')
+            ->first();
+        
+        $export_cta = ContentBlock::where('key', 'export_cta')
+            ->where('locale', $locale)
+            ->where('is_active', true)
+            ->with('items')
+            ->first();
+
+        
+        return view('front.pages.export', compact('export_hero', 'export_stats', 'export_markets', 'export_shipping', 'export_lead_times', 'export_packaging', 'export_cta'));
     }
 
     public function sustainability($locale)

@@ -69,6 +69,11 @@ return  [
     'export_shipping_title' => 'Metode Pengiriman Fleksibel',
     'export_shipping_subtitle' => 'Kami menawarkan berbagai metode pengiriman termasuk laut, udara, dan darat untuk memenuhi kebutuhan logistik Anda. Tim ekspor kami bekerja sama dengan mitra pengiriman terpercaya untuk memastikan pengiriman tepat waktu',
     'export_cta_title' => 'Siap Mengirim?',
+    'export_estimate_lead_times' => 'Estimasi Waktu Pengiriman',
+    'export_region' => 'Wilayah',
+    'export_ports' => 'Pelabuhan',
+    'export_transit_time' => 'Waktu Transit (Hari)',
+    'export_notes'=> 'Catatan: Waktu transit dapat bervariasi tergantung pada kondisi cuaca, kemacetan pelabuhan, dan faktor eksternal lainnya.',
     'export_cta_subtitle' => 'Hubungi tim ekspor kami untuk penawaran detail termasuk estimasi freight ke pelabuhan tujuan Anda. Kami merespons dalam 24 jam.',
     'export_cta_button_2' => 'Hubungi Sales',
 

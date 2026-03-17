@@ -69,8 +69,12 @@ return  [
     'export_hero_button' => 'Worldwide Shipping',
     'export_shipping_title' => 'Flexible Shipping Methods',
     'export_shipping_subtitle' => 'We offer versatile shipping solutions tailored to your volume requirements, ensuring cost-effectiveness and product safety.',
-    'export_cta_title' => 'Ready to Ship?',
-    'export_cta_subtitle' => 'Contact our export team for a detailed quote including freight estimates to your destination port. We respond within 24 hours.',
+    'export_estimate_lead_times' => 'Estimated Lead Times',
+    'export_region' => 'Region',
+    'export_ports' => 'Ports',
+    'export_transit_time' => 'Transit Time (Days)',
+    'export_notes' => 'Transit times are estimates port-to-port and subject to vessel schedules and customs clearance.
+',
     'export_cta_button_2' => 'Contact Sales',
 
     //Sustainability

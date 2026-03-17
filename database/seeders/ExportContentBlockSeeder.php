@@ -10,7 +10,7 @@ class ExportContentBlockSeeder extends Seeder
 {
     public function run(): void
     {
-        $locales = ['en','id'];
+        $locales = ['en', 'id'];
 
         foreach ($locales as $locale) {
 
@@ -26,13 +26,9 @@ class ExportContentBlockSeeder extends Seeder
                 'is_active' => true
             ]);
 
-            $this->createItems($hero->id,[
-                ['badge','Badge','text'],
-                ['title','Title','text'],
-                ['description','Description','textarea'],
-                ['hero_image','Hero Image','image'],
-                ['button_text','Button Text','text'],
-                ['button_link','Button Link','link'],
+            $this->createItems($hero->id, [
+                ['title', 'Title', 'text'],
+                ['description', 'Description', 'textarea'],
             ]);
 
 
@@ -48,12 +44,11 @@ class ExportContentBlockSeeder extends Seeder
                 'is_active' => true
             ]);
 
-            for($i=1;$i<=3;$i++){
-                $this->createItems($stats->id,[
-                    ["stat_{$i}_icon","Stat {$i} Icon",'text'],
-                    ["stat_{$i}_title","Stat {$i} Title",'text'],
-                    ["stat_{$i}_value","Stat {$i} Value",'number'],
-                    ["stat_{$i}_description","Stat {$i} Description",'text'],
+            for ($i = 1; $i <= 3; $i++) {
+                $this->createItems($stats->id, [
+                    ["stat_{$i}_title", "Stat {$i} Title", 'text'],
+                    ["stat_{$i}_value", "Stat {$i} Value", 'number'],
+                    ["stat_{$i}_description", "Stat {$i} Description", 'text'],
                 ]);
             }
 
@@ -70,15 +65,14 @@ class ExportContentBlockSeeder extends Seeder
                 'is_active' => true
             ]);
 
-            $this->createItems($markets->id,[
-                ['title','Title','text'],
-                ['description','Description','textarea'],
-                ['map_image','Map Image','image'],
+            $this->createItems($markets->id, [
+                ['title', 'Title', 'text'],
+                ['description', 'Description', 'textarea'],
 
-                ['market_1','Market 1','text'],
-                ['market_2','Market 2','text'],
-                ['market_3','Market 3','text'],
-                ['market_4','Market 4','text'],
+                ['market_1', 'Market 1', 'text'],
+                ['market_2', 'Market 2', 'text'],
+                ['market_3', 'Market 3', 'text'],
+                ['market_4', 'Market 4', 'text'],
             ]);
 
 
@@ -93,12 +87,13 @@ class ExportContentBlockSeeder extends Seeder
                 'locale' => $locale,
                 'is_active' => true
             ]);
-
-            for($i=1;$i<=3;$i++){
-                $this->createItems($shipping->id,[
-                    ["shipping_{$i}_icon","Shipping {$i} Icon",'text'],
-                    ["shipping_{$i}_title","Shipping {$i} Title",'text'],
-                    ["shipping_{$i}_description","Shipping {$i} Description",'textarea'],
+            $this->createItems($shipping->id, [
+                ["shipping_subtitle", "Shipping Subtitle", 'textarea'],
+            ]);
+            for ($i = 1; $i <= 3; $i++) {
+                $this->createItems($shipping->id, [
+                    ["shipping_{$i}_title", "Shipping {$i} Title", 'text'],
+                    ["shipping_{$i}_description", "Shipping {$i} Description", 'textarea']
                 ]);
             }
 
@@ -115,18 +110,15 @@ class ExportContentBlockSeeder extends Seeder
                 'is_active' => true
             ]);
 
-            for($i=1;$i<=4;$i++){
-                $this->createItems($lead->id,[
-                    ["region_{$i}","Region {$i}",'text'],
-                    ["ports_{$i}","Ports {$i}",'text'],
-                    ["transit_time_{$i}","Transit Time {$i}",'text'],
+            for ($i = 1; $i <= 4; $i++) {
+                $this->createItems($lead->id, [
+                    ["region_{$i}", "Region {$i}", 'text'],
+                    ["ports_{$i}", "Ports {$i}", 'text'],
+                    ["transit_time_{$i}", "Transit Time {$i}", 'text'],
                 ]);
             }
 
 
-            /*
-            PACKAGING STANDARDS
-            */
             $packaging = ContentBlock::create([
                 'key' => 'packaging_standards',
                 'block_type' => 'multiple',
@@ -135,12 +127,15 @@ class ExportContentBlockSeeder extends Seeder
                 'locale' => $locale,
                 'is_active' => true
             ]);
+            $this->createItems($packaging->id, [
+                ["packaging_subtitle", "Packaging Subtitle", 'textarea'],
+            ]);
 
-            for($i=1;$i<=2;$i++){
-                $this->createItems($packaging->id,[
-                    ["packaging_{$i}_image","Packaging {$i} Image",'image'],
-                    ["packaging_{$i}_title","Packaging {$i} Title",'text'],
-                    ["packaging_{$i}_description","Packaging {$i} Description",'textarea'],
+            for ($i = 1; $i <= 2; $i++) {
+                $this->createItems($packaging->id, [
+                    ["packaging_{$i}_image", "Packaging {$i} Image", 'image'],
+                    ["packaging_{$i}_title", "Packaging {$i} Title", 'text'],
+                    ["packaging_{$i}_description", "Packaging {$i} Description", 'textarea'],
                 ]);
             }
 
@@ -157,24 +152,19 @@ class ExportContentBlockSeeder extends Seeder
                 'is_active' => true
             ]);
 
-            $this->createItems($cta->id,[
-                ['title','Title','text'],
-                ['description','Description','textarea'],
-                ['button_primary_text','Primary Button Text','text'],
-                ['button_primary_link','Primary Button Link','link'],
-                ['button_secondary_text','Secondary Button Text','text'],
-                ['button_secondary_link','Secondary Button Link','link'],
+            $this->createItems($cta->id, [
+                ['title', 'Title', 'text'],
+                ['description', 'Description', 'textarea'],
             ]);
-
         }
     }
 
 
-    private function createItems($blockId,$fields)
+    private function createItems($blockId, $fields)
     {
         $order = 1;
 
-        foreach ($fields as $field){
+        foreach ($fields as $field) {
 
             ContentBlockItem::create([
                 'block_id' => $blockId,
@@ -184,7 +174,6 @@ class ExportContentBlockSeeder extends Seeder
                 'field_value' => null,
                 'sort_order' => $order++
             ]);
-
         }
     }
 }
