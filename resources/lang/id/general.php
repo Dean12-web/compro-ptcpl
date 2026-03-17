@@ -26,6 +26,12 @@ return  [
     'contact_email_us' => 'Email Kami',
     'contact_phone_us' => 'Hubungi Kami',
 
+    //Home
+    'home_quote_button' => 'Minta Penawaran',
+    'home_products_button' => 'Produk Kami',
+    'home_request_title' => 'Minta Penawaran',
+    'home_request_button' => 'Kirim Pesan',
+
 
     //About Us
     'about_company_profile' => 'Profil Perusahaan',

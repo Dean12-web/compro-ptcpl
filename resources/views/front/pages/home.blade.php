@@ -13,24 +13,22 @@
                     <div
                         class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
                         <span class="material-symbols-outlined text-sm">eco</span>
-                        Leading Eco-Friendly Manufacturer
+                        {{ $home_hero->items->firstWhere('field_key', 'badge')?->field_value }}
                     </div>
                     <h1 class="text-slate-900 text-5xl md:text-7xl font-black leading-[1.1] tracking-tight">
-                        Sustainable Packaging for <span class="text-primary">Global Markets</span>
+                        {{ $home_hero->items->firstWhere('field_key', 'title')?->field_value }}
                     </h1>
                     <p class="text-slate-600 text-lg md:text-xl max-w-xl leading-relaxed">
-                        PT CPL is Indonesia's premier egg tray manufacturer, delivering high-quality, 100%
-                        recycled paper packaging solutions to industries worldwide.
+                        {{ $home_hero->items->firstWhere('field_key', 'description')?->field_value }}
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <button
+                        <a href="#quotation"
                             class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-primary text-white text-base font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
-                            Request a Quote
-                        </button>
-                        <button
-                            class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-white border-2 border-slate-200 text-slate-900 text-base font-bold hover:bg-slate-50 transition-all">
-                            Our Products
-                        </button>
+                            {{__('general.home_quote_button')}}
+                        </a>
+                        <a href="{{ route('products',app()->getLocale()) }}" class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-white border-2 border-slate-200 text-slate-900 text-base font-bold hover:bg-slate-50 transition-all">
+                            {{__('general.home_products_button')}}
+                        </a>
                     </div>
                 </div>
                 <div class="flex-1 w-full">
@@ -58,12 +56,11 @@
                         <span class="material-symbols-outlined text-3xl">factory</span>
                     </div>
                     <div>
-                        <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-1">Production
-                            Capacity</p>
-                        <p class="text-slate-900 text-3xl font-black">500,000+ Units</p>
+                        <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-1">{{ $home_highlight->items->firstWhere('field_key', 'item_1_title')?->field_value }}</p>
+                        <p class="text-slate-900 text-3xl font-black">{{ $home_highlight->items->firstWhere('field_key', 'item_1_value')?->field_value }}</p>
                         <div class="mt-2 flex items-center gap-1 text-emerald-600 font-bold text-sm">
                             <span class="material-symbols-outlined text-sm">trending_up</span>
-                            <span>Scale-ready infrastructure</span>
+                            <span>{{ $home_highlight->items->firstWhere('field_key', 'item_1_description')?->field_value }}</span>
                         </div>
                     </div>
                 </div>
@@ -72,12 +69,12 @@
                         <span class="material-symbols-outlined text-3xl">public</span>
                     </div>
                     <div>
-                        <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-1">Export Network
+                        <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-1">{{ $home_highlight->items->firstWhere('field_key', 'item_2_title')?->field_value }}</p>
                         </p>
-                        <p class="text-slate-900 text-3xl font-black">20+ Countries</p>
+                        <p class="text-slate-900 text-3xl font-black">{{ $home_highlight->items->firstWhere('field_key', 'item_2_value')?->field_value }}</p>
                         <div class="mt-2 flex items-center gap-1 text-emerald-600 font-bold text-sm">
                             <span class="material-symbols-outlined text-sm">language</span>
-                            <span>Across 4 continents</span>
+                            <span>{{ $home_highlight->items->firstWhere('field_key', 'item_2_description')?->field_value }}</span>
                         </div>
                     </div>
                 </div>
@@ -86,12 +83,11 @@
                         <span class="material-symbols-outlined text-3xl">verified</span>
                     </div>
                     <div>
-                        <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-1">Industry
-                            Presence</p>
-                        <p class="text-slate-900 text-3xl font-black">15+ Years</p>
+                        <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-1">{{ $home_highlight->items->firstWhere('field_key', 'item_3_title')?->field_value }}</p>
+                        <p class="text-slate-900 text-3xl font-black">{{ $home_highlight->items->firstWhere('field_key', 'item_3_value')?->field_value }}</p>
                         <div class="mt-2 flex items-center gap-1 text-emerald-600 font-bold text-sm">
                             <span class="material-symbols-outlined text-sm">workspace_premium</span>
-                            <span>Certified Quality Standards</span>
+                            <span>{{ $home_highlight->items->firstWhere('field_key', 'item_3_description')?->field_value }}</span>
                         </div>
                     </div>
                 </div>
@@ -102,42 +98,17 @@
         <div class="max-w-7xl mx-auto px-6 md:px-20">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                 <div class="max-w-2xl">
-                    <h2 class="text-slate-900 text-4xl font-black tracking-tight mb-4">Global Reach &amp;
-                        Logistics</h2>
-                    <p class="text-slate-600 text-lg">Strategically located in Indonesia, our manufacturing hub
-                        serves major markets across Asia, Australia, and the Middle East with efficient
-                        logistics and timely delivery.</p>
-                </div>
-                <div class="flex gap-4">
-                    <div class="flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-lg text-slate-700 font-bold text-sm">
-                        <span class="size-2 rounded-full bg-primary"></span>
-                        Headquarters
-                    </div>
-                    <div class="flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-lg text-slate-700 font-bold text-sm">
-                        <span class="size-2 rounded-full bg-accent"></span>
-                        Major Ports
-                    </div>
+                    <h2 class="text-slate-900 text-4xl font-black tracking-tight mb-4">{{ $home_global_reach->items->firstWhere('field_key', 'title')?->field_value }}</h2>
+                    <p class="text-slate-600 text-lg">{{ $home_global_reach->items->firstWhere('field_key', 'description')?->field_value }}</p>
                 </div>
             </div>
             <div
                 class="w-full bg-slate-100 aspect-video md:aspect-[21/9] rounded-2xl overflow-hidden border border-slate-200 relative group shadow-inner">
                 <div class="absolute inset-0 bg-cover bg-center opacity-80"
                     data-alt="Abstract world map showing shipping routes and global connections" data-location="World Map"
-                    style="background-image: url('https://placeholder.pics/svg/300')">
+                     style="background-image: url('{{ asset('images/globe-cpl.png') }}')">
                 </div>
                 <div class="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent"></div>
-                <div class="absolute top-1/2 left-1/4 group-hover:scale-110 transition-transform cursor-pointer">
-                    <div class="relative">
-                        <span class="flex h-4 w-4">
-                            <span
-                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-4 w-4 bg-primary"></span>
-                        </span>
-                        <div
-                            class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white px-3 py-1 rounded shadow text-[10px] font-bold whitespace-nowrap">
-                            Production Hub</div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -145,59 +116,50 @@
         <div class="max-w-7xl mx-auto px-6 md:px-20">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="flex flex-col gap-8">
-                    <h2 class="text-4xl md:text-5xl font-black leading-tight">Ready to switch to sustainable
-                        packaging?</h2>
+                    <h2 class="text-4xl md:text-5xl font-black leading-tight">{{ $home_cta_->items->firstWhere('field_key', 'title')?->field_value }}</h2>
                     <p class="text-white/80 text-lg leading-relaxed">
-                        Get in touch with our export specialists to discuss your requirements, custom tray
-                        designs, or bulk order pricing. We provide end-to-end support for global logistics.
+                       {{ $home_cta_->items->firstWhere('field_key', 'description')?->field_value }}
                     </p>
                     <div class="flex flex-col gap-4">
                         <div class="flex items-center gap-4">
                             <div class="size-10 rounded-full bg-white/10 flex items-center justify-center">
                                 <span class="material-symbols-outlined">mail</span>
                             </div>
-                            <span class="text-lg font-medium">sales@ptcpl.com</span>
+                            <span class="text-lg font-medium">{{ $setting->company_email }}</span>
                         </div>
                         <div class="flex items-center gap-4">
                             <div class="size-10 rounded-full bg-white/10 flex items-center justify-center">
                                 <span class="material-symbols-outlined">call</span>
                             </div>
-                            <span class="text-lg font-medium">+62 21 5555 1234</span>
+                            <span class="text-lg font-medium">{{ $setting->company_phone }}</span>
                         </div>
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl p-8 md:p-10 shadow-2xl">
-                    <h3 class="text-slate-900 text-2xl font-bold mb-6">Request Quotation</h3>
+                <div class="bg-white rounded-2xl p-8 md:p-10 shadow-2xl" id="quotation">
+                    <h3 class="text-slate-900 text-2xl font-bold mb-6">{{ __('general.home_request_title') }}</h3>
                     <form class="space-y-4">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="flex flex-col gap-1">
-                                <label class="text-slate-500 text-xs font-bold uppercase tracking-widest">Full
-                                    Name</label>
+                                <label class="text-slate-500 text-xs font-bold uppercase tracking-widest">{{ __('general.full_name') }}</label>
                                 <input
                                     class="w-full rounded-lg border-slate-200 focus:border-primary focus:ring-primary text-slate-900"
                                     placeholder="John Doe" type="text" />
                             </div>
                             <div class="flex flex-col gap-1">
-                                <label class="text-slate-500 text-xs font-bold uppercase tracking-widest">Company
-                                    Email</label>
+                                <label class="text-slate-500 text-xs font-bold uppercase tracking-widest">{{ __('general.email_address') }}</label>
                                 <input
                                     class="w-full rounded-lg border-slate-200 focus:border-primary focus:ring-primary text-slate-900"
                                     placeholder="john@company.com" type="email" />
                             </div>
                         </div>
                         <div class="flex flex-col gap-1">
-                            <label class="text-slate-500 text-xs font-bold uppercase tracking-widest">Inquiry
-                                Type</label>
-                            <select
-                                class="w-full rounded-lg border-slate-200 focus:border-primary focus:ring-primary text-slate-900">
-                                <option>Bulk Order (Export)</option>
-                                <option>Domestic Supply</option>
-                                <option>Custom Manufacturing</option>
-                                <option>Others</option>
-                            </select>
+                            <label class="text-slate-500 text-xs font-bold uppercase tracking-widest">{{ __('general.country') }}</label>
+                            <input
+                                    class="w-full rounded-lg border-slate-200 focus:border-primary focus:ring-primary text-slate-900"
+                                    placeholder="Indoneia" type="text" />
                         </div>
                         <div class="flex flex-col gap-1">
-                            <label class="text-slate-500 text-xs font-bold uppercase tracking-widest">Message</label>
+                            <label class="text-slate-500 text-xs font-bold uppercase tracking-widest">{{__('general.inquiry_message')}}</label>
                             <textarea
                                 class="w-full rounded-lg border-slate-200 focus:border-primary focus:ring-primary text-slate-900"
                                 placeholder="How can we help you?" rows="4"></textarea>
@@ -205,7 +167,7 @@
                         <button
                             class="w-full rounded-lg bg-accent text-white h-14 font-black text-lg shadow-lg hover:bg-accent/90 transition-all uppercase tracking-widest"
                             type="submit">
-                            Send Request
+                            {{ __('general.home_request_button') }}
                         </button>
                     </form>
                 </div>

@@ -31,14 +31,7 @@ class ContentBlockSeeder extends Seeder
             $this->createItems($hero->id,[
                 ['badge','Badge','text'],
                 ['title','Title','text'],
-                ['description','Description','textarea'],
-                ['button_primary_text','Primary Button Text','text'],
-                ['button_primary_link','Primary Button Link','link'],
-                ['button_secondary_text','Secondary Button Text','text'],
-                ['button_secondary_link','Secondary Button Link','link'],
-                ['hero_image','Hero Image','image'],
-                ['daily_output','Daily Output','number'],
-                ['daily_output_label','Daily Output Label','text'],
+                ['description','Description','textarea']
             ]);
 
 
@@ -61,8 +54,7 @@ class ContentBlockSeeder extends Seeder
                 $this->createItems($highlight->id,[
                     ["item_{$i}_title","Item {$i} Title",'text'],
                     ["item_{$i}_value","Item {$i} Value",'text'],
-                    ["item_{$i}_description","Item {$i} Description",'text'],
-                    ["item_{$i}_icon","Item {$i} Icon",'text'],
+                    ["item_{$i}_description","Item {$i} Description",'text']
                 ]);
             }
 
@@ -84,7 +76,6 @@ class ContentBlockSeeder extends Seeder
             $this->createItems($global->id,[
                 ['title','Title','text'],
                 ['description','Description','textarea'],
-                ['map_image','Map Image','image'],
             ]);
 
 
@@ -105,8 +96,6 @@ class ContentBlockSeeder extends Seeder
             $this->createItems($contact->id,[
                 ['title','Title','text'],
                 ['description','Description','textarea'],
-                ['email','Email','text'],
-                ['phone','Phone','text'],
             ]);
         }
     }

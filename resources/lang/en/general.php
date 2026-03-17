@@ -16,6 +16,13 @@ return  [
     'phone_number' => 'Phone Number',
     'inquiry_message' => 'Your Message',
     'placeholder_message' => 'Type your message here...',
+
+    //Home
+    'home_quote_button' => 'Request a Quote',
+    'home_products_button' => 'Our Products',
+
+    'home_request_title' => 'Request Quotation',
+    'home_request_button' => 'Send Request',
     
     //Contact Hero
     'contact_hero_title' => 'Contact Our Team',
