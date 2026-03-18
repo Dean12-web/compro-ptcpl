@@ -153,13 +153,6 @@
 
             </template>
 
-            <button x-show="block_type === 'multiple'" type="button" @click="addField()"
-                class="mt-4 bg-primary text-white px-4 py-2 rounded-lg text-sm">
-
-                + Tambah Field
-
-            </button>
-
         </div>
 
 

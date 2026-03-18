@@ -94,11 +94,7 @@ return  [
 
     //Gallery
     'gallery_hero_banner' => 'Tur Visual',
-    'gallery_hero_title' => 'Fasilitas & Operasi Kami',
-    'gallery_factory_title' => 'Fasilitas Pabrik',
-    'gallery_production_title' => 'Proses Produksi',
-    'gallery_packaging_title' => 'Pengemasan',
-    'gallery_quality_title' => 'Kontrol Kualitas',
+
 
     //Footer
     'footer_quick_links' => 'Tautan Cepat',

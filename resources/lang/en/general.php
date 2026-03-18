@@ -94,11 +94,7 @@ return  [
 
     //Gallery
     'gallery_hero_banner' => 'Visual Tour',
-    'gallery_hero_title' => 'Our Facilities & Operations',
-    'gallery_factory_title' => 'Factory Facilities',
-    'gallery_production_title' => 'Production Process',
-    'gallery_packaging_title' => 'Packaging',
-    'gallery_quality_title' => 'Quality Control',
+
 
 
     //Footer

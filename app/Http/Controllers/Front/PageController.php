@@ -147,7 +147,39 @@ class PageController extends Controller
 
     public function gallery($locale)
     {
-        return view('front.pages.gallery');
+        $gallery_hero = ContentBlock::where('key', 'gallery_hero_section')
+            ->where('locale', $locale)
+            ->where('is_active', true)
+            ->with('items')
+            ->first();
+        // dd($gallery_hero->items->where('field_key', 'hero_image')->first()->field_value);
+        
+        $gallery_factory = ContentBlock::where('key', 'gallery_factory_facilities_section')
+            ->where('locale', $locale)
+            ->where('is_active', true)
+            ->with('items')
+            ->first();
+        
+        $gallery_production = ContentBlock::where('key', 'gallery_production_process_section')
+            ->where('locale', $locale)
+            ->where('is_active', true)
+            ->with('items')
+            ->first();
+
+        $gallery_packaging = ContentBlock::where('key', 'gallery_packaging_loading_section')
+            ->where('locale', $locale)
+            ->where('is_active', true)
+            ->with('items')
+            ->first();
+        
+        $gallery_qc = ContentBlock::where('key', 'gallery_quality_control_section')
+            ->where('locale', $locale)
+            ->where('is_active', true)
+            ->with('items')
+            ->first();
+        
+
+        return view('front.pages.gallery',compact('gallery_hero','gallery_factory','gallery_production','gallery_packaging','gallery_qc'));
     }
 
 }

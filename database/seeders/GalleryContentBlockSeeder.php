@@ -27,7 +27,6 @@ class GalleryContentBlockSeeder extends Seeder
             ]);
 
             $this->createItems($hero->id,[
-                ['badge','Badge','text'],
                 ['title','Title','text'],
                 ['description','Description','textarea'],
                 ['hero_image','Hero Image','image']
@@ -46,12 +45,17 @@ class GalleryContentBlockSeeder extends Seeder
                 'is_active' => true
             ]);
 
+            $this->createItems($factory->id,[
+                ['factory_facilities_title','Factory Facilities Title','text'],
+                ['factory_facilities_subtitle','Factory Facilities Subtitle','textarea'],
+            ]);
+
             for($i=1;$i<=3;$i++){
 
                 $this->createItems($factory->id,[
-                    ["facility_{$i}_image","Facility {$i} Image",'image'],
-                    ["facility_{$i}_title","Facility {$i} Title",'text'],
-                    ["facility_{$i}_description","Facility {$i} Description",'textarea'],
+                    ["factory_facility_{$i}_image","Factory Facility {$i} Image",'image'],
+                    ["factory_facility_{$i}_section","Factory Facility {$i} Section",'text'],
+                    ["factory_facility_{$i}_description","Factory Facility {$i} Description",'textarea'],
                 ]);
             }
 
@@ -68,12 +72,17 @@ class GalleryContentBlockSeeder extends Seeder
                 'is_active' => true
             ]);
 
+            $this->createItems($process->id,[
+                ['production_process_title','Production Process Title','text'],
+                ['production_process_subtitle','Production Process Subtitle','textarea'],
+            ]);
+
             for($i=1;$i<=4;$i++){
 
                 $this->createItems($process->id,[
-                    ["process_{$i}_image","Process {$i} Image",'image'],
-                    ["process_{$i}_title","Process {$i} Title",'text'],
-                    ["process_{$i}_description","Process {$i} Description",'textarea'],
+                    ["production_process_{$i}_image","Production Process {$i} Image",'image'],
+                    ["production_process_{$i}_section","Production Process {$i} Section",'text'],
+                    ["production_process_{$i}_description","Production Process {$i} Description",'textarea'],
                 ]);
             }
 
@@ -90,12 +99,39 @@ class GalleryContentBlockSeeder extends Seeder
                 'is_active' => true
             ]);
 
+            $this->createItems($packaging->id,[
+                ['packaging_title','Packaging Title','text'],
+                ['packaging_subtitle','Packaging Subtitle','textarea'],
+            ]);
+
             for($i=1;$i<=2;$i++){
 
                 $this->createItems($packaging->id,[
                     ["packaging_{$i}_image","Packaging {$i} Image",'image'],
-                    ["packaging_{$i}_title","Packaging {$i} Title",'text'],
+                    ["packaging_{$i}_section","Packaging {$i} Section",'text'],
                     ["packaging_{$i}_description","Packaging {$i} Description",'textarea'],
+                ]);
+            }
+
+             $quality_control = ContentBlock::create([
+                'key' => 'gallery_quality_control_section',
+                'block_type' => 'multiple',
+                'title' => 'GALLERY',
+                'sort_order' => 5,
+                'locale' => $locale,
+                'is_active' => true
+            ]);
+
+            $this->createItems($quality_control->id,[
+                ['quality_control_title','Quality Control Title','text'],
+                ['quality_control_subtitle','Quality Control Subtitle','textarea'],
+            ]);
+
+            for($i=1;$i<=2;$i++){
+
+                $this->createItems($quality_control->id,[
+                    ["quality_{$i}_image","Quality Control {$i} Image",'image'],
+                    ["quality_{$i}_description","Quality Control {$i} Description",'textarea'],
                 ]);
             }
 
