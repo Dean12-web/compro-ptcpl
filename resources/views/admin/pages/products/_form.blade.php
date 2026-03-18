@@ -330,7 +330,7 @@
                     formData.append('images[]', file)
                 })
 
-                let url = '/cpl-admin/products-data'
+                let url = '/cpl-admin/products'
                 let method = 'POST'
 
                 if (this.mode === 'edit') {

@@ -9,6 +9,21 @@ return  [
     'sustainability' => 'Keberlanjutan',
     'contact' => 'Kontak',
 
+    'all_materials' => 'Semua Material',
+    'all_capacity' => 'Semua Kapasitas',
+    'eggs' => 'Telur',
+    'newest' => 'Terbaru',
+    'oldest' => 'Terlama',
+    'name_asc' => 'Nama A-Z',
+    'name_desc' => 'Nama Z-A',
+
+    'paper-pulp' => 'Pulp Kertas',
+    'plastic-egg-tray' => 'Rak Telur Plastik',
+    'styrofoam-tray' => 'Rak Telur Styrofoam',
+    'natural-fiber' => 'Serat Alami',
+
+    'view_details' => 'Lihat Detail',
+
     'full_name' => 'Nama Lengkap',
     'company_name' => 'Nama Perusahaan',
     'country' => 'Negara',
@@ -44,9 +59,7 @@ return  [
     'about_integrity' => 'Integritas',
 
     //Product
-    'product_hero_title' => 'Kemasan Industri',
-    'product_hero_subtitle' => 'Solusi Egg Tray',
-    'product_hero_content' => 'Trays dengan daya tahan tinggi dan ramah lingkungan yang dirancang untuk logistik global dan tampilan ritel. Menciptakan masa depan transportasi telur yang aman.',
+
 
     //Production
     'production_work_flow' => 'Alur Kerja Kami',
@@ -73,7 +86,7 @@ return  [
     'export_region' => 'Wilayah',
     'export_ports' => 'Pelabuhan',
     'export_transit_time' => 'Waktu Transit (Hari)',
-    'export_notes'=> 'Catatan: Waktu transit dapat bervariasi tergantung pada kondisi cuaca, kemacetan pelabuhan, dan faktor eksternal lainnya.',
+    'export_notes' => 'Catatan: Waktu transit dapat bervariasi tergantung pada kondisi cuaca, kemacetan pelabuhan, dan faktor eksternal lainnya.',
     'export_cta_subtitle' => 'Hubungi tim ekspor kami untuk penawaran detail termasuk estimasi freight ke pelabuhan tujuan Anda. Kami merespons dalam 24 jam.',
     'export_cta_button_2' => 'Hubungi Sales',
 

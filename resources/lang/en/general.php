@@ -9,6 +9,21 @@ return  [
     'sustainability' => 'Sustainability',
     'contact' => 'Contact',
 
+    'all_materials' => 'All Materials',
+    'all_capacity' => 'All Capacity',
+    'eggs' => 'Eggs',
+    'newest' => 'Newest',
+    'oldest' => 'Oldest',
+    'name_asc' => 'Name A-Z',
+    'name_desc' => 'Name Z-A',
+
+    'paper-pulp' => 'Paper Pulp',
+    'plastic-egg-tray' => 'Plastic Egg Tray',
+    'styrofoam-tray' => 'Styrofoam Tray',
+    'natural-fiber' => 'Natural Fiber',
+
+    'view_details' => 'View Details',
+
     'full_name' => 'Full Name',
     'company_name' => 'Company Name',
     'country' => 'Country',
@@ -45,9 +60,7 @@ return  [
     'about_integrity' => 'Integrity',
 
     //Product
-    'product_hero_title' => 'Industrial Packaging',
-    'product_hero_subtitle' => 'Egg Tray Solutions',
-    'product_hero_content' => 'High-durability, eco-conscious trays designed for global logistics and retail display. Engineering the future of safe egg transportation.',
+    
 
     //Production
     'production_work_flow' => 'Our Workflow',

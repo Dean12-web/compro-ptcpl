@@ -97,8 +97,17 @@ class ProductController extends Controller
             }
         }
 
-        return redirect()->route('products.index')
-            ->with('success', 'Produk berhasi dibuat!');
+        // if ($request->wantsJson()) {
+        //     return response()->json([
+        //         'success' => true,
+        //         'message' => 'Produk berhasil dibuat'
+        //     ], 201);
+        // }
+
+        return response()->json([
+                'success' => true,
+                'message' => 'Produk berhasil dibuat'
+            ], 201);
     }
 
     /**
