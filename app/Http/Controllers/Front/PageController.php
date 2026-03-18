@@ -118,7 +118,31 @@ class PageController extends Controller
 
     public function sustainability($locale)
     {
-        return view('front.pages.sustainability');
+        $sustainability_hero = ContentBlock::where('key', 'sustainability_hero_section')
+            ->where('locale', $locale)
+            ->where('is_active', true)
+            ->with('items')
+            ->first();
+
+        $sustainability_conscious_sourcing = ContentBlock::where('key', 'sustainability_conscious_sourcing_section')
+            ->where('locale', $locale)
+            ->where('is_active', true)
+            ->with('items')
+            ->first();
+
+        $sustainability_circular_production = ContentBlock::where('key', 'sustainability_circular_production_section')
+            ->where('locale', $locale)
+            ->where('is_active', true)
+            ->with('items')
+            ->first();
+
+        $sustainability_cta = ContentBlock::where('key', 'sustainability_cta_section')
+            ->where('locale', $locale)
+            ->where('is_active', true)
+            ->with('items')
+            ->first();  
+
+        return view('front.pages.sustainability', compact('sustainability_hero', 'sustainability_conscious_sourcing', 'sustainability_circular_production', 'sustainability_cta'));
     }
 
     public function gallery($locale)

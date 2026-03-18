@@ -90,6 +90,7 @@ return  [
     'sustainability_production_content_3' => 'Forming',
     'sustainability_production_content_4' => 'Drying',
     'sustainability_packaging_title' => 'Packaging Standards',
+    'sustainbility_cta_button' => 'Contact Team',
 
     //Gallery
     'gallery_hero_banner' => 'Visual Tour',

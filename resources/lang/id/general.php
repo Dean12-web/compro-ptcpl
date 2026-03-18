@@ -90,6 +90,7 @@ return  [
     'sustainability_production_content_3' => 'Pembentukan',
     'sustainability_production_content_4' => 'Pengeringan',
     'sustainability_packaging_title' => 'Standar Pengemasan',
+    'sustainbility_cta_button' => 'Hubungi Tim',
 
     //Gallery
     'gallery_hero_banner' => 'Tur Visual',
