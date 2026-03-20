@@ -32,7 +32,7 @@
 <body class="bg-background-light font-display text-slate-900 antialiased">
     <div class="layout-container flex h-full grow flex-col">
         @include('front.layouts.header')
-        <main class="flex flex-col flex-1">
+        <main class="flex flex-col flex-1" style="padding-top: var(--front-header-height, 4.5rem);">
             @yield('content')
         </main>
         @include('front.layouts.footer')

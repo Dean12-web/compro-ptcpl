@@ -220,8 +220,8 @@
                 {{ $production_cta_section->items->where('field_key', 'description')->first()->field_value ?? '' }}
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button
-                    class="bg-accent text-white px-8 py-4 rounded-lg font-bold shadow-lg shadow-accent/30 hover:bg-accent/90 transition-all">{{ __('general.production_cta_button') }}</button>
+                <a href="{{ route('contact', app()->getLocale()) }}"
+                    class="bg-accent text-white px-8 py-4 rounded-lg font-bold shadow-lg shadow-accent/30 hover:bg-accent/90 transition-all">{{ __('general.production_cta_button') }}</a>
             </div>
         </div>
     </section>

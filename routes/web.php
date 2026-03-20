@@ -33,6 +33,7 @@ Route::group(['prefix' => '{locale}',   'where' => ['locale' => 'en|id'], 'middl
     Route::get('/product-detail/{slug}', [ProductController::class, 'show'])->name('product-detail');
     Route::get('/products/data', [ProductController::class, 'data'])->name('products.data');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+    Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
     Route::get('/exports', [PageController::class, 'exports'])->name('exports');
     Route::get('/production', [PageController::class, 'production'])->name('production');
     Route::get('/sustainability', [PageController::class, 'sustainability'])->name('sustainability');

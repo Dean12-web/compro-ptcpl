@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 @section('title', __('seo.home.title'))
 @section('meta_description', __('seo.home.description'))
-@section('meta_keywords',__('seo.home.keywords'))
+@section('meta_keywords', __('seo.home.keywords'))
 @section('og_title', __('seo.home.title'))
 @section('og_description', __('seo.home.description'))
 
@@ -26,7 +26,8 @@
                             class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-primary text-white text-base font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
                             {{__('general.home_quote_button')}}
                         </a>
-                        <a href="{{ route('products',app()->getLocale()) }}" class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-white border-2 border-slate-200 text-slate-900 text-base font-bold hover:bg-slate-50 transition-all">
+                        <a href="{{ route('products', app()->getLocale()) }}"
+                            class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-white border-2 border-slate-200 text-slate-900 text-base font-bold hover:bg-slate-50 transition-all">
                             {{__('general.home_products_button')}}
                         </a>
                     </div>
@@ -56,8 +57,12 @@
                         <span class="material-symbols-outlined text-3xl">factory</span>
                     </div>
                     <div>
-                        <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-1">{{ $home_highlight->items->firstWhere('field_key', 'item_1_title')?->field_value }}</p>
-                        <p class="text-slate-900 text-3xl font-black">{{ $home_highlight->items->firstWhere('field_key', 'item_1_value')?->field_value }}</p>
+                        <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-1">
+                            {{ $home_highlight->items->firstWhere('field_key', 'item_1_title')?->field_value }}
+                        </p>
+                        <p class="text-slate-900 text-3xl font-black">
+                            {{ $home_highlight->items->firstWhere('field_key', 'item_1_value')?->field_value }}
+                        </p>
                         <div class="mt-2 flex items-center gap-1 text-emerald-600 font-bold text-sm">
                             <span class="material-symbols-outlined text-sm">trending_up</span>
                             <span>{{ $home_highlight->items->firstWhere('field_key', 'item_1_description')?->field_value }}</span>
@@ -69,9 +74,13 @@
                         <span class="material-symbols-outlined text-3xl">public</span>
                     </div>
                     <div>
-                        <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-1">{{ $home_highlight->items->firstWhere('field_key', 'item_2_title')?->field_value }}</p>
+                        <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-1">
+                            {{ $home_highlight->items->firstWhere('field_key', 'item_2_title')?->field_value }}
                         </p>
-                        <p class="text-slate-900 text-3xl font-black">{{ $home_highlight->items->firstWhere('field_key', 'item_2_value')?->field_value }}</p>
+                        </p>
+                        <p class="text-slate-900 text-3xl font-black">
+                            {{ $home_highlight->items->firstWhere('field_key', 'item_2_value')?->field_value }}
+                        </p>
                         <div class="mt-2 flex items-center gap-1 text-emerald-600 font-bold text-sm">
                             <span class="material-symbols-outlined text-sm">language</span>
                             <span>{{ $home_highlight->items->firstWhere('field_key', 'item_2_description')?->field_value }}</span>
@@ -83,8 +92,12 @@
                         <span class="material-symbols-outlined text-3xl">verified</span>
                     </div>
                     <div>
-                        <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-1">{{ $home_highlight->items->firstWhere('field_key', 'item_3_title')?->field_value }}</p>
-                        <p class="text-slate-900 text-3xl font-black">{{ $home_highlight->items->firstWhere('field_key', 'item_3_value')?->field_value }}</p>
+                        <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-1">
+                            {{ $home_highlight->items->firstWhere('field_key', 'item_3_title')?->field_value }}
+                        </p>
+                        <p class="text-slate-900 text-3xl font-black">
+                            {{ $home_highlight->items->firstWhere('field_key', 'item_3_value')?->field_value }}
+                        </p>
                         <div class="mt-2 flex items-center gap-1 text-emerald-600 font-bold text-sm">
                             <span class="material-symbols-outlined text-sm">workspace_premium</span>
                             <span>{{ $home_highlight->items->firstWhere('field_key', 'item_3_description')?->field_value }}</span>
@@ -98,15 +111,19 @@
         <div class="max-w-7xl mx-auto px-6 md:px-20">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                 <div class="max-w-2xl">
-                    <h2 class="text-slate-900 text-4xl font-black tracking-tight mb-4">{{ $home_global_reach->items->firstWhere('field_key', 'title')?->field_value }}</h2>
-                    <p class="text-slate-600 text-lg">{{ $home_global_reach->items->firstWhere('field_key', 'description')?->field_value }}</p>
+                    <h2 class="text-slate-900 text-4xl font-black tracking-tight mb-4">
+                        {{ $home_global_reach->items->firstWhere('field_key', 'title')?->field_value }}
+                    </h2>
+                    <p class="text-slate-600 text-lg">
+                        {{ $home_global_reach->items->firstWhere('field_key', 'description')?->field_value }}
+                    </p>
                 </div>
             </div>
             <div
                 class="w-full bg-slate-100 aspect-video md:aspect-[21/9] rounded-2xl overflow-hidden border border-slate-200 relative group shadow-inner">
                 <div class="absolute inset-0 bg-cover bg-center opacity-80"
                     data-alt="Abstract world map showing shipping routes and global connections" data-location="World Map"
-                     style="background-image: url('{{ asset('images/globe-cpl.png') }}')">
+                    style="background-image: url('{{ asset('images/globe-cpl.png') }}')">
                 </div>
                 <div class="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent"></div>
             </div>
@@ -116,9 +133,11 @@
         <div class="max-w-7xl mx-auto px-6 md:px-20">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="flex flex-col gap-8">
-                    <h2 class="text-4xl md:text-5xl font-black leading-tight">{{ $home_cta_->items->firstWhere('field_key', 'title')?->field_value }}</h2>
+                    <h2 class="text-4xl md:text-5xl font-black leading-tight">
+                        {{ $home_cta_->items->firstWhere('field_key', 'title')?->field_value }}
+                    </h2>
                     <p class="text-white/80 text-lg leading-relaxed">
-                       {{ $home_cta_->items->firstWhere('field_key', 'description')?->field_value }}
+                        {{ $home_cta_->items->firstWhere('field_key', 'description')?->field_value }}
                     </p>
                     <div class="flex flex-col gap-4">
                         <div class="flex items-center gap-4">
@@ -137,32 +156,103 @@
                 </div>
                 <div class="bg-white rounded-2xl p-8 md:p-10 shadow-2xl" id="quotation">
                     <h3 class="text-slate-900 text-2xl font-bold mb-6">{{ __('general.home_request_title') }}</h3>
-                    <form class="space-y-4">
+                    @if(session('success'))
+                        <div class="mb-6 rounded-xl border border-emerald-300 bg-emerald-50/80 p-4 text-sm text-emerald-900">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if($errors->any())
+                        <div class="mb-6 rounded-xl border border-red-200 bg-red-50/80 p-4 text-sm text-red-900">
+                            <ul class="list-disc space-y-1 pl-5">
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form action="{{ route('contact.store', app()->getLocale()) }}" method="POST" class="space-y-4">
+                        @csrf
+                        <input type="hidden" name="origin" value="home">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="flex flex-col gap-1">
-                                <label class="text-slate-500 text-xs font-bold uppercase tracking-widest">{{ __('general.full_name') }}</label>
-                                <input
+                                <label
+                                    class="text-slate-500 text-xs font-bold uppercase tracking-widest">{{ __('general.full_name') }}</label>
+                                <input name="name" value="{{ old('name') }}"
                                     class="w-full rounded-lg border-slate-200 focus:border-primary focus:ring-primary text-slate-900"
                                     placeholder="John Doe" type="text" />
+                                @error('name')
+                                    <span class="text-xs text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="flex flex-col gap-1">
-                                <label class="text-slate-500 text-xs font-bold uppercase tracking-widest">{{ __('general.email_address') }}</label>
+                                <label
+                                    class="text-slate-500 text-xs font-bold uppercase tracking-widest">{{ __('general.company_name') }}</label>
+                                <input name="company" value="{{ old('company') }}"
+                                    class="w-full rounded-lg border-slate-200 focus:border-primary focus:ring-primary text-slate-900"
+                                    placeholder="{{__('general.placeholder_company')}}" type="text" />
+                                @error('company')
+                                    <span class="text-xs text-red-600">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="flex flex-col gap-1">
+                                <label
+                                    class="text-slate-500 text-xs font-bold uppercase tracking-widest">{{ __('general.country') }}</label>
                                 <input
+                                    name="country"
+                                    value="{{ old('country') }}"
+                                    class="w-full rounded-lg border-slate-200 focus:border-primary focus:ring-primary text-slate-900"
+                                    placeholder="Indonesia" type="text" />
+                                @error('country')
+                                    <span class="text-xs text-red-600">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label
+                                    class="text-slate-500 text-xs font-bold uppercase tracking-widest">{{ __('general.email_address') }}</label>
+                                <input
+                                    name="email"
+                                    value="{{ old('email') }}"
                                     class="w-full rounded-lg border-slate-200 focus:border-primary focus:ring-primary text-slate-900"
                                     placeholder="john@company.com" type="email" />
+                                    @error('email')
+                                        <span class="text-xs text-red-600">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                             </div>
                         </div>
                         <div class="flex flex-col gap-1">
-                            <label class="text-slate-500 text-xs font-bold uppercase tracking-widest">{{ __('general.country') }}</label>
+                            <label
+                                class="text-slate-500 text-xs font-bold uppercase tracking-widest">{{__('general.phone_number')}}</label>
                             <input
-                                    class="w-full rounded-lg border-slate-200 focus:border-primary focus:ring-primary text-slate-900"
-                                    placeholder="Indoneia" type="text" />
+                                name="phone"
+                                value="{{ old('phone') }}"
+                                class="w-full rounded-lg border-slate-200 focus:border-primary focus:ring-primary text-slate-900"
+                                placeholder="+62 812 3456 7890" type="tel">
+                            @error('phone')
+                                <span class="text-xs text-red-600">
+                                    {{ $message }}
+                                </span>
+                            @enderror
                         </div>
                         <div class="flex flex-col gap-1">
-                            <label class="text-slate-500 text-xs font-bold uppercase tracking-widest">{{__('general.inquiry_message')}}</label>
+                            <label
+                                class="text-slate-500 text-xs font-bold uppercase tracking-widest">{{__('general.inquiry_message')}}</label>
                             <textarea
+                                name="message"
                                 class="w-full rounded-lg border-slate-200 focus:border-primary focus:ring-primary text-slate-900"
-                                placeholder="How can we help you?" rows="4"></textarea>
+                                placeholder="{{ __('general.placeholder_message') }}" rows="4">
+                                {{ old('message') }}
+                            </textarea>
+                            @error('message')
+                                <span class="text-xs text-red-600">
+                                    {{ $message }}
+                                </span>
+                            @enderror
                         </div>
                         <button
                             class="w-full rounded-lg bg-accent text-white h-14 font-black text-lg shadow-lg hover:bg-accent/90 transition-all uppercase tracking-widest"

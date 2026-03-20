@@ -25,46 +25,90 @@
 
                 <div class="lg:col-span-7 bg-white p-8 rounded-2xl shadow-sm border border-primary/5">
                     <h3 class="text-2xl font-bold mb-6">{{ __('general.contact_form_title')}}</h3>
-                    <form class="space-y-6">
+                    @if(session('success'))
+                        <div class="mb-6 rounded-xl border border-emerald-300 bg-emerald-50/80 p-4 text-sm text-emerald-900">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if($errors->any())
+                        <div class="mb-6 rounded-xl border border-red-200 bg-red-50/80 p-4 text-sm text-red-900">
+                            <ul class="list-disc space-y-1 pl-5">
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form action="{{ route('contact.store', app()->getLocale()) }}" method="POST" class="space-y-6">
+                        @csrf
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="flex flex-col gap-2">
                                 <label class="text-sm font-semibold text-primary/80">{{__('general.full_name')}}</label>
                                 <input
+                                    name="name"
+                                    value="{{ old('name') }}"
                                     class="rounded-lg border-primary/10 bg-background-light/50 p-3 focus:border-primary focus:ring-primary"
                                     placeholder="John Doe" type="text" />
+                                @error('name')
+                                    <span class="text-xs text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label class="text-sm font-semibold text-primary/80">{{__('general.company_name')}}</label>
                                 <input
+                                    name="company"
+                                    value="{{ old('company') }}"
                                     class="rounded-lg border-primary/10 bg-background-light/50 p-3 focus:border-primary focus:ring-primary"
                                     placeholder="Perusahaan anda" type="text" />
+                                @error('company')
+                                    <span class="text-xs text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="flex flex-col gap-2">
                                 <label class="text-sm font-semibold text-primary/80">{{__('general.country')}}</label>
                                 <input
+                                    name="country"
+                                    value="{{ old('country') }}"
                                     class="rounded-lg border-primary/10 bg-background-light/50 p-3 focus:border-primary focus:ring-primary"
                                     placeholder="Indonesia" type="text" />
+                                @error('country')
+                                    <span class="text-xs text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label class="text-sm font-semibold text-primary/80">{{__('general.email_address')}}</label>
                                 <input
+                                    name="email"
+                                    value="{{ old('email') }}"
                                     class="rounded-lg border-primary/10 bg-background-light/50 p-3 focus:border-primary focus:ring-primary"
                                     placeholder="john@company.com" type="email" />
+                                @error('email')
+                                    <span class="text-xs text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="flex flex-col gap-2">
                             <label class="text-sm font-semibold text-primary/80">{{__('general.phone_number')}}</label>
                             <input
+                                name="phone"
+                                value="{{ old('phone') }}"
                                 class="rounded-lg border-primary/10 bg-background-light/50 p-3 focus:border-primary focus:ring-primary"
                                 placeholder="+62 812 3456 7890" type="tel" />
+                            @error('phone')
+                                <span class="text-xs text-red-600">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="flex flex-col gap-2">
                             <label class="text-sm font-semibold text-primary/80">{{__('general.inquiry_message')}}</label>
                             <textarea
+                                name="message"
                                 class="rounded-lg border-primary/10 bg-background-light/50 p-3 focus:border-primary focus:ring-primary"
-                                placeholder="{{ __('general.placeholder_message') }}" rows="4"></textarea>
+                                placeholder="{{ __('general.placeholder_message') }}" rows="4">{{ old('message') }}</textarea>
+                            @error('message')
+                                <span class="text-xs text-red-600">{{ $message }}</span>
+                            @enderror
                         </div>
                         <button
                             class="w-full rounded-lg bg-[#F98F2A] py-4 text-lg font-bold text-white shadow-lg transition-transform hover:scale-[1.01] active:scale-[0.99]"

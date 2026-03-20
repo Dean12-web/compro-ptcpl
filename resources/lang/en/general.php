@@ -17,6 +17,8 @@ return  [
     'name_asc' => 'Name A-Z',
     'name_desc' => 'Name Z-A',
 
+    'placeholder_company' => 'Your Company...',
+
     'paper-pulp' => 'Paper Pulp',
     'plastic-egg-tray' => 'Plastic Egg Tray',
     'styrofoam-tray' => 'Styrofoam Tray',
@@ -51,6 +53,7 @@ return  [
     'contact_hero_subtitle' => "We're here to help your business grow with expert solutions.",
     'contact_form_title' => 'Send an Inquiry',
     'contact_form_submit' => 'Submit Inquiry',
+    'contact_form_success' => 'Thank you for reaching out. We will reply shortly.',
 
     'contact_headquarters' => 'Our Headquarters',
     'contact_email_us' => 'Email Us',
@@ -134,4 +137,3 @@ return  [
 ]    
 
 ?>
-

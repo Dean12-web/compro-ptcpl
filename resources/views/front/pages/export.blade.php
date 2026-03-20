@@ -229,11 +229,11 @@
                   {{ $export_cta->items->where('field_key', 'description')->first()->field_value ?? '' }} 
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button
+                    <a href="{{ route('contact', app()->getLocale()) }}"
                         class="bg-primary hover:bg-[#4a5c30] text-white px-8 py-4 rounded-lg text-lg font-bold tracking-wide transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
                         <span class="material-symbols-outlined">request_quote</span>
                         {{ __('general.export_cta_button_2') }}
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>

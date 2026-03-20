@@ -153,10 +153,10 @@
                     <h2 class="text-slate-900 text-4xl md:text-5xl font-black">{{ $sustainability_cta->items()->where('field_key', 'title')->first()->field_value ?? '' }}</h2>
                     <p class="text-slate-600 text-lg">{{ $sustainability_cta->items()->where('field_key', 'description')->first()->field_value ?? '' }}</p>
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                        <button
+                        <a href="{{ route('contact', app()->getLocale()) }}"
                             class="w-full sm:w-auto flex min-w-[200px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-primary text-white text-base font-bold shadow-xl hover:scale-105 transition-all">
                             {{ __('general.sustainbility_cta_button') }}
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div

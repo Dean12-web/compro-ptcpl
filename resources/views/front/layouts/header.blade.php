@@ -1,7 +1,16 @@
 <div x-data="{ current: '{{ Route::currentRouteName() }}', mobileOpen: false }"
-    @keydown.escape.window="mobileOpen = false" class="relative">
+    @keydown.escape.window="mobileOpen = false" class="relative"
+    x-init="(() => {
+        const updateHeaderHeight = () => {
+            const height = $refs.frontHeader?.offsetHeight ?? 0;
+            document.documentElement.style.setProperty('--front-header-height', `${height}px`);
+        };
+        updateHeaderHeight();
+        window.addEventListener('resize', updateHeaderHeight);
+    })()">
     <header
-        class="flex items-center justify-between whitespace-nowrap border-b border-primary/10 bg-white/80 backdrop-blur-md px-6 md:px-20 py-4 sticky top-0 z-50">
+        x-ref="frontHeader"
+        class="flex items-center justify-between whitespace-nowrap border-b border-primary/10 bg-white/80 backdrop-blur-md px-6 md:px-20 py-4 fixed inset-x-0 top-0 z-50">
         <div class="flex items-center gap-3 text-primary">
             <div class="size-8">
                 <img src="{{ asset('images/logo/icon_cpl.png') }}" alt="log_cendana_paper_egg_tray">

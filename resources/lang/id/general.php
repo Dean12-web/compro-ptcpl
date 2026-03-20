@@ -17,6 +17,7 @@ return  [
     'name_asc' => 'Nama A-Z',
     'name_desc' => 'Nama Z-A',
 
+    'placeholder_company' => 'Perusahaan Anda...',
     'paper-pulp' => 'Pulp Kertas',
     'plastic-egg-tray' => 'Rak Telur Plastik',
     'styrofoam-tray' => 'Rak Telur Styrofoam',
@@ -41,6 +42,7 @@ return  [
     'contact_hero_subtitle' => "Kami ada di sini untuk membantu bisnis Anda berkembang dengan solusi expert.",
     'contact_form_title' => 'Kirim Pertanyaan',
     'contact_form_submit' => 'Kirim Pesan',
+    'contact_form_success' => 'Terima kasih sudah menghubungi kami. Kami akan membalas segera.',
 
     'contact_headquarters' => 'Kantor Pusat',
     'contact_email_us' => 'Email Kami',
