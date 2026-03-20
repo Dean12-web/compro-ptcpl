@@ -39,6 +39,26 @@ class ProductController extends Controller
         ));
     }
 
+    public function show($locale, string $slug)
+    {
+        $product_detail_features = ContentBlock::where('key', 'product_detail_features')
+            ->where('locale', $locale)
+            ->where('is_active', true)
+            ->with('items')
+            ->first();
+
+        $product_detail_choose = ContentBlock::where('key', 'product_detail_why_choose')
+            ->where('locale', $locale)
+            ->where('is_active', true)
+            ->with('items')
+            ->first();
+
+        $product = Product::where('slug', $slug)
+            ->with(['images', 'primaryImage'])
+            ->firstOrFail();
+        return view('front.pages.product-detail', compact('product', 'product_detail_features', 'product_detail_choose'));
+    }
+
 
     public function data($locale, Request $request)
     {

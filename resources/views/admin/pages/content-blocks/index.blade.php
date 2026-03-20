@@ -34,6 +34,10 @@
                         ? 'border-b-2 border-primary text-primary'
                         : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
                     Product</button>
+                <button @click="changeTab('product_detail')" :class="tab==='product_detail'
+                        ? 'border-b-2 border-primary text-primary'
+                        : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
+                    Product Detail</button>
                 <button @click="changeTab('production')" :class="tab==='production'
                         ? 'border-b-2 border-primary text-primary'
                         : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">

@@ -25,6 +25,11 @@ class Product extends Model
         'is_active' => 'boolean'
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function images()
     {
         return $this->hasMany(ProductImage::class);

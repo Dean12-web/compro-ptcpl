@@ -30,8 +30,8 @@ Route::group(['prefix' => '{locale}',   'where' => ['locale' => 'en|id'], 'middl
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/about', [PageController::class, 'about'])->name('about');
     Route::get('/products', [ProductController::class, 'index'])->name('products');
+    Route::get('/product-detail/{slug}', [ProductController::class, 'show'])->name('product-detail');
     Route::get('/products/data', [ProductController::class, 'data'])->name('products.data');
-    Route::view('/product-detail', 'front.pages.product-detail');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
     Route::get('/exports', [PageController::class, 'exports'])->name('exports');
     Route::get('/production', [PageController::class, 'production'])->name('production');

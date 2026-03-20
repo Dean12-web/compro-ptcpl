@@ -14,7 +14,7 @@
                     style="background-image: url('{{ $image ? asset('storage/' . $image) : $fallback }}');">
                 </div>
             </div>
-            
+
             <!-- CONTENT -->
             <div class="p-5 flex flex-col flex-1">
                 <div class="mb-4">
@@ -42,50 +42,50 @@
                 </p>
 
                 <div class="mt-auto">
-                    <button
-                        class="w-full bg-slate-100 text-slate-900 font-bold text-sm py-3 rounded-lg group-hover:bg-primary group-hover:text-white transition-colors flex items-center justify-center gap-2">
+                    <a href="{{ route('product-detail', ['locale' => app()->getLocale(),'slug' => $product->slug]) }}" class="w-full bg-slate-100 text-slate-900 font-bold text-sm py-3 rounded-lg group-hover:bg-primary group-hover:text-white transition-colors flex items-center justify-center gap-2">
                         {{ __('general.view_details') }}
                         <span class="material-symbols-outlined text-lg">arrow_forward</span>
-                    </button>
+                    </a>
                 </div>
             </div>
 
         </div>
     @endforeach
 </div>
-    <div class="mt-16 flex items-center justify-center gap-2">
+<div class="mt-16 flex items-center justify-center gap-2">
 
-        {{-- PREV --}}
-        @if ($products->onFirstPage())
-            <button
-                class="flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 text-slate-400 hover:text-primary transition-colors">
-                <span class="material-symbols-outlined">chevron_left</span>
-            </button>
-        @else
-            <a href="#" data-page="{{ $products->currentPage() - 1 }}"
-                class="flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 text-slate-400 hover:text-primary transition-colors">
-                <span class="material-symbols-outlined">chevron_left</span>
-            </a>
-        @endif
+    {{-- PREV --}}
+    @if ($products->onFirstPage())
+        <button
+            class="flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 text-slate-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+    @else
+        <a href="#" data-page="{{ $products->currentPage() - 1 }}"
+            class="flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 text-slate-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">chevron_left</span>
+        </a>
+    @endif
 
-        {{-- NUMBERS --}}
-        @for ($i = 1; $i <= $products->lastPage(); $i++)
-            <a href="#" data-page="{{ $i }}"
-                class="size-9 flex items-center justify-center rounded border border-primary/10 bg-primary text-white font-bold text-sm">
-                {{ $i }}
-            </a>
-        @endfor
+    {{-- NUMBERS --}}
+    @for ($i = 1; $i <= $products->lastPage(); $i++)
+        <a href="#" data-page="{{ $i }}"
+            class="size-9 flex items-center justify-center rounded border border-primary/10 bg-primary text-white font-bold text-sm">
+            {{ $i }}
+        </a>
+    @endfor
 
-        {{-- NEXT --}}
-        @if ($products->hasMorePages())
-            <a href="#" data-page="{{ $products->currentPage() + 1 }}"
-                class="flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 text-slate-400 hover:text-primary transition-colors">
-                <span class="material-symbols-outlined">chevron_right</span>
-            </a>
-        @else
-            <span class="flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 text-slate-400 hover:text-primary transition-colors">
-                <span class="material-symbols-outlined">chevron_right</span>
-            </span>
-        @endif
+    {{-- NEXT --}}
+    @if ($products->hasMorePages())
+        <a href="#" data-page="{{ $products->currentPage() + 1 }}"
+            class="flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 text-slate-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">chevron_right</span>
+        </a>
+    @else
+        <span
+            class="flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 text-slate-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">chevron_right</span>
+        </span>
+    @endif
 
-    </div>
+</div>

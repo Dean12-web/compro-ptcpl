@@ -24,6 +24,13 @@ return  [
 
     'view_details' => 'View Details',
 
+    //Product Detail
+    'technical_specifications' => 'Technical Specifications',
+    'dimensions' => 'Dimensions',
+    'capacity'  => 'Capacity',
+    'unit_weight' => 'Unit Weight',
+    'material_type' => 'Material Type',
+
     'full_name' => 'Full Name',
     'company_name' => 'Company Name',
     'country' => 'Country',

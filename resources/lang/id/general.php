@@ -23,6 +23,11 @@ return  [
     'natural-fiber' => 'Serat Alami',
 
     'view_details' => 'Lihat Detail',
+    'technical_specifications' => 'Spesifikasi Teknis',
+    'dimensions' => 'Dimensi',
+    'capacity'  => 'Kapasitas',
+    'unit_weight' => 'Berat Unit',
+    'material_type' => 'Tipe Material',
 
     'full_name' => 'Nama Lengkap',
     'company_name' => 'Nama Perusahaan',

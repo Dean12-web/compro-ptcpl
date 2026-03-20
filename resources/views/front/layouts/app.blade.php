@@ -17,11 +17,16 @@
 
     @php
         $current_route = Route::currentRouteName();
+        $params = request()->route()->parameters();
     @endphp
 
-    <link rel="alternate" hreflang="en" href="{{ route($current_route,['locale'=> 'en']) }}">
-    <link rel="alternate" hreflang="id" href="{{ route($current_route,['locale'=> 'id']) }}">
-    <link rel="alternate" hreflang="x-default" href="{{ route($current_route,['locale'=> 'en']) }}">
+    <link rel="alternate" hreflang="en" href="{{ route($current_route, array_merge($params, ['locale' => 'en'])) }}">
+
+    <link rel="alternate" hreflang="id" href="{{ route($current_route, array_merge($params, ['locale' => 'id'])) }}">
+
+    <link rel="alternate" hreflang="x-default"
+        href="{{ route($current_route, array_merge($params, ['locale' => 'en'])) }}">
+
 </head>
 
 <body class="bg-background-light font-display text-slate-900 antialiased">
