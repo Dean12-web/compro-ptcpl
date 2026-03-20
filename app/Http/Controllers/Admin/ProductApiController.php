@@ -46,7 +46,7 @@ class ProductApiController extends Controller
         ];
 
         return response()->json([
-              'rows' => $products->map(function ($product) use ($materials) {
+            'rows' => $products->map(function ($product) use ($materials) {
 
                 return [
 
@@ -106,9 +106,14 @@ class ProductApiController extends Controller
         ]);
     }
 
-    public function show(Product $product)
+    public function show(int $id)
     {
+        $product = Product::where('id', $id)->with(['images', 'primaryImage'])->firstOrFail();
         $product->load('images');
+
+        $descriptions = is_array($product->description)
+            ? $product->description
+            : (json_decode($product->description, true) ?? []);
 
         return response()->json([
             'id' => $product->id,
@@ -116,7 +121,9 @@ class ProductApiController extends Controller
             'capacity' => $product->capacity,
             'dimensions' => $product->dimensions,
             'weight' => $product->weight,
-            'description' => $product->description,
+            'description' => $product->getDescriptionForLocale(),
+            'description_en' => $descriptions['en'] ?? '',
+            'description_id' => $descriptions['id'] ?? '',
             'material' => $product->material,
             'is_active' => $product->is_active,
 
@@ -148,11 +155,12 @@ class ProductApiController extends Controller
         ]);
     }
 
-    public function update(Request $request, Product $product)
+    public function update(Request $request, int $id)
     {
         $data = $request->validate([
             'name' => 'required',
-            'description' => 'nullable',
+            'description_id' => 'required|string',
+            'description_en' => 'required|string',
             'dimensions' => 'nullable',
             'weight' => 'nullable',
             'capacity' => 'nullable',
@@ -161,7 +169,7 @@ class ProductApiController extends Controller
             'images' => 'nullable|array|max:4',
             'images.*' => 'image|mimes:jpg,jpeg,png|max:2048'
         ]);
-
+        $product = Product::findOrFail($id);
         $newImages = $request->file('images', []);
         $currentImages = $product->images()->count();
 
@@ -171,10 +179,13 @@ class ProductApiController extends Controller
                 'message' => 'Maximum 4 images allowed'
             ], 422);
         }
+        $data['slug'] = Str::slug($request->name) . '-' . $product->id;
+        $data['description'] = [
+            'en' => $data['description_en'],
+            'id' => $data['description_id'],
+        ];
 
-
-        $data['slug'] = Str::slug($request->name);
-
+        unset($data['description_en'], $data['description_id']);
         $product->update($data);
 
         if ($request->hasFile('images')) {
@@ -200,15 +211,30 @@ class ProductApiController extends Controller
 
         Storage::disk('public')->delete($image->image_path);
 
+        $productId = $image->product_id;
+        $wasPrimary = $image->is_primary;
+
         $image->delete();
+
+        if ($wasPrimary) {
+            $nextImage = ProductImage::where('product_id', $productId)
+                ->orderByDesc('created_at')
+                ->first();
+
+            if ($nextImage) {
+                ProductImage::where('product_id', $productId)->update(['is_primary' => false]);
+                $nextImage->update(['is_primary' => true]);
+            }
+        }
 
         return response()->json([
             'success' => true
         ]);
     }
 
-    public function destroy(Product $product)
+    public function destroy(int $id)
     {
+        $product = Product::findOrFail($id);
         $images = ProductImage::where('product_id', $product->id)->get();
 
         foreach ($images as $image) {

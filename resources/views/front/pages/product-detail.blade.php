@@ -38,7 +38,7 @@
                 <div>
                     <h1 class="text-4xl font-extrabold text-slate-900 leading-tight mb-4 tracking-tight">
                         {{ $product->name }}</h1>
-                    <p class="text-lg text-slate-600 leading-relaxed">{{ $product->description }}</p>
+                    <p class="text-lg text-slate-600 leading-relaxed">{{ $product->getDescriptionForLocale() }}</p>
                 </div>
                 <div class="grid grid-cols-3 gap-4">
                     <div

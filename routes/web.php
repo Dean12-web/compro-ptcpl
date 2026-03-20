@@ -67,11 +67,11 @@ Route::prefix('cpl-admin')->middleware(['auth', 'verified'])->group(function () 
 
     Route::resource('/products', AdminProductController::class)->except(['create']);
     Route::get('/products-data', [ProductApiController::class, 'index'])->name('cpl.products-data');
-    Route::get('/products-data/{product}', [ProductApiController::class, 'show'])->name('cpl.products-data.show');
+    Route::get('/products-data/{id}', [ProductApiController::class, 'show'])->name('cpl.products-data.show');
     Route::get('/products-stats', [ProductApiController::class, 'stats']);
-    Route::put('/products-data/{product}', [ProductApiController::class, 'update']);
+    Route::put('/products-data/{id}', [ProductApiController::class, 'update']);
     Route::delete('/products-image/{image}', [ProductApiController::class, 'deleteImage']);
-    Route::delete('/products-data/{product}', [ProductApiController::class, 'destroy']);
+    Route::delete('/products-data/{id}', [ProductApiController::class, 'destroy']);
 
 
     Route::get('/export-country', [ExportCountryController::class, 'index'])->name('cpl.export-country');

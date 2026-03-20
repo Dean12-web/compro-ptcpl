@@ -64,10 +64,28 @@
         <!-- Description -->
         <div class="space-y-1.5">
             <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Deskripsi</label>
-            <textarea name="description" x-model="description"
-                class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all resize-none"
-                placeholder="Detail spesifikasi produk..." rows="3"></textarea>
-            <p x-show="errors.description" x-text="errors.description" class="text-xs text-red-500 mt-1"></p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="space-y-1">
+                    <div class="flex items-center justify-between mb-1">
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500">EN</p>
+                        <span class="text-[10px] text-slate-400">English</span>
+                    </div>
+                    <textarea name="description_en" x-model="description_en"
+                        class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all resize-none"
+                        placeholder="Product description in English..." rows="3"></textarea>
+                    <p x-show="errors.description_en" x-text="errors.description_en" class="text-xs text-red-500 mt-1"></p>
+                </div>
+                <div class="space-y-1">
+                    <div class="flex items-center justify-between mb-1">
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500">ID</p>
+                        <span class="text-[10px] text-slate-400">Bahasa Indonesia</span>
+                    </div>
+                    <textarea name="description_id" x-model="description_id"
+                        class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all resize-none"
+                        placeholder="Deskripsi produk dalam Bahasa Indonesia..." rows="3"></textarea>
+                    <p x-show="errors.description_id" x-text="errors.description_id" class="text-xs text-red-500 mt-1"></p>
+                </div>
+            </div>
         </div><br>
         <!-- Image Upload -->
         <div class="space-y-1.5">
@@ -179,7 +197,8 @@
             capacity: '',
             dimensions: '',
             weight: '',
-            description: '',
+            description_en: '',
+            description_id: '',
             material: '',
 
             files: [],
@@ -210,7 +229,8 @@
                 this.capacity = ''
                 this.dimensions = ''
                 this.weight = ''
-                this.description = ''
+                this.description_en = ''
+                this.description_id = ''
                 this.material = ''
 
                 this.active = true
@@ -240,7 +260,8 @@
                 this.capacity = data.capacity
                 this.dimensions = data.dimensions
                 this.weight = data.weight
-                this.description = data.description
+                this.description_en = data.description_en ?? ''
+                this.description_id = data.description_id ?? ''
                 this.material = data.material
                 this.active = data.is_active
 
@@ -294,8 +315,12 @@
                     this.errors.dimensions = 'Dimensi tidak boleh kosong'
                 }
 
-                if (!this.description) {
-                    this.errors.description = 'Deskripsi tidak boleh kosong'
+                if (!this.description_en.trim()) {
+                    this.errors.description_en = 'English description tidak boleh kosong'
+                }
+
+                if (!this.description_id.trim()) {
+                    this.errors.description_id = 'Deskripsi Bahasa Indonesia tidak boleh kosong'
                 }
 
                 if (!this.material) {
@@ -322,7 +347,8 @@
                 formData.append('capacity', this.capacity)
                 formData.append('dimensions', this.dimensions)
                 formData.append('weight', this.weight)
-                formData.append('description', this.description)
+                formData.append('description_en', this.description_en)
+                formData.append('description_id', this.description_id)
                 formData.append('material', this.material)
                 formData.append('is_active', this.active ? 1 : 0)
 

@@ -38,7 +38,7 @@
                 </div>
 
                 <p class="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2">
-                    {{ $product->description }}
+                    {{ $product->getDescriptionForLocale() }}
                 </p>
 
                 <div class="mt-auto">

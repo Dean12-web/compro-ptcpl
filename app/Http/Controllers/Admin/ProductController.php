@@ -68,7 +68,8 @@ class ProductController extends Controller
     {
         $data = $request->validate([
             'name' => 'required',
-            'description' => 'nullable',
+            'description_id' => 'required|string',
+            'description_en' => 'required|string',
             'dimensions' => 'nullable',
             'weight' => 'nullable',
             'capacity' => 'nullable',
@@ -77,6 +78,13 @@ class ProductController extends Controller
             'images' => 'nullable|array|max:4',
             'images.*' => 'image|mimes:jpg,jpeg,png|max:2048'
         ]);
+
+        $data['description'] = [
+            'en' => $data['description_en'],
+            'id' => $data['description_id'],
+        ];
+
+        unset($data['description_en'], $data['description_id']);
 
         $data['slug'] = Str::slug($request->name) . '-' . time();
         $data['created_by'] = auth()->id();
