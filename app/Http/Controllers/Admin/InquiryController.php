@@ -58,6 +58,14 @@ class InquiryController extends Controller
             });
         }
 
+        $filter = $request->get('filter', 'all');
+
+        if ($filter === 'read') {
+            $query->where('is_read', true);
+        } elseif ($filter === 'unread' || $filter === 'new') {
+            $query->where('is_read', false);
+        }
+
         $allowedSorts = ['name', 'company', 'country', 'email', 'created_at'];
         $sort = $request->get('sort', 'created_at');
         if (!in_array($sort, $allowedSorts, true)) {
@@ -105,6 +113,18 @@ class InquiryController extends Controller
         
     }
 
+
+    public function stats()
+    {
+        $new_inquiry = Inquiry::where('is_read',false)->count();
+
+        $read_inquiry = Inquiry::where('is_read',true)->count();
+
+        return response()->json([
+            'new_inquiry' => $new_inquiry,
+            'read_inquiry' => $read_inquiry
+        ]);
+    }
     /**
      * Display the specified resource.
      */

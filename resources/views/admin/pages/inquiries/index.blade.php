@@ -20,6 +20,26 @@
                 <p class="text-slate-500 mt-1">Pertanyaan dari pelanggan tentang produk atau layanan.</p>
             </div>
         </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div @click="setFilter('unread')" role="button" :aria-pressed="filter === 'unread'"
+                class="cursor-pointer bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/10 shadow-sm transition"
+                :class="filter === 'unread' ? 'ring-2 ring-primary/30 border-primary/50 bg-primary/5 shadow-lg' : ''">
+                <p class="text-sm text-slate-500 font-medium">Baru</p>
+                <h3 class="text-3xl font-black mt-1" x-text="stats.new_inquiry"></h3>
+                <div class="mt-2 flex items-center gap-1 text-xs text-primary font-bold">
+                    <span x-text=" 'Ada ' + stats.new_inquiry + ' Pesan Belum Dibaca'"></span>
+                </div>
+            </div>
+            <div @click="setFilter('read')" role="button" :aria-pressed="filter === 'read'"
+                class="cursor-pointer bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/10 shadow-sm transition"
+                :class="filter === 'read' ? 'ring-2 ring-primary/30 border-primary/50 bg-primary/5 shadow-lg' : ''">
+                <p class="text-sm text-slate-500 font-medium">Sudah Dibaca</p>
+                <h3 class="text-3xl font-black mt-1 text-primary" x-text="stats.read_inquiry"></h3>
+                <div class="mt-2 flex items-center gap-1 text-xs text-slate-400">
+                    <span x-text=" 'Ada ' + stats.read_inquiry + ' Pesan Sudah Dibaca'"></span>
+                </div>
+            </div>
+        </div><br>
         <!-- Filters and Search -->
         <div class="bg-white dark:bg-background-dark border border-primary/10 rounded-xl p-4 mb-6 shadow-sm">
 
@@ -31,7 +51,7 @@
                         search
                     </span>
 
-                    <input type="text" placeholder="Cari nama pelanggan" x-model.debounce.400ms="search"
+                    <input type="text" placeholder="Cari berdasarkan email..." x-model.debounce.400ms="search"
                         class="w-full pl-10 pr-4 py-2 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none bg-background-light/30 transition-all text-sm">
                 </div>
             </div>
@@ -106,19 +126,27 @@
                 to: 0
             },
 
+            stats: {
+                new_inquiry : 0,
+                read_inquiry: 0
+            },
+
             search: '',
 
             sort: 'created_at',
             direction: 'desc',
             page: 1,
+            filter: 'all',
 
             init() {
                 this.$watch('search', () => {
                     this.page = 1
                     this.load()
+                    this.loadStats()
                 })
 
                 this.load()
+                this.loadStats()
             },
 
             async load() {
@@ -127,7 +155,8 @@
                         search: this.search,
                         sort: this.sort,
                         direction: this.direction,
-                        page: this.page
+                        page: this.page,
+                        filter: this.filter
                     })
 
                     const res = await fetch(`/cpl-admin/inquiries-data?${params}`)
@@ -145,6 +174,21 @@
                 }
             },
 
+            setFilter(filterValue) {
+                const nextFilter = this.filter === filterValue ? 'all' : filterValue
+                this.filter = nextFilter
+
+                this.page = 1
+                this.load()
+            },
+
+            async loadStats(){
+                const res = await fetch('/cpl-admin/inquiry-stats')
+                const data = await res.json()
+
+                this.stats = data
+            },
+
             changeSort(field) {
                 if (this.sort === field) {
                     this.direction = this.direction === 'asc' ? 'desc' : 'asc'
@@ -155,6 +199,7 @@
 
                 this.page = 1
                 this.load()
+                this.loadStats()
             },
 
             goTo(page) {
@@ -166,6 +211,7 @@
 
                 this.page = page
                 this.load()
+                this.loadStats()
             }
         }
     }

@@ -31,7 +31,9 @@
         @endif
         <!-- Page Title & Stats -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/10 shadow-sm">
+            <div @click="setStatusFilter('')" role="button" :aria-pressed="status === ''"
+                class="cursor-pointer bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/10 shadow-sm transition"
+                :class="status === '' ? 'ring-2 ring-primary/30 border-primary/50 bg-primary/5 shadow-lg' : ''">
                 <p class="text-sm text-slate-500 font-medium">Total Produk</p>
                 <h3 class="text-3xl font-black mt-1" x-text="stats.total_products"></h3>
                 <div class="mt-2 flex items-center gap-1 text-xs text-primary font-bold">
@@ -39,7 +41,9 @@
                     <span x-text="'+' + stats.this_month + ' Bulan ini'"></span>
                 </div>
             </div>
-            <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/10 shadow-sm">
+            <div @click="setStatusFilter('1')" role="button" :aria-pressed="status === '1'"
+                class="cursor-pointer bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/10 shadow-sm transition"
+                :class="status === '1' ? 'ring-2 ring-primary/30 border-primary/50 bg-primary/5 shadow-lg' : ''">
                 <p class="text-sm text-slate-500 font-medium">Produk Aktif</p>
                 <h3 class="text-3xl font-black mt-1 text-primary" x-text="stats.active_products"></h3>
                 <div class="mt-2 flex items-center gap-1 text-xs text-slate-400">
@@ -193,6 +197,12 @@
 
                 this.rows = data.rows
                 this.pagination = data.pagination
+            },
+
+            setStatusFilter(value) {
+                this.status = this.status === value ? '' : value
+                this.page = 1
+                this.load()
             },
 
             async loadStats() {
