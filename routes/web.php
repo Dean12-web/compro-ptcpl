@@ -42,7 +42,9 @@ Route::group(['prefix' => '{locale}',   'where' => ['locale' => 'en|id'], 'middl
 
 Route::prefix('cpl-admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('cpl.dashboard');
-
+    Route::get('/dashboard-stats', [DashboardController::class, 'stats']);
+    Route::get('/dashboard-inquiry-view', [DashboardController::class, 'inquiry_view']);
+    
     Route::resource('/inquiries',InquiryController::class);
     Route::patch('/inquiries/{inquiry}/mark-read', [InquiryController::class, 'markRead'])->name('cpl.inquiries.mark-read');
     Route::get('/inquiry-stats',[InquiryController::class,'stats']);

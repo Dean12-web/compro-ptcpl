@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Inquiry;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 
 class InquiryController extends Controller
 {
@@ -13,24 +15,24 @@ class InquiryController extends Controller
         $columns = [
             [
                 'key' => 'name',
-                'label' => 'Nama',
+                'label' => 'Pengirim',
                 'sortable' => true
             ],
             [
-                'key' => 'company',
-                'label'=> 'Perusahaan'
+                'key' => 'message',
+                'label' => 'Pesan'
             ],
             [
                 'key' => 'country',
                 'label' => 'Negara'
             ],
             [
-                'key' => 'email',
-                'label' => 'Email'
-            ],
-            [
                 'key' => 'is_read',
                 'label' => 'Status'
+            ],
+            [
+                'key' => 'created_at',
+                'label' => 'Tanggal'
             ],
             [
                 'key' => 'action',
@@ -39,7 +41,7 @@ class InquiryController extends Controller
         ];
 
         $rows = [];
-        return view('admin.pages.inquiries.index',compact('columns','rows'));
+        return view('admin.pages.inquiries.index', compact('columns', 'rows'));
     }
     /**
      * Show the form for view a new resource.
@@ -87,11 +89,28 @@ class InquiryController extends Controller
 
                 return [
                     'id' => $inquiry->id,
-                    'name' => e($inquiry->name),
-                    'company' => $inquiry->company ? e($inquiry->company) : '<span class="text-slate-400">-</span>',
+                    'name' => '
+                    <div class="flex items-center gap-3">
+                        <div class="min-w-0">
+                            <p class="text-sm font-semibold text-slate-900 dark:text-white truncate">'
+                        . e($inquiry->name) . '
+                            </p>
+                            <p class="text-xs text-slate-500 truncate">'
+                        . e($inquiry->email) . '
+                            </p>
+                        </div>
+                    </div>',
+
+                    'message' => $inquiry->message ? e(Str::limit($inquiry->message,30)) : '<span class="text-slate-400">-</span>',
                     'country' => $inquiry->country ? e($inquiry->country) : '<span class="text-slate-400">-</span>',
-                    'email' => '<a href="mailto:' . e($inquiry->email) . '" class="text-primary hover:underline text-sm font-semibold">' . e($inquiry->email) . '</a>',
-                    'is_read' => $inquiry->is_read ? 'Sudah dibaca' : 'Baru',
+                    'is_read' => $inquiry->is_read ?  '<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">
+            Sudah dibaca
+       </span>' : '<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">
+            Baru
+       </span>',
+                    'created_at' => Carbon::parse($inquiry->created_at)
+                        ->locale('id')
+                        ->translatedFormat('d M Y'),
                     'action' => '<a href="' . $showUrl . '" class="text-xs font-bold uppercase tracking-wide text-primary hover:underline">Lihat Pesan</a>'
                 ];
             }),
@@ -108,17 +127,14 @@ class InquiryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        
-    }
+    public function store(Request $request) {}
 
 
     public function stats()
     {
-        $new_inquiry = Inquiry::where('is_read',false)->count();
+        $new_inquiry = Inquiry::where('is_read', false)->count();
 
-        $read_inquiry = Inquiry::where('is_read',true)->count();
+        $read_inquiry = Inquiry::where('is_read', true)->count();
 
         return response()->json([
             'new_inquiry' => $new_inquiry,
@@ -144,10 +160,7 @@ class InquiryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
-    {
-    
-    }
+    public function update(Request $request) {}
 
     /**
      * Remove the specified resource from storage.
