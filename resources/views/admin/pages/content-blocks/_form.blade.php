@@ -5,6 +5,24 @@
         <x-slot name="icon">
             <span class="material-symbols-outlined">add_box</span>
         </x-slot>
+       <figure class="border-2 border-primary rounded-xl p-12 flex flex-col items-center justify-center bg-primary/5 transition-colors mb-8">
+
+    <img 
+        :src="previewMap[key] 
+            ? `/images/content_block/${previewMap[key]}` 
+            : '/images/content_block/default.png'"
+        @@error="$event.target.src = '/images/content_block/default.png'"
+        alt="Preview section"
+        class="max-w-full rounded-lg shadow-sm transition-all duration-300"
+        :key="key"
+    />
+
+            <figcaption class="text-xs text-slate-500 mt-4 text-center leading-relaxed">
+                Tampilan contoh section yang akan ditampilkan di beranda.
+            </figcaption>
+
+        </figure>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="space-y-1.5 col-span-full">
                 <label class="text-xs font-bold uppercase tracking-wider text-slate-500">
@@ -174,7 +192,54 @@
 <script>
     function websiteContentForm() {
         return {
+            previewMap: {
+                home_hero_section: 'home_hero_section.png',
+                home_global_reach_section: 'home_global_reach_section.png',
+                home_highlights_section: 'home_highlights_section.png',
+                contact_cta_section: 'contact_cta_section.png',
 
+                about_hero_section:'about_hero_section.png',
+                about_company_profile_section:'about_company_profile_section.png',
+                about_core_values_section:'about_core_values_section.png',
+
+                products_hero_section: 'products_hero_section.png',
+
+                product_detail_features : 'product_detail_features.png',
+                product_detail_why_choose : 'product_detail_why_choose.png',
+
+                production_cta_section: 'production_cta_section.png',
+                production_hero_section: 'production_hero_section.png',
+                production_steps_section: 'production_steps_section.png',
+                factory_capacity_section: 'factory_capacity_section.png',
+                quality_control_section: 'quality_control_section.png',
+
+                export_hero: 'export_hero.png',
+                export_stats: 'export_stats.png',
+                export_markets: 'export_markets.png',
+                shipping_methods: 'shipping_methods.png',
+                lead_times: 'lead_times.png',
+                export_cta: 'export_cta.png',
+                packaging_standards: 'packaging_standards.png',
+
+                sustainability_hero_section: 'sustainability_hero_section.png',
+                sustainability_conscious_sourcing_section:'sustainability_conscious_sourcing_section.png',
+                sustainability_circular_production_section:'sustainability_circular_production_section.png',
+                sustainability_cta_section:'sustainability_cta_section.png',
+
+                gallery_hero_section:'gallery_hero_section.png',
+                gallery_factory_facilities_section:'gallery_factory_facilities_section.png',
+                gallery_production_process_section:'gallery_production_process_section.png',
+                gallery_packaging_loading_section:'gallery_packaging_loading_section.png',
+                gallery_quality_control_section:'gallery_quality_control_section.png',
+
+                contact_information_section: 'contact_information_section.png'
+
+
+
+
+
+
+            },
             mode: 'create',
             id: '',
             key: '',
@@ -318,7 +383,7 @@
                 this.mode = 'create'
 
                 this.key = ''
-                this.active = ''
+                this.active = true
                 this.locale = ''
                 this.block_type = ''
 

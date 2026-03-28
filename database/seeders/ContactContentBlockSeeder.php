@@ -26,6 +26,7 @@ class ContactContentBlockSeeder extends Seeder
             ]);
 
             $this->createItems($info->id,[
+                ['phone_hours','Phone Hours','text'],
                 ['map_image','Map Image','image']
             ]);
 

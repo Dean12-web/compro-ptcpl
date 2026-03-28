@@ -7,7 +7,7 @@
 
 @section('content')
     <div class="flex-grow">
-        <section class="relative w-full">
+        <section class="relative w-full mb-8">
             <div class="absolute inset-0 bg-black/50 z-10"></div>
             <div class="relative h-[500px] w-full bg-cover bg-center flex flex-col items-center justify-center text-center px-4"
                 data-alt="Large container ship loaded with cargo boxes crossing the ocean at sunset"
