@@ -29,6 +29,7 @@ class ProductionContentBlockSeeder extends Seeder
             $this->createItems($hero->id,[
                 ['title','Title','text'],
                 ['description','Description','textarea'],
+                ['hero_image','Hero Image','image'],
             ]);
 
 

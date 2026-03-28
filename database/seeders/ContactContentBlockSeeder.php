@@ -13,8 +13,6 @@ class ContactContentBlockSeeder extends Seeder
         $locales = ['en','id'];
 
         foreach ($locales as $locale) {
-
-
             /*
             CONTACT INFORMATION
             */

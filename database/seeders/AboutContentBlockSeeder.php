@@ -28,7 +28,8 @@ class AboutContentBlockSeeder extends Seeder
 
             $this->createItems($hero->id,[
                 ['badge','Badge','text'],
-                ['title','Title','text']
+                ['title','Title','text'],
+                ['hero_image','Hero Image','image'],
             ]);
 
 

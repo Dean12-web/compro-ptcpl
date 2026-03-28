@@ -41,16 +41,18 @@ Route::group(['prefix' => '{locale}',   'where' => ['locale' => 'en|id'], 'middl
 });
 
 Route::prefix('cpl-admin')->middleware(['auth', 'verified'])->group(function () {
+    Route::redirect('/', '/cpl-admin/dashboard');
+
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('cpl.dashboard');
     Route::get('/dashboard-stats', [DashboardController::class, 'stats']);
     Route::get('/dashboard-inquiry-view', [DashboardController::class, 'inquiry_view']);
-    
-    Route::resource('/inquiries',InquiryController::class);
+
+    Route::resource('/inquiries', InquiryController::class);
     Route::patch('/inquiries/{inquiry}/mark-read', [InquiryController::class, 'markRead'])->name('cpl.inquiries.mark-read');
-    Route::get('/inquiry-stats',[InquiryController::class,'stats']);
+    Route::get('/inquiry-stats', [InquiryController::class, 'stats']);
     Route::get('/inquiries-data', [InquiryController::class, 'view'])->name('cpl.inquiries-data');
     Route::get('/inquiry-view', [InquiryController::class, 'index'])->name('cpl.inquiry-view');
-    
+
     Route::get('/setting', [SettingController::class, 'index'])->name('cpl.setting');
     Route::patch('/setting/general', [SettingController::class, 'updateGeneral'])->name('cpl.setting.update.general');
     Route::patch('/setting/social', [SettingController::class, 'updateSocial'])->name('cpl.setting.update.social');
@@ -58,7 +60,7 @@ Route::prefix('cpl-admin')->middleware(['auth', 'verified'])->group(function () 
 
 
     Route::resource('/web-content', ContentBlockController::class);
-    Route::get('/web-content-view',[ContentBlockController::class,'view']);
+    Route::get('/web-content-view', [ContentBlockController::class, 'view']);
 
     Route::resource('/gallery', GalleryController::class);
     Route::post('/gallery-store', [GalleryController::class, 'store'])->name('cpl.gallery-store');
@@ -81,7 +83,7 @@ Route::prefix('cpl-admin')->middleware(['auth', 'verified'])->group(function () 
     Route::get('/export-country', [ExportCountryController::class, 'index'])->name('cpl.export-country');
     Route::post('/export-country-store', [ExportCountryController::class, 'store'])->name('cpl.export-country-store');
     Route::get('/export-country-data', [ExportCountryController::class, 'view']);
-    Route::delete('/export-country-delete/{export_country}',[ExportCountryController::class,'destroy']);
+    Route::delete('/export-country-delete/{export_country}', [ExportCountryController::class, 'destroy']);
 });
 
 Route::middleware('auth')->group(function () {

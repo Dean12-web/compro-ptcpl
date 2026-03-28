@@ -11,7 +11,7 @@
             <div class="absolute inset-0 bg-black/50 z-10"></div>
             <div class="relative h-[500px] w-full bg-cover bg-center flex flex-col items-center justify-center text-center px-4"
                 data-alt="Large container ship loaded with cargo boxes crossing the ocean at sunset"
-                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBbwPSjiw6f6T1vLpKwj9K4m5ymdfdABgg8Qbbz1Lo12-Co-puklRO0ZmObpiLWTAbbEZYYodMrTB8bk8FeOZSqrEIsw91JgY--FP2X_DsfRAy11nTxpa5nAFDljxBpPAjkdxQX_MFcTHeKOCziWm0ZZO-Yfa3zwP7wtmlaPk5I8hfbFgZcZMSecLECcMSUGjT_7yBQn2zxwamL2SEWcLsqNEw7l1gM3Jtk7h8BVJnC_rNpIGyekhXE3YzOSEfXT9IdZ35GnGGYH7OW');">
+                style="background-image: url({{ $export_hero->items->where('field_key','hero_image')->first()->field_value ?? 'https://lh3.googleusercontent.com/aida-public/AB6AXuBbwPSjiw6f6T1vLpKwj9K4m5ymdfdABgg8Qbbz1Lo12-Co-puklRO0ZmObpiLWTAbbEZYYodMrTB8bk8FeOZSqrEIsw91JgY--FP2X_DsfRAy11nTxpa5nAFDljxBpPAjkdxQX_MFcTHeKOCziWm0ZZO-Yfa3zwP7wtmlaPk5I8hfbFgZcZMSecLECcMSUGjT_7yBQn2zxwamL2SEWcLsqNEw7l1gM3Jtk7h8BVJnC_rNpIGyekhXE3YzOSEfXT9IdZ35GnGGYH7OW' }});">
                 <div class="relative z-20 max-w-3xl flex flex-col gap-6">
                     <span
                         class="px-3 py-1 bg-accent/90 text-white text-xs font-bold uppercase tracking-wider rounded-full w-fit mx-auto">{{ __('general.export_hero_button') }}</span>
