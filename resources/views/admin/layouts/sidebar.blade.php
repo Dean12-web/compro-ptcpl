@@ -23,22 +23,22 @@
         <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors {{ is_active('products.index') }}"
             href="{{ route('products.index') }}">
             <span class="material-symbols-outlined text-[20px]">inventory_2</span>
-            <span class="text-sm font-medium">Products</span>
+            <span class="text-sm font-medium">Produk</span>
         </a>
         <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors {{ is_active('cpl.web-content') }}"
             href="{{ route('web-content.index') }}">
             <span class="material-symbols-outlined text-[20px]">view_quilt</span>
-            <span class="text-sm font-medium">Web Sections</span>
+            <span class="text-sm font-medium">Konten Web</span>
         </a>
         <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors {{ is_active('cpl.inquiry-view') }}"
             href="{{ route('cpl.inquiry-view') }}">
             <span class="material-symbols-outlined text-[20px]">chat_bubble</span>
-            <span class="text-sm font-medium">Inquiries</span>
+            <span class="text-sm font-medium">Pesan Masuk</span>
         </a>
         <a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-primary/5 rounded-lg transition-colors {{ is_active('cpl.setting') }}"
             href="{{ route('cpl.setting') }}">
             <span class="material-symbols-outlined text-[22px]">settings</span>
-            <span class="text-sm font-medium">Settings</span>
+            <span class="text-sm font-medium">Pengaturan</span>
         </a>
     </nav>
     <div class="p-4 border-t border-primary/10">

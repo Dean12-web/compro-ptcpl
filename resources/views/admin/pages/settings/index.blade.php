@@ -1,4 +1,5 @@
 @extends('admin.layouts.app')
+@section('title', 'Pengaturan')
 @section('page-header')
     <h2 class="text-lg font-bold text-primary">Pengaturan</h2>
 @endsection
@@ -24,6 +25,10 @@
                         :class="section === 'social' ? 'flex items-center gap-2 px-4 py-2.5 bg-primary text-white rounded-lg text-sm font-bold whitespace-nowrap' : 'flex items-center gap-2 px-4 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg text-sm font-medium whitespace-nowrap'">
                         <span class="material-symbols-outlined text-lg">language</span> Media Sosial
                     </button>
+                    <button type="button" @click="section = 'seo'"
+                        :class="section === 'seo' ? 'flex items-center gap-2 px-4 py-2.5 bg-primary text-white rounded-lg text-sm font-bold whitespace-nowrap' : 'flex items-center gap-2 px-4 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg text-sm font-medium whitespace-nowrap'">
+                        <span class="material-symbols-outlined text-lg">search_gear</span> SEO
+                    </button>
                     <button type="button" @click="section = 'admin'"
                         :class="section === 'admin' ? 'flex items-center gap-2 px-4 py-2.5 bg-primary text-white rounded-lg text-sm font-bold whitespace-nowrap' : 'flex items-center gap-2 px-4 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg text-sm font-medium whitespace-nowrap'">
                         <span class="material-symbols-outlined text-lg">terminal</span> Admin
@@ -35,9 +40,15 @@
             <!-- Content -->
                 <div class="flex-1 space-y-6">
 
-                    @if (session('status'))
+                @if (session('status'))
                     <div class="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
                         {{ session('status') }}
+                    </div>
+                @endif
+
+                @if (session('seoStatus'))
+                    <div class="rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-700">
+                        {{ session('seoStatus') }}
                     </div>
                 @endif
 
@@ -155,6 +166,98 @@
                                 class="px-6 py-2 bg-primary text-white rounded-lg text-sm font-bold shadow-md shadow-primary/20 hover:bg-primary/90 transition-all flex items-center justify-center gap-2 disabled:opacity-60">
                                 <span class="material-symbols-outlined text-sm">save</span>
                                 Simpan Informasi Umum
+                            </button>
+                        </div>
+
+                    </section>
+                </form>
+
+                <form action="{{ route('cpl.setting.update.seo') }}" method="POST" class="space-y-6"
+                    x-show="section === 'seo'" x-cloak>
+                    @csrf
+                    @method('PATCH')
+                    <input type="hidden" name="_section" value="seo">
+
+                    <section
+                        class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden"
+                        x-data="seoSettings"
+                        x-init="initForm()"
+                        data-seo-pages='@json($seoPages)'
+                        data-seo-locales='@json($seoLocales)'
+                        data-seo-entries='@json($seoEntriesMap)'
+                        data-seo-defaults='@json($seoDefaults)'
+                        data-seo-initial-page='@json($initialPage)'
+                        data-seo-initial-locale='@json($initialLocale)'
+                        data-seo-initial-values='@json($initialSeoValues)'
+                        data-seo-has-old-input='@json($hasSeoOldInput)'>
+
+                        <div
+                            class="px-6 py-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                            <div>
+                                <h3 class="text-sm font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">
+                                    SEO
+                                </h3>
+                                <p class="text-xs text-slate-500">
+                                    Kelola metadata default untuk halaman publik.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="p-6 space-y-6">
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="space-y-1">
+                                    <label class="text-xs font-bold text-slate-500 uppercase">Halaman</label>
+                                    <select name="page" x-model="selectedPage" @change="loadEntry()"
+                                        class="w-full text-sm rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary">
+                                        <template x-for="pageKey in Object.keys(pages)" :key="pageKey">
+                                            <option :value="pageKey" x-text="pages[pageKey]"></option>
+                                        </template>
+                                    </select>
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="text-xs font-bold text-slate-500 uppercase">Bahasa</label>
+                                    <select name="locale" x-model="selectedLocale" @change="loadEntry()"
+                                        class="w-full text-sm rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary">
+                                        <template x-for="localeKey in Object.keys(locales)" :key="localeKey">
+                                            <option :value="localeKey" x-text="locales[localeKey]"></option>
+                                        </template>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="space-y-1">
+                                <label class="text-xs font-bold text-slate-500 uppercase">Title</label>
+                                <input name="title" x-model="seoForm.title" type="text"
+                                    class="w-full text-sm rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary" />
+                            </div>
+
+                            <div class="space-y-1">
+                                <label class="text-xs font-bold text-slate-500 uppercase">Description</label>
+                                <textarea name="description" x-model="seoForm.description" rows="3"
+                                    class="w-full text-sm rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary"></textarea>
+                            </div>
+
+                            <div class="space-y-1">
+                                <label class="text-xs font-bold text-slate-500 uppercase">Keywords</label>
+                                <textarea name="keywords" x-model="seoForm.keywords" rows="2"
+                                    class="w-full text-sm rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary"></textarea>
+                            </div>
+
+                            <div class="space-y-1">
+                                <label class="text-xs font-bold text-slate-500 uppercase">Open Graph Image</label>
+                                <input name="og_image" x-model="seoForm.og_image" type="url"
+                                    class="w-full text-sm rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary"
+                                    placeholder="https://example.com/og-image.png" />
+                            </div>
+
+                        </div>
+
+                        <div class="px-6 py-4 border-t border-slate-100 dark:border-slate-800 flex justify-end">
+                            <button type="submit"
+                                class="px-6 py-2 bg-primary text-white rounded-lg text-sm font-bold shadow-md shadow-primary/20 hover:bg-primary/90 transition-all flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined text-sm">save</span>
+                                Simpan Metadata SEO
                             </button>
                         </div>
 
@@ -401,5 +504,91 @@ function settingsPage() {
             return valid;
         }
     }
+}
+
+function seoSettings() {
+    const tryParseJSON = (value) => {
+        if (!value || value === 'null') return null;
+        try {
+            return JSON.parse(value);
+        } catch {
+            return null;
+        }
+    };
+
+    const normalizeString = (value) => {
+        if (value === undefined || value === null || value === '' || value === 'null') {
+            return null;
+        }
+
+        return value;
+    };
+
+    return {
+        pages: {},
+        locales: {},
+        entries: {},
+        defaults: {},
+        initialValues: {},
+        hasOldInput: false,
+        selectedPage: null,
+        selectedLocale: null,
+        seoForm: {
+            title: "",
+            description: "",
+            keywords: "",
+            og_image: ""
+        },
+        initForm() {
+            const dataset = this.$el?.dataset ?? {};
+
+            this.pages = tryParseJSON(dataset.seoPages) ?? {};
+            this.locales = tryParseJSON(dataset.seoLocales) ?? {};
+            this.entries = tryParseJSON(dataset.seoEntries) ?? {};
+            this.defaults = tryParseJSON(dataset.seoDefaults) ?? {};
+            this.initialValues = tryParseJSON(dataset.seoInitialValues) ?? {};
+            this.hasOldInput = dataset.seoHasOldInput === '1' || dataset.seoHasOldInput === 'true';
+
+            const availablePages = Object.keys(this.pages);
+            const availableLocales = Object.keys(this.locales);
+
+            this.selectedPage = normalizeString(dataset.seoInitialPage) ?? availablePages[0] ?? null;
+            this.selectedLocale = normalizeString(dataset.seoInitialLocale) ?? availableLocales[0] ?? null;
+
+            if (this.hasOldInput) {
+                this.selectedPage = normalizeString(this.initialValues.page) ?? this.selectedPage;
+                this.selectedLocale = normalizeString(this.initialValues.locale) ?? this.selectedLocale;
+                this.seoForm.title = this.initialValues.title ?? "";
+                this.seoForm.description = this.initialValues.description ?? "";
+                this.seoForm.keywords = this.initialValues.keywords ?? "";
+                this.seoForm.og_image = this.initialValues.og_image ?? "";
+                return;
+            }
+
+            this.loadEntry();
+        },
+        loadEntry() {
+            if (!this.selectedPage && !Object.keys(this.pages).length) {
+                this.selectedPage = null;
+            }
+
+            if (!this.selectedLocale && !Object.keys(this.locales).length) {
+                this.selectedLocale = null;
+            }
+
+            if (!this.selectedPage || !this.selectedLocale) {
+                this.seoForm = { title: "", description: "", keywords: "", og_image: "" };
+                return;
+            }
+
+            const entry = (this.entries[this.selectedPage] ?? {})[this.selectedLocale] ?? {};
+            const fallback = (this.defaults[this.selectedPage] ?? {})[this.selectedLocale] ?? {};
+
+            this.seoForm.title = entry.title ?? fallback.title ?? "";
+            this.seoForm.description = entry.description ?? fallback.description ?? "";
+            this.seoForm.keywords = entry.keywords ?? fallback.keywords ?? "";
+            this.seoForm.og_image = entry.og_image ?? fallback.og_image ?? "";
+        }
+    };
 }
 </script>

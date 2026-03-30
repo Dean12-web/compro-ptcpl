@@ -4,14 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
+use App\Models\SeoPage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password as PasswordRule;
 
 class SettingController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $setting = Setting::first();
 
@@ -19,7 +23,54 @@ class SettingController extends Controller
             $setting = new Setting();
         }
 
-        return view('admin.pages.settings.index', compact('setting'));
+        $seoPages = config('seo.pages', []);
+        $seoLocales = config('seo.locales', []);
+        $availablePages = array_keys($seoPages);
+        $availableLocales = array_keys($seoLocales);
+
+        $seoEntries = SeoPage::whereIn('page', $availablePages)->get();
+
+        $seoEntriesMap = [];
+        foreach ($seoEntries as $entry) {
+            $seoEntriesMap[$entry->page][$entry->locale] = Arr::only($entry->toArray(), ['title', 'description', 'keywords', 'og_image']);
+        }
+
+        $seoDefaults = [];
+        foreach ($availablePages as $page) {
+            foreach ($availableLocales as $locale) {
+                $seoDefaults[$page][$locale] = [
+                    'title' => trans("seo.{$page}.title", [], $locale),
+                    'description' => trans("seo.{$page}.description", [], $locale),
+                    'keywords' => trans("seo.{$page}.keywords", [], $locale),
+                    'og_image' => null,
+                ];
+            }
+        }
+
+        $initialPage = old('page', $availablePages[0] ?? null);
+        $initialLocale = old('locale', $availableLocales[0] ?? null);
+        $initialSeoValues = [
+            'title' => old('title'),
+            'description' => old('description'),
+            'keywords' => old('keywords'),
+            'og_image' => old('og_image'),
+            'page' => old('page'),
+            'locale' => old('locale'),
+        ];
+
+        $hasSeoOldInput = $request->session()->hasOldInput('page');
+
+        return view('admin.pages.settings.index', compact(
+            'setting',
+            'seoPages',
+            'seoLocales',
+            'seoEntriesMap',
+            'seoDefaults',
+            'initialPage',
+            'initialLocale',
+            'initialSeoValues',
+            'hasSeoOldInput'
+        ));
     }
 
     public function updateGeneral(Request $request)
@@ -72,6 +123,41 @@ class SettingController extends Controller
         return redirect()->route('cpl.setting')
             ->with('status', 'Link media sosial berhasil disimpan.')
             ->with('activeSection', 'social');
+    }
+
+    public function updateSeo(Request $request)
+    {
+        $pages = array_keys(config('seo.pages', []));
+        $locales = array_keys(config('seo.locales', []));
+
+        $validator = Validator::make($request->all(), [
+            'page' => ['required', Rule::in($pages)],
+            'locale' => ['required', Rule::in($locales)],
+            'title' => 'nullable|string|max:255',
+            'description' => 'nullable|string|max:2000',
+            'keywords' => 'nullable|string|max:1000',
+            'og_image' => 'nullable|string|max:1000',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('cpl.setting')
+                ->withErrors($validator)
+                ->withInput()
+                ->with('activeSection', 'seo');
+        }
+
+        $data = $validator->validated();
+
+        SeoPage::updateOrCreate(
+            Arr::only($data, ['page', 'locale']),
+            Arr::only($data, ['title', 'description', 'keywords', 'og_image'])
+        );
+
+        Cache::forget("seo_page:{$data['page']}:{$data['locale']}");
+
+        return redirect()->route('cpl.setting')
+            ->with('seoStatus', 'Pengaturan SEO berhasil disimpan.')
+            ->with('activeSection', 'seo');
     }
 
     public function updateAdminPassword(Request $request)
