@@ -20,13 +20,14 @@ class DatabaseSeeder extends Seeder
             ContactContentBlockSeeder::class,
             ContentBlockSeeder::class,
             ExportContentBlockSeeder::class,
-            UserSeeder::class,
+            GalleryContentBlockSeeder::class,
+            InquiriesSeeder::class,
             ProductContentBlockSeeder::class,
             ProductDetailConteneBlockSeeder::class,
             ProductionContentBlockSeeder::class,
-            SustainabilityContentBlockSeeder::class,
-            InquiriesSeeder::class,
             SettingSeeder::class,
+            SustainabilityContentBlockSeeder::class,
+            UserSeeder::class,
          ]);
     }
 }
