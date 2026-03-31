@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # DEBUG (taruh di dalam steps)
+      - name: Debug FTP Server
+        run: echo "Server is ${{ secrets.FTP_SERVER }}"
+
       - name: Checkout
         uses: actions/checkout@v4
 
