@@ -27,9 +27,9 @@ class ProductContentBlockSeeder extends Seeder
             ]);
 
             $this->createItems($hero->id,[
-                ['badge','Badge','text'],
-                ['title','Title','text'],
-                ['description','Description','textarea'],
+                ['badge','Badge','text',$locale === 'id' ? 'Produk' : 'Products'],
+                ['title','Title','text',$locale === 'id' ? 'Judul Produk' : 'Product Title'],
+                ['description','Description','textarea',$locale === 'id' ? 'Deskripsi Produk' : 'Product Description'],
             ]);
 
         }
@@ -46,7 +46,7 @@ class ProductContentBlockSeeder extends Seeder
                 'field_key' => $field[0],
                 'field_label' => $field[1],
                 'field_type' => $field[2],
-                'field_value' => null,
+                'field_value' => $field[3] ?? null,
                 'sort_order' => $order++
             ]);
 

@@ -27,8 +27,8 @@ class SustainabilityContentBlockSeeder extends Seeder
             ]);
 
             $this->createItems($hero->id,[
-                ['title','Title','text'],
-                ['description','Description','textarea'],
+                ['title','Title','text', $locale === 'id' ? 'Keberlanjutan di Inti Bisnis Kami' : 'Sustainability at the Core of Our Business'],
+                ['description','Description','textarea', $locale === 'id' ? 'Deskripsi' : 'Description'],
                 ['hero_image','Hero Image','image'],
             ]);
 
@@ -46,11 +46,11 @@ class SustainabilityContentBlockSeeder extends Seeder
             ]);
 
             $this->createItems($sourcing->id,[
-                ['badge','Badge','text'],
-                ['title','Title','text'],
-                ['description','Description','textarea'],
-                ['feature_1','Feature 1','text'],
-                ['feature_2','Feature 2','text'],
+                ['badge','Badge','text', $locale === 'id' ? 'Sumber Bahan Baku' : 'Raw Material Sourcing'],
+                ['title','Title','text', $locale === 'id' ? 'Judul' : 'Title'],
+                ['description','Description','textarea', $locale === 'id' ? 'Deskripsi' : 'Description'],
+                ['feature_1','Feature 1','text', $locale === 'id' ? 'Fitur 1' : 'Feature 1'],
+                ['feature_2','Feature 2','text', $locale === 'id' ? 'Fitur 2' : 'Feature 2'],
                 ['section_image','Section Image','image'],
             ]);
 
@@ -68,16 +68,16 @@ class SustainabilityContentBlockSeeder extends Seeder
             ]);
 
             $this->createItems($loop->id,[
-                ['title','Title','text'],
-                ['subtitle','Subtitle','textarea'],
+                ['title','Title','text', $locale === 'id' ? 'Judul' : 'Title'],
+                ['subtitle','Subtitle','textarea', $locale === 'id' ? 'Subjudul' : 'Subtitle'],
             ]);
 
 
             for($i=1;$i<=4;$i++){
 
                 $this->createItems($loop->id,[
-                    ["step_{$i}_title","Step {$i} Title",'text'],
-                    ["step_{$i}_description","Step {$i} Description",'textarea'],
+                    ["step_{$i}_title","Step {$i} Title",'text', $locale === 'id' ? "Langkah {$i}" : "Step {$i}"],
+                    ["step_{$i}_description","Step {$i} Description",'textarea', $locale === 'id' ? "Deskripsi Langkah {$i}" : "Step {$i} Description"],
                 ]);
             }
 
@@ -95,8 +95,8 @@ class SustainabilityContentBlockSeeder extends Seeder
             ]);
 
             $this->createItems($cta->id,[
-                ['title','Title','text'],
-                ['description','Description','textarea']
+                ['title','Title','text', $locale === 'id' ? 'Judul' : 'Title'],
+                ['description','Description','textarea', $locale === 'id' ? 'Deskripsi' : 'Description'],
             ]);
 
         }
@@ -113,7 +113,7 @@ class SustainabilityContentBlockSeeder extends Seeder
                 'field_key' => $field[0],
                 'field_label' => $field[1],
                 'field_type' => $field[2],
-                'field_value' => null,
+                'field_value' => $field[3] ?? null,
                 'sort_order' => $order++
             ]);
 

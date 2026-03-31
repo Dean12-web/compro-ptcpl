@@ -29,9 +29,9 @@ class ContentBlockSeeder extends Seeder
             ]);
 
             $this->createItems($hero->id,[
-                ['badge','Badge','text'],
-                ['title','Title','text'],
-                ['description','Description','textarea'],
+                ['badge','Badge','text', $locale === 'id' ? 'Badge' : 'Badge'],
+                ['title','Title','text', $locale === 'id' ? 'Title' : 'Title'],
+                ['description','Description','textarea', $locale === 'id' ? 'Description' : 'Description'],
                 ['hero_image','Hero Image','image'],
             ]);
 
@@ -53,9 +53,9 @@ class ContentBlockSeeder extends Seeder
             for($i=1;$i<=3;$i++){
 
                 $this->createItems($highlight->id,[
-                    ["item_{$i}_title","Item {$i} Title",'text'],
-                    ["item_{$i}_value","Item {$i} Value",'text'],
-                    ["item_{$i}_description","Item {$i} Description",'text']
+                    ["item_{$i}_title","Item {$i} Title",'text', $locale === 'id' ? "Item {$i} Title" : "Item {$i} Title"],
+                    ["item_{$i}_value","Item {$i} Value",'text', $locale === 'id' ? "Item {$i} Value" : "Item {$i} Value"],
+                    ["item_{$i}_description","Item {$i} Description",'text', $locale === 'id' ? "Item {$i} Description" : "Item {$i} Description"]
                 ]);
             }
 
@@ -75,8 +75,8 @@ class ContentBlockSeeder extends Seeder
             ]);
 
             $this->createItems($global->id,[
-                ['title','Title','text'],
-                ['description','Description','textarea'],
+                ['title','Title','text', $locale === 'id' ? 'Jangkauan Global, Solusi Lokal' : 'Global Reach, Local Solutions'],
+                ['description','Description','textarea', $locale === 'id' ? 'Kami memiliki jangkauan global dengan solusi yang disesuaikan untuk kebutuhan lokal Anda.' : 'We have a global reach with solutions tailored to your local needs.'],
             ]);
 
 
@@ -95,8 +95,8 @@ class ContentBlockSeeder extends Seeder
             ]);
 
             $this->createItems($contact->id,[
-                ['title','Title','text'],
-                ['description','Description','textarea'],
+                ['title','Title','text',$locale === 'id' ? 'Hubungi Kami' : 'Contact Us'],
+                ['description','Description','textarea', $locale === 'id' ? 'Kami siap membantu Anda dengan pertanyaan atau permintaan informasi lebih lanjut.' : 'We are here to assist you with any questions or further information you may need.'],
             ]);
         }
     }
@@ -113,7 +113,7 @@ class ContentBlockSeeder extends Seeder
                 'field_key' => $field[0],
                 'field_label' => $field[1],
                 'field_type' => $field[2],
-                'field_value' => null,
+                'field_value' => $field[3] ?? null,
                 'sort_order' => $order++
             ]);
 

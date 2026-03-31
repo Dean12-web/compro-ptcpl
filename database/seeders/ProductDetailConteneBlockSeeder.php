@@ -27,7 +27,7 @@ class ProductDetailConteneBlockSeeder extends Seeder
 
             for ($i = 1; $i <= 3; $i++) {
                 $this->createItem($features->id, [
-                    ["feature_{$i}_label", "Feature {$i} Label", 'text'],
+                    ["feature_{$i}_label", "Feature {$i} Label", 'text', $locale === 'id' ? "Fitur {$i}" : "Feature {$i}"],
                 ]);
             }
 
@@ -40,13 +40,13 @@ class ProductDetailConteneBlockSeeder extends Seeder
                 'is_active' => true,
             ]);
             $this->createItem($why->id, [
-                ['section_title', 'Section Title', 'text'],
-                ['section_description', 'Section Description', 'textarea'],
+                ['section_title', 'Section Title', 'text', $locale === 'id' ? 'Mengapa Memilih Kami' : 'Why Choose Us'],
+                ['section_description', 'Section Description', 'textarea', $locale === 'id' ? 'Deskripsi Bagian' : 'Section Description'],
             ]);
             for ($i = 1; $i <= 4; $i++) {
                 $this->createItem($why->id, [
-                    ["why_{$i}_content_title", "Why {$i} Content Title", 'text'],
-                    ["why_{$i}_content_description", "Why {$i} Content Description", 'textarea'],
+                    ["why_{$i}_content_title", "Why {$i} Content Title", 'text', $locale === 'id' ? "Mengapa {$i}" : "Why {$i}"],
+                    ["why_{$i}_content_description", "Why {$i} Content Description", 'textarea', $locale === 'id' ? "Deskripsi Konten {$i}" : "Why {$i} Content Description"],
                 ]);
             }
         }
@@ -61,7 +61,7 @@ class ProductDetailConteneBlockSeeder extends Seeder
                 'field_key' => $field[0],
                 'field_label' => $field[1],
                 'field_type' => $field[2],
-                'field_value' => null,
+                'field_value' => $field[3] ?? null,
                 'sort_order' => $order++,
             ]);
         }

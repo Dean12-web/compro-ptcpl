@@ -26,7 +26,7 @@ class ContactContentBlockSeeder extends Seeder
             ]);
 
             $this->createItems($info->id,[
-                ['phone_hours','Phone Hours','text'],
+                ['phone_hours','Phone Hours','text', $locale === 'id' ? 'Senin - Jumat, 08:00 - 17:00 WIB' : 'Monday - Friday, 8:00 AM - 5:00 PM WIB'],
                 ['map_image','Map Image','image']
             ]);
 
@@ -44,7 +44,7 @@ class ContactContentBlockSeeder extends Seeder
                 'field_key' => $field[0],
                 'field_label' => $field[1],
                 'field_type' => $field[2],
-                'field_value' => null,
+                'field_value' => $field[3] ?? null,
                 'sort_order' => $order++
             ]);
 

@@ -27,8 +27,8 @@ class GalleryContentBlockSeeder extends Seeder
             ]);
 
             $this->createItems($hero->id,[
-                ['title','Title','text'],
-                ['description','Description','textarea'],
+                ['title','Title','text', $locale === 'id' ? 'Galeri Pabrik & Proses Produksi' : 'Factory & Production Process Gallery'],
+                ['description','Description','textarea', $locale === 'id' ? 'Description' : 'Description'],
                 ['hero_image','Hero Image','image']
             ]);
 
@@ -46,16 +46,16 @@ class GalleryContentBlockSeeder extends Seeder
             ]);
 
             $this->createItems($factory->id,[
-                ['factory_facilities_title','Factory Facilities Title','text'],
-                ['factory_facilities_subtitle','Factory Facilities Subtitle','textarea'],
+                ['factory_facilities_title','Factory Facilities Title','text', $locale === 'id' ? 'Fasilitas Pabrik Kami' : 'Our Factory Facilities'],
+                ['factory_facilities_subtitle','Factory Facilities Subtitle','textarea', $locale === 'id' ? 'Subtitle' : 'Subtitle'],
             ]);
 
             for($i=1;$i<=3;$i++){
 
                 $this->createItems($factory->id,[
                     ["factory_facility_{$i}_image","Factory Facility {$i} Image",'image'],
-                    ["factory_facility_{$i}_section","Factory Facility {$i} Section",'text'],
-                    ["factory_facility_{$i}_description","Factory Facility {$i} Description",'textarea'],
+                    ["factory_facility_{$i}_section","Factory Facility {$i} Section",'text', $locale === 'id' ? "Fasilitas Pabrik {$i}" : "Factory Facility {$i}"],
+                    ["factory_facility_{$i}_description","Factory Facility {$i} Description",'textarea', $locale === 'id' ? "Description" : "Description"],
                 ]);
             }
 
@@ -73,16 +73,16 @@ class GalleryContentBlockSeeder extends Seeder
             ]);
 
             $this->createItems($process->id,[
-                ['production_process_title','Production Process Title','text'],
-                ['production_process_subtitle','Production Process Subtitle','textarea'],
+                ['production_process_title','Production Process Title','text', $locale === 'id' ? 'Proses Produksi Kami' : 'Our Production Process'],
+                ['production_process_subtitle','Production Process Subtitle','textarea', $locale === 'id' ? 'Subtitle' : 'Subtitle'],
             ]);
 
             for($i=1;$i<=4;$i++){
 
                 $this->createItems($process->id,[
                     ["production_process_{$i}_image","Production Process {$i} Image",'image'],
-                    ["production_process_{$i}_section","Production Process {$i} Section",'text'],
-                    ["production_process_{$i}_description","Production Process {$i} Description",'textarea'],
+                    ["production_process_{$i}_section","Production Process {$i} Section",'text', $locale === 'id' ? "Proses Produksi {$i}" : "Production Process {$i}"],
+                    ["production_process_{$i}_description","Production Process {$i} Description",'textarea', $locale === 'id' ? "Description" : "Description"],
                 ]);
             }
 
@@ -100,16 +100,16 @@ class GalleryContentBlockSeeder extends Seeder
             ]);
 
             $this->createItems($packaging->id,[
-                ['packaging_title','Packaging Title','text'],
-                ['packaging_subtitle','Packaging Subtitle','textarea'],
+                ['packaging_title','Packaging Title','text', $locale === 'id' ? 'Pengemasan & Pemuatan' : 'Packaging & Loading'],
+                ['packaging_subtitle','Packaging Subtitle','textarea', $locale === 'id' ? 'Subtitle' : 'Subtitle'],
             ]);
 
             for($i=1;$i<=2;$i++){
 
                 $this->createItems($packaging->id,[
                     ["packaging_{$i}_image","Packaging {$i} Image",'image'],
-                    ["packaging_{$i}_section","Packaging {$i} Section",'text'],
-                    ["packaging_{$i}_description","Packaging {$i} Description",'textarea'],
+                    ["packaging_{$i}_section","Packaging {$i} Section",'text', $locale === 'id' ? "Pengemasan {$i}" : "Packaging {$i}"],
+                    ["packaging_{$i}_description","Packaging {$i} Description",'textarea', $locale === 'id' ? "Description" : "Description"],
                 ]);
             }
 
@@ -123,15 +123,15 @@ class GalleryContentBlockSeeder extends Seeder
             ]);
 
             $this->createItems($quality_control->id,[
-                ['quality_control_title','Quality Control Title','text'],
-                ['quality_control_subtitle','Quality Control Subtitle','textarea'],
+                ['quality_control_title','Quality Control Title','text', $locale === 'id' ? 'Kontrol Kualitas' : 'Quality Control'],
+                ['quality_control_subtitle','Quality Control Subtitle','textarea', $locale === 'id' ? 'Subtitle' : 'Subtitle'],
             ]);
 
             for($i=1;$i<=2;$i++){
 
                 $this->createItems($quality_control->id,[
                     ["quality_{$i}_image","Quality Control {$i} Image",'image'],
-                    ["quality_{$i}_description","Quality Control {$i} Description",'textarea'],
+                    ["quality_{$i}_description","Quality Control {$i} Description",'textarea', $locale === 'id' ? "Description" : "Description"],
                 ]);
             }
 
@@ -149,7 +149,7 @@ class GalleryContentBlockSeeder extends Seeder
                 'field_key' => $field[0],
                 'field_label' => $field[1],
                 'field_type' => $field[2],
-                'field_value' => null,
+                'field_value' => $field[3] ?? null,
                 'sort_order' => $order++
             ]);
 
