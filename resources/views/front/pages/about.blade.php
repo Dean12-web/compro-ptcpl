@@ -12,7 +12,7 @@
             <div class="relative min-h-[400px] w-full overflow-hidden rounded-xl bg-primary/20">
                 <div class="absolute inset-0 bg-cover bg-center"
                     data-alt="Modern high-tech industrial manufacturing facility interior"
-                    style='background-image: linear-gradient(to top, rgba(26, 28, 22, 0.8), transparent), url({{ $about_hero->items->where('field_key','hero_image')->first()->field_value ?? asset('images/about.png') }} );'>
+                    style='background-image: linear-gradient(to top, rgba(26, 28, 22, 0.8), transparent), url({{ $about_hero->items->where('field_key','hero_image')->first()->field_value ? asset('storage/'. $about_hero->items->where('field_key','hero_image')->first()->field_value ) : asset('images/about.png') }} );'>
                 </div>
                 <div class="absolute bottom-0 left-0 p-8 md:p-12 w-full">
                     <span

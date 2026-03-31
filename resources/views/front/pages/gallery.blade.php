@@ -10,7 +10,7 @@
     <section class="relative w-full aspect-[21/9] min-h-[400px] flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-10"></div>
         <div class="absolute inset-0 bg-center bg-cover" data-alt="Wide shot of a modern industrial factory interior"
-            style='background-image: url({{ $gallery_hero->items->where('field_key', 'hero_image')->first()->field_value ??  asset('images/gallery.png')  }})'>
+            style='background-image: url({{ $gallery_hero->items->where('field_key', 'hero_image')->first()->field_value ? asset('storage/'.$gallery_hero->items->where('field_key', 'hero_image')->first()->field_value) : asset('images/gallery.png')  }})'>
         </div>
         <div class="relative z-20 text-center px-6 max-w-4xl">
             <span class="text-accent font-bold uppercase tracking-widest text-sm mb-4 block">{{ __('general.gallery_hero_banner') }}</span>
@@ -34,7 +34,7 @@
                 <div class="md:col-span-2 group relative overflow-hidden rounded-xl">
                     <div class="aspect-video bg-center bg-cover transition-transform duration-700 group-hover:scale-110"
                         data-alt="High-capacity pulp mixing tanks in a clean factory"
-                        style='background-image: url({{ $gallery_factory->items->where('field_key','factory_facility_image_1')->first()->field_value ?? "https://lh3.googleusercontent.com/aida-public/AB6AXuCYStZsNuOdNbDDpnrWyAmMjXRXNCKaY0w6a99fckSKO7eIo442EpD4bg-cJY66rJd3IxHlqNNkOhcBpNP3x1j8SOVzpLhPsajgLM7yYklIJ2NsyKeLd2lxO-W2sm-GhcIqAeuozPTepohonTx7njsf84koSmJIZcbJ7Z74B_GO-Tyew1NWqSvGVv4Jczr8i4ZZ47bQGcRhKOa1MAqZjTXdp-dzvUFISJU1vQK0DCIvSPZJBJ2ZXxM9C6e5rTEcMV054l7zQh273hj-"}});'>
+                        style='background-image: url({{ $gallery_factory->items->where('field_key','factory_facility_1_image')->first()->field_value ? asset('storage/'. $gallery_factory->items->where('field_key','factory_facility_1_image')->first()->field_value) :  "https://lh3.googleusercontent.com/aida-public/AB6AXuCYStZsNuOdNbDDpnrWyAmMjXRXNCKaY0w6a99fckSKO7eIo442EpD4bg-cJY66rJd3IxHlqNNkOhcBpNP3x1j8SOVzpLhPsajgLM7yYklIJ2NsyKeLd2lxO-W2sm-GhcIqAeuozPTepohonTx7njsf84koSmJIZcbJ7Z74B_GO-Tyew1NWqSvGVv4Jczr8i4ZZ47bQGcRhKOa1MAqZjTXdp-dzvUFISJU1vQK0DCIvSPZJBJ2ZXxM9C6e5rTEcMV054l7zQh273hj-"}});'>
                     </div>
                     <div
                         class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
@@ -46,7 +46,11 @@
                     <div class="group relative overflow-hidden rounded-xl h-full">
                         <div class="h-full min-h-[200px] bg-center bg-cover transition-transform duration-700 group-hover:scale-110"
                             data-alt="Modern CNC machinery used for mold creation"
-                            style='background-image: url({{ $gallery_factory->items->where('field_key','factory_facility_image_2')->first()->field_value ?? "https://lh3.googleusercontent.com/aida-public/AB6AXuDLCdUVZdw1Kk53wbhiblO6DQT7XI6PbSgOjDeVUsgaA3AnoVQpaPTPvOfzzwuIbhQX-7Zg7h21xVhOwcCwi7hp79y4ownj1X_kpSjfJeBewP5UEqLxeMl2AsfE_HzIMfVLCIt6v13F6NV6pOU1kg9YF-NRVFkHB9s0SKeSCk1FpHzi8lgZkqAH8pVWPWb_vxi_zsaRsIpbAdRZ-gVqCZrZYcH5mtOBkmXIdvEeiDp88gCtjWkQOCLC7FiS-JneFoNDDhFE0750UwJK" }});'>
+                        style="background-image: url('{{ $gallery_factory->items->where('field_key','factory_facility_2_image')->first()?->field_value 
+    ? asset('storage/'.$gallery_factory->items->where('field_key','factory_facility_2_image')->first()->field_value) 
+    : 'https://lh3.googleusercontent.com/aida-public/AB6AXuDLCdUVZdw1Kk53wbhiblO6DQT7XI6PbSgOjDeVUsgaA3AnoVQpaPTPvOfzzwuIbhQX-7Zg7h21xVhOwcCwi7hp79y4ownj1X_kpSjfJeBewP5UEqLxeMl2AsfE_HzIMfVLCIt6v13F6NV6pOU1kg9YF-NRVFkHB9s0SKeSCk1FpHzi8lgZkqAH8pVWPWb_vxi_zsaRsIpbAdRZ-gVqCZrZYcH5mtOBkmXIdvEeiDp88gCtjWkQOCLC7FiS-JneFoNDDhFE0750UwJK' }}');"
+
+                            >
                         </div>
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
@@ -57,7 +61,7 @@
                     <div class="group relative overflow-hidden rounded-xl h-full">
                         <div class="h-full min-h-[200px] bg-center bg-cover transition-transform duration-700 group-hover:scale-110"
                             data-alt="Spacious factory floor with clean pathways"
-                            style='background-image: url({{ $gallery_factory->items->where('field_key','factory_facility_image_3')->first()->field_value ?? "https://lh3.googleusercontent.com/aida-public/AB6AXuDLcIDEGlHZWKS1OUPGIlF-bb49aE8wE31PQSVkTQdLCZxlx0pxjoctU8hcmHlkf5SqqwpM0bhgWa0Sy_1tMCUb9Zi9EWWQIujkHyGwJt3TkGFCMvvyHZoL63S6uJPeH7GKSutAuRytLDMPqNRtC_Uyn2WiJk6fFc7d38HF0dEqf2PYUQXAFMkyirAlW6yQtKOckprCfWkbShNwEbOfF_-UHQ8ivPZZFHjcCpQ3wbFetOI6YCFrx8rhraDR-0--2ey7HauglkU6L2Xg" }});'>
+                            style='background-image: url({{ $gallery_factory->items->where('field_key','factory_facility_3_image')->first()->field_value ? asset('storage/'. $gallery_factory->items->where('field_key','factory_facility_3_image')->first()->field_value) : "https://lh3.googleusercontent.com/aida-public/AB6AXuDLcIDEGlHZWKS1OUPGIlF-bb49aE8wE31PQSVkTQdLCZxlx0pxjoctU8hcmHlkf5SqqwpM0bhgWa0Sy_1tMCUb9Zi9EWWQIujkHyGwJt3TkGFCMvvyHZoL63S6uJPeH7GKSutAuRytLDMPqNRtC_Uyn2WiJk6fFc7d38HF0dEqf2PYUQXAFMkyirAlW6yQtKOckprCfWkbShNwEbOfF_-UHQ8ivPZZFHjcCpQ3wbFetOI6YCFrx8rhraDR-0--2ey7HauglkU6L2Xg" }});'>
                         </div>
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
@@ -81,7 +85,7 @@
                 <div class="space-y-4">
                     <div class="relative rounded-xl overflow-hidden aspect-square shadow-lg">
                         <div class="w-full h-full bg-center bg-cover" data-alt="Vat of grey pulp being mixed"
-                            style='background-image: url({{ $gallery_production->items->where('field_key', 'production_process_1_image')->first()->field_value ?? "https://lh3.googleusercontent.com/aida-public/AB6AXuCltPigJqC2d15d8EzddW2pQ3DuUHrWpg4acn0vq2oVUV5tmMSY04bN8bpugLWRQOTL7-6-x5GX6tmIwfliFBXnPkGizMPo_NFPfDF8vlraYjCMmW19kXnv1RoBHTWoOP0rqMKyHyNt5VWc9MUCYRhwF0E7EGycAqzJAkxWKE5rrrI77ezvR9XbRQQ9MICFoSNTCDX6n4T2Nk9KUv98yVobh4QP2xVj1icOZ0-uMkBjBPjkuJspbmQ27R4tmVlZp4xJ0siu6eDp2ZH0" }} );'>
+                            style='background-image: url({{ $gallery_production->items->where('field_key', 'production_process_1_image')->first()->field_value ? asset('storage/'. $gallery_production->items->where('field_key', 'production_process_1_image')->first()->field_value) : "https://lh3.googleusercontent.com/aida-public/AB6AXuCltPigJqC2d15d8EzddW2pQ3DuUHrWpg4acn0vq2oVUV5tmMSY04bN8bpugLWRQOTL7-6-x5GX6tmIwfliFBXnPkGizMPo_NFPfDF8vlraYjCMmW19kXnv1RoBHTWoOP0rqMKyHyNt5VWc9MUCYRhwF0E7EGycAqzJAkxWKE5rrrI77ezvR9XbRQQ9MICFoSNTCDX6n4T2Nk9KUv98yVobh4QP2xVj1icOZ0-uMkBjBPjkuJspbmQ27R4tmVlZp4xJ0siu6eDp2ZH0" }} );'>
                         </div>
                         <div
                             class="absolute top-4 left-4 bg-accent text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">
@@ -95,7 +99,7 @@
                 <div class="space-y-4">
                     <div class="relative rounded-xl overflow-hidden aspect-square shadow-lg">
                         <div class="w-full h-full bg-center bg-cover" data-alt="Mechanical mold pressing into pulp"
-                            style='background-image: url({{ $gallery_production->items->where('field_key', 'production_process_2_image')->first()->field_value ?? "https://lh3.googleusercontent.com/aida-public/AB6AXuCXe8xqtoO00FgrpTapg9fGDLn4xR8PIn8MuembFHoS_8HMphMowDji7oKjKKkfSeCKGUF65H3QYL6_LyIy9rTHKs-rmKnBMOSU9jBGRzj3flMSvmcqmZ8_ylHfv1f9F7D76VorlnH_cSG_w5IY7QJEtjBStbxKBdEcAMizjmogXlsmktN6HvjgUyDmmkmjB0yXl9wzghnLGryeVpPpkPPbImQ_GP8mrSsrIgCrgsQXLhoKW4fG-oXGLXOEjNjExLWw3hu962BemGou" }} );'>
+                            style='background-image: url({{ $gallery_production->items->where('field_key', 'production_process_2_image')->first()->field_value ? asset('storage/'.$gallery_production->items->where('field_key', 'production_process_2_image')->first()->field_value) : "https://lh3.googleusercontent.com/aida-public/AB6AXuCXe8xqtoO00FgrpTapg9fGDLn4xR8PIn8MuembFHoS_8HMphMowDji7oKjKKkfSeCKGUF65H3QYL6_LyIy9rTHKs-rmKnBMOSU9jBGRzj3flMSvmcqmZ8_ylHfv1f9F7D76VorlnH_cSG_w5IY7QJEtjBStbxKBdEcAMizjmogXlsmktN6HvjgUyDmmkmjB0yXl9wzghnLGryeVpPpkPPbImQ_GP8mrSsrIgCrgsQXLhoKW4fG-oXGLXOEjNjExLWw3hu962BemGou" }} );'>
                         </div>
                         <div
                             class="absolute top-4 left-4 bg-accent text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">
@@ -110,7 +114,7 @@
                     <div class="relative rounded-xl overflow-hidden aspect-square shadow-lg">
                         <div class="w-full h-full bg-center bg-cover"
                             data-alt="Conveyor belt moving trays through a large oven"
-                            style='background-image: url({{ $gallery_production->items->where('field_key', 'production_process_3_image')->first()->field_value ?? "https://lh3.googleusercontent.com/aida-public/AB6AXuBHQM2hklHz3WLbL5EeE76yR-g9vanRmwdYsaFYG_NIGFaL7e5Et0QLbg25VZI0h7o0RYp_PJocX3K1xsmoi5MvL2vOT7K_kFgbovLz9_RvVOufu9jnAA51wI3d_kiPKm9BmFebnrJuoLvy5jZulf2P7O98OHtX5b9H_LE2PtV-P1I7KAo_xhoLqOH6bLgNnsXX4gNf7eS1-UzKERg_kjjJTyNjpydw39z0VntmTvwf0JR4Z3AgCW4wOEyEmpoKB09ExnGmxW8bw1Cy" }} );'>
+                            style='background-image: url({{ $gallery_production->items->where('field_key', 'production_process_3_image')->first()->field_value ? asset('storage/'.$gallery_production->items->where('field_key', 'production_process_3_image')->first()->field_value ):"https://lh3.googleusercontent.com/aida-public/AB6AXuBHQM2hklHz3WLbL5EeE76yR-g9vanRmwdYsaFYG_NIGFaL7e5Et0QLbg25VZI0h7o0RYp_PJocX3K1xsmoi5MvL2vOT7K_kFgbovLz9_RvVOufu9jnAA51wI3d_kiPKm9BmFebnrJuoLvy5jZulf2P7O98OHtX5b9H_LE2PtV-P1I7KAo_xhoLqOH6bLgNnsXX4gNf7eS1-UzKERg_kjjJTyNjpydw39z0VntmTvwf0JR4Z3AgCW4wOEyEmpoKB09ExnGmxW8bw1Cy" }} );'>
                         </div>
                         <div
                             class="absolute top-4 left-4 bg-accent text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">
@@ -124,7 +128,7 @@
                 <div class="space-y-4">
                     <div class="relative rounded-xl overflow-hidden aspect-square shadow-lg">
                         <div class="w-full h-full bg-center bg-cover" data-alt="Quality inspector checking a tray"
-                            style='background-image: url({{ $gallery_production->items->where('field_key', 'production_process_4_image')->first()->field_value ?? "https://lh3.googleusercontent.com/aida-public/AB6AXuCu-95jOZRLhIiJ1g66bhkQqu7VEM5_nT6lV1pP9XnJ5sd_zedCs6L6aZvgd21mAQlN036T5KZeEiiBxdwr18SphB7VwTM_2YTt85nHeu8DEPYsnXBlFIg9jU-t-4UJ1OJ3daLbzvu9GUo5rIc6nJmcZxfu7bAQbeFBvTqc6Avb5tQsn2w0enfDFTri37UINvEoxpyaWXo9fJlN4v09w7lIQWICJccRlW-rw-eveaMBwsrATKneAB5BgBCbJ0L-JxE2LhVImlk7RlxX" }} );'>
+                            style='background-image: url({{ $gallery_production->items->where('field_key', 'production_process_4_image')->first()->field_value ? asset('storage/'.$gallery_production->items->where('field_key', 'production_process_4_image')->first()->field_value) : "https://lh3.googleusercontent.com/aida-public/AB6AXuCu-95jOZRLhIiJ1g66bhkQqu7VEM5_nT6lV1pP9XnJ5sd_zedCs6L6aZvgd21mAQlN036T5KZeEiiBxdwr18SphB7VwTM_2YTt85nHeu8DEPYsnXBlFIg9jU-t-4UJ1OJ3daLbzvu9GUo5rIc6nJmcZxfu7bAQbeFBvTqc6Avb5tQsn2w0enfDFTri37UINvEoxpyaWXo9fJlN4v09w7lIQWICJccRlW-rw-eveaMBwsrATKneAB5BgBCbJ0L-JxE2LhVImlk7RlxX" }} );'>
                         </div>
                         <div
                             class="absolute top-4 left-4 bg-accent text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">
@@ -151,7 +155,7 @@
                     <div class="relative rounded-xl overflow-hidden mb-4">
                         <div class="aspect-[4/3] bg-center bg-cover group-hover:scale-105 transition-transform duration-500"
                             data-alt="Stacked egg trays on a wooden pallet"
-                            style='background-image: url({{ $gallery_packaging->items->where('field_key','packaging_1_image')->first()->field_value ?? "https://lh3.googleusercontent.com/aida-public/AB6AXuDWzu-3FeusFTNON1y4-b8FEMYvCOBIW-BkinQFxXaf2ef5z39YGT_N0NDsuRidCGBvzr1p5_OzTjC-Yl4oQmIGJmh_JBSbrxVbnVZqXaOebLQFy36i-O2xn8OYphCsrIYPz1jqGaxa1dk0GSAAXdYn6F2ueYQEbCnMdUbRbuh_s0yWyVKWmdz7P832iPD9wRT8QpWkKoFkt3reYQlWCL8544SMGummROZDiFaONsYp5B1ROTlYlolnX4td2dv5pu78P9x3NIo2ERaP" }} );'>
+                            style='background-image: url({{ $gallery_packaging->items->where('field_key','packaging_1_image')->first()->field_value ? asset('storage/'.$gallery_packaging->items->where('field_key','packaging_1_image')->first()->field_value ) : "https://lh3.googleusercontent.com/aida-public/AB6AXuDWzu-3FeusFTNON1y4-b8FEMYvCOBIW-BkinQFxXaf2ef5z39YGT_N0NDsuRidCGBvzr1p5_OzTjC-Yl4oQmIGJmh_JBSbrxVbnVZqXaOebLQFy36i-O2xn8OYphCsrIYPz1jqGaxa1dk0GSAAXdYn6F2ueYQEbCnMdUbRbuh_s0yWyVKWmdz7P832iPD9wRT8QpWkKoFkt3reYQlWCL8544SMGummROZDiFaONsYp5B1ROTlYlolnX4td2dv5pu78P9x3NIo2ERaP" }} );'>
                         </div>
                         <div
                             class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-primary">
@@ -165,7 +169,7 @@
                     <div class="relative rounded-xl overflow-hidden mb-4">
                         <div class="aspect-[4/3] bg-center bg-cover group-hover:scale-105 transition-transform duration-500"
                             data-alt="Forklift loading a shipping container"
-                            style='background-image: url({{ $gallery_packaging->items->where('field_key','packaging_2_image')->first()->field_value ?? "https://lh3.googleusercontent.com/aida-public/AB6AXuAz7Cgtf4u29f4waW4H1sOjtfFp-AXNnBsw3nKwnwsII3w25ZsvSk7KpdzsacAG6wR2hfgK9mwvHvDu7iZ9RFkazQyYksxxfgv1LOTUHuQapc7LZsYg1zUKi4p1MrOhCldRuIYyllvN4tqTirskjn5DfuluObTiaTKF5XKwsgQmZyspB7tIbsQSoBEWxM-u76XTSNt1rhjPYVcP4O0ryYb2VnRiDzDpU4NVy3tXBJyD0iDKZG4ZBV0X7nbEUAduCs4Mp2E9Dne7pdnR" }} );'>
+                            style='background-image: url({{ $gallery_packaging->items->where('field_key','packaging_2_image')->first()->field_value ? asset('storage/'. $gallery_packaging->items->where('field_key','packaging_2_image')->first()->field_value) : "https://lh3.googleusercontent.com/aida-public/AB6AXuAz7Cgtf4u29f4waW4H1sOjtfFp-AXNnBsw3nKwnwsII3w25ZsvSk7KpdzsacAG6wR2hfgK9mwvHvDu7iZ9RFkazQyYksxxfgv1LOTUHuQapc7LZsYg1zUKi4p1MrOhCldRuIYyllvN4tqTirskjn5DfuluObTiaTKF5XKwsgQmZyspB7tIbsQSoBEWxM-u76XTSNt1rhjPYVcP4O0ryYb2VnRiDzDpU4NVy3tXBJyD0iDKZG4ZBV0X7nbEUAduCs4Mp2E9Dne7pdnR" }} );'>
                         </div>
                         <div
                             class="absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-primary">
@@ -191,7 +195,7 @@
                     <div class="relative rounded-xl overflow-hidden mb-4">
                         <div class="aspect-[4/3] bg-center bg-cover group-hover:scale-105 transition-transform duration-500"
                             data-alt="Stacked egg trays on a wooden pallet"
-                            style='background-image: url({{ $gallery_qc->items->where('field_key','quality_1_image')->first()->field_value ?? "https://lh3.googleusercontent.com/aida-public/AB6AXuDWzu-3FeusFTNON1y4-b8FEMYvCOBIW-BkinQFxXaf2ef5z39YGT_N0NDsuRidCGBvzr1p5_OzTjC-Yl4oQmIGJmh_JBSbrxVbnVZqXaOebLQFy36i-O2xn8OYphCsrIYPz1jqGaxa1dk0GSAAXdYn6F2ueYQEbCnMdUbRbuh_s0yWyVKWmdz7P832iPD9wRT8QpWkKoFkt3reYQlWCL8544SMGummROZDiFaONsYp5B1ROTlYlolnX4td2dv5pu78P9x3NIo2ERaP" }}  );'>
+                            style='background-image: url({{ $gallery_qc->items->where('field_key','quality_1_image')->first()->field_value ? asset('storage/'. $gallery_qc->items->where('field_key','quality_1_image')->first()->field_value) : "https://lh3.googleusercontent.com/aida-public/AB6AXuDWzu-3FeusFTNON1y4-b8FEMYvCOBIW-BkinQFxXaf2ef5z39YGT_N0NDsuRidCGBvzr1p5_OzTjC-Yl4oQmIGJmh_JBSbrxVbnVZqXaOebLQFy36i-O2xn8OYphCsrIYPz1jqGaxa1dk0GSAAXdYn6F2ueYQEbCnMdUbRbuh_s0yWyVKWmdz7P832iPD9wRT8QpWkKoFkt3reYQlWCL8544SMGummROZDiFaONsYp5B1ROTlYlolnX4td2dv5pu78P9x3NIo2ERaP" }}  );'>
                         </div>
                     </div>
                     <p class="text-slate-700">
@@ -202,7 +206,7 @@
                     <div class="relative rounded-xl overflow-hidden mb-4">
                         <div class="aspect-[4/3] bg-center bg-cover group-hover:scale-105 transition-transform duration-500"
                             data-alt="Forklift loading a shipping container"
-                            style='background-image: url({{ $gallery_qc->items->where('field_key','quality_2_image')->first()->field_value ?? "https://lh3.googleusercontent.com/aida-public/AB6AXuAz7Cgtf4u29f4waW4H1sOjtfFp-AXNnBsw3nKwnwsII3w25ZsvSk7KpdzsacAG6wR2hfgK9mwvHvDu7iZ9RFkazQyYksxxfgv1LOTUHuQapc7LZsYg1zUKi4p1MrOhCldRuIYyllvN4tqTirskjn5DfuluObTiaTKF5XKwsgQmZyspB7tIbsQSoBEWxM-u76XTSNt1rhjPYVcP4O0ryYb2VnRiDzDpU4NVy3tXBJyD0iDKZG4ZBV0X7nbEUAduCs4Mp2E9Dne7pdnR" }});'>
+                            style='background-image: url({{ $gallery_qc->items->where('field_key','quality_2_image')->first()->field_value ? asset('storage/'.$gallery_qc->items->where('field_key','quality_2_image')->first()->field_value) : "https://lh3.googleusercontent.com/aida-public/AB6AXuAz7Cgtf4u29f4waW4H1sOjtfFp-AXNnBsw3nKwnwsII3w25ZsvSk7KpdzsacAG6wR2hfgK9mwvHvDu7iZ9RFkazQyYksxxfgv1LOTUHuQapc7LZsYg1zUKi4p1MrOhCldRuIYyllvN4tqTirskjn5DfuluObTiaTKF5XKwsgQmZyspB7tIbsQSoBEWxM-u76XTSNt1rhjPYVcP4O0ryYb2VnRiDzDpU4NVy3tXBJyD0iDKZG4ZBV0X7nbEUAduCs4Mp2E9Dne7pdnR" }});'>
                         </div>
                     </div>
                     <p class="text-slate-700">

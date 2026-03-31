@@ -41,7 +41,7 @@
                             class="relative bg-slate-200 aspect-[4/3] rounded-xl overflow-hidden shadow-2xl border-8 border-white">
                             <div class="w-full h-full bg-cover bg-center"
                                 data-alt="Close up of stacked recycled paper egg trays"
-                                style="background-image: url({{ $home_hero->items->where('field_key','hero_image')->first()->field_value ?? asset('images/eggtray.png') }})">
+                                style="background-image: url({{ $home_hero->items->where('field_key','hero_image')->first()->field_value ? asset('storage/'. $home_hero->items->where('field_key','hero_image')->first()->field_value) : asset('images/eggtray.png') }})">
                             </div>
                         </div>
                     </div>

@@ -9,7 +9,7 @@
 <div class="flex-1">
     <section class="relative h-[600px] w-full flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 bg-cover bg-center" data-alt="High-tech industrial automated factory interior"
-            style='background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url({{ $production_hero->items->where('field_key','hero_image')->first()->field_value ?? asset('images/production.png') }} );'>
+            style='background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url({{ $production_hero->items->where('field_key','hero_image')->first()->field_value ? asset('storage/'.$production_hero->items->where('field_key','hero_image')->first()->field_value ) : asset('images/production.png') }} );'>
         </div>
         <div class="relative z-10 text-center px-4 max-w-4xl">
             <h1 class="text-white text-5xl md:text-7xl font-black leading-tight tracking-tight mb-6">
@@ -108,7 +108,7 @@
                 </div>
                 <div class="md:w-1/2 min-h-[300px] bg-cover bg-center"
                     data-alt="Industrial robotic production line moving fast"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDRQyzN4KWNTrId7etbRo43FsScg9oX4RbbJMyZu152_P1-yHxHlS3VLQjeSXP2bwko8pmiKUFsMSixTZQiQV9xyXJZJnH1iRWywTriAhbHD3CyNppw_vhtQzB3GbxKOqRZjED84TuZmVid3cRn3ZE1yu45qydmBVRtJSfUkuyDQcZC848428iz1dySsisi-CzL7s3AUt9-p7gZlLdN42R7XZvolLJxZVcQFB4wgQDboU7DMSEpjrtgYCLJbgDIdW3HO_s06rnJZy-V");'>
+                    style='background-image: url({{ asset('images/capacity.jpeg') }});'>
                 </div>
             </div>
         </div>

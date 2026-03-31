@@ -11,7 +11,7 @@
             <div class="absolute inset-0 bg-black/50 z-10"></div>
             <div class="relative h-[500px] w-full bg-cover bg-center flex flex-col items-center justify-center text-center px-4"
                 data-alt="Large container ship loaded with cargo boxes crossing the ocean at sunset"
-                style="background-image: url({{ $export_hero->items->where('field_key','hero_image')->first()->field_value ?? asset('images/export.png') }});">
+                style="background-image: url({{ $export_hero->items->where('field_key','hero_image')->first()->field_value ? asset('storage/'. $export_hero->items->where('field_key','hero_image')->first()->field_value) : asset('images/export.png') }});">
                 <div class="relative z-20 max-w-3xl flex flex-col gap-6">
                     <span
                         class="px-3 py-1 bg-accent/90 text-white text-xs font-bold uppercase tracking-wider rounded-full w-fit mx-auto">{{ __('general.export_hero_button') }}</span>
