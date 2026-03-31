@@ -38,7 +38,7 @@ jobs:
           host: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: 22
+          port: 65002
           source: "."
           target: "/home/u991429839/domains/eggtraycpl.com/compro-ptcpl"
           rm: false
@@ -50,6 +50,6 @@ jobs:
           host: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: 22
+          port: 65002
           source: "./public/*"
           target: "/home/u991429839/domains/eggtraycpl.com/public_html"
