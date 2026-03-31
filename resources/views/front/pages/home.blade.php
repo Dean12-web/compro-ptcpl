@@ -41,7 +41,7 @@
                             class="relative bg-slate-200 aspect-[4/3] rounded-xl overflow-hidden shadow-2xl border-8 border-white">
                             <div class="w-full h-full bg-cover bg-center"
                                 data-alt="Close up of stacked recycled paper egg trays"
-                                style="background-image: url({{ $home_hero->items->where('field_key','hero_image')->first()->field_value ?? 'https://lh3.googleusercontent.com/aida-public/AB6AXuDzXnWsd2n9exarAj4Xt1hj2K2MU9jUIfdourbirUWsXGCrZoUWHq10LqD0OFT0kuToXMFhJ3tOrjMjedF-FMY2PWiIEBoSIfNZJo64U3OkLP2g39uVYHYF9p4x_OI02WwAzy8rESTbED3z6gwXSkw1aTxA3G--yl3LNrNgztoAoSuquD6vMaXsWXoB5eU4cYI4RXgkjuGzFTXb4p_Rb8Krzk1nQr6FjiasmrTCKORQnp--tTn5nqrMlL0fVMyaZcUVI8XcRxEEQjBN' }})">
+                                style="background-image: url({{ $home_hero->items->where('field_key','hero_image')->first()->field_value ?? asset('images/eggtray.png') }})">
                             </div>
                         </div>
                     </div>

@@ -12,7 +12,7 @@
             <div class="relative min-h-[400px] w-full overflow-hidden rounded-xl bg-primary/20">
                 <div class="absolute inset-0 bg-cover bg-center"
                     data-alt="Modern high-tech industrial manufacturing facility interior"
-                    style='background-image: linear-gradient(to top, rgba(26, 28, 22, 0.8), transparent), url({{ $about_hero->items->where('field_key','hero_image')->first()->field_value ?? "https://lh3.googleusercontent.com/aida-public/AB6AXuCblB03g3ukou34gITWacwvADek1HAAzdFR18u5whyvOVc_o0lNHVny1wVLMQAkvUhmp4ab0VDPWC0XeFye35GbNYbxbuvb8dUuP4VT59pPXGk8UR296dIR9csw83D3Kma4QqiB29nC1gvBDbOytOsNn2X4fldpswTqiA_UrB5zksXDctcuwa-tV1MwjPhzLUTV2LnZEeH2bERT36H5ltg7OMLZHn9tvrAljx3P8-jJRTCXJd_QLl97dyjAFwcgTA5izmVSkr19TyaT" }} );'>
+                    style='background-image: linear-gradient(to top, rgba(26, 28, 22, 0.8), transparent), url({{ $about_hero->items->where('field_key','hero_image')->first()->field_value ?? asset('images/about.png') }} );'>
                 </div>
                 <div class="absolute bottom-0 left-0 p-8 md:p-12 w-full">
                     <span

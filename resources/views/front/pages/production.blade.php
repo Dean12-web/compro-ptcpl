@@ -9,7 +9,7 @@
 <div class="flex-1">
     <section class="relative h-[600px] w-full flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 bg-cover bg-center" data-alt="High-tech industrial automated factory interior"
-            style='background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url({{ $production_hero->items->where('field_key','hero_image')->first()->field_value ?? "https://lh3.googleusercontent.com/aida-public/AB6AXuBD2b6JV9cZg4TKUhYbkwJXL8hpMioIVtTZOCn0_M8Z8Q8Vna9XR_4w2Sds1WBS6nUPXBK1zT_zNnKgWhJJW2lCS9KLI1P0XMuNWs_gqN-GyiwIMG-n0mDgKACOR1QrRRgwy7CchPPPfd2yjGQI8OuK1NOZOo3rgCxKBeTMIykScfEz3qf9wwEhorInIl683wZEeUg6XCvV4-KNbQr65lTaVyUyIbXC-ePfiTVyTUixqBFjhcu3HdaYNN-IqyvOErI12DfYJhpsB47A" }} );'>
+            style='background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url({{ $production_hero->items->where('field_key','hero_image')->first()->field_value ?? asset('images/production.png') }} );'>
         </div>
         <div class="relative z-10 text-center px-4 max-w-4xl">
             <h1 class="text-white text-5xl md:text-7xl font-black leading-tight tracking-tight mb-6">

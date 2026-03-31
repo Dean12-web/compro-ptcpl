@@ -13,7 +13,7 @@
                 <div class="absolute inset-0 opacity-60">
                     <img alt="Lush green forest aerial view" class="w-full h-full object-cover"
                         data-alt="Lush green forest canopy from aerial perspective"
-                        src="{{ $sustainability_hero->items()->where('field_key', 'hero_image')->first()->field_value ?? 'https://lh3.googleusercontent.com/aida-public/AB6AXuDFORWWS8KE2pmhR1nB9V081cXr_blTtvUDELB_SM591NUm-38Ab3lM3ezAj6BhIzVwNe2qvgYZ6isBSyDJn8mEd-MRsweuToqtguBKu-Q8oakuv561dbLQVotsj7wi4nNJGrTepjpDsSeiXoBaBP5FicNLS2HdplFwSYXd16JxSKWv3nU8oYgCAs8m0rws72LgcLrNvsYCgjrPFtpXIO3EhVRQEZccdy4FdpycN4lZXtSLfhTWWMfBZUiSGfiuccUKae4moTyckRIl' }}" />
+                        src="{{ $sustainability_hero->items()->where('field_key', 'hero_image')->first()->field_value ?? asset('images/sustainability.png') }}" />
                 </div>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <div class="relative z-10 max-w-5xl space-y-6">

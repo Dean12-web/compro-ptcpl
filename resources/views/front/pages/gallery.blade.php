@@ -10,7 +10,7 @@
     <section class="relative w-full aspect-[21/9] min-h-[400px] flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-10"></div>
         <div class="absolute inset-0 bg-center bg-cover" data-alt="Wide shot of a modern industrial factory interior"
-            style='background-image: url({{ $gallery_hero->items->where('field_key', 'hero_image')->first()->field_value ?? "https://lh3.googleusercontent.com/aida-public/AB6AXuCulQGpPIQhhJEK9ldJ0COsvo0BUSimkce9Rr0V89H2tSl4BtrsFrdRg0634p5YprsxBIdNR_Ic6eIM2KAMU-lsR0d7X3Liunnio_RY-kNRjfke7e_9ADGX2mEQdc9UuArxU3ydiG9SPawOR36jY5ocpWVOy44ZIfnX4q_S6Ygvqsv9pakTqd0YUnUhgvnugygqbMOlWdVwzUKUOc-CaemPP9YxrCntO46U5J3u3aZmcwNr6Aa1mAQF5geSU4h-IzkE7ZYc8EG4L7zn" }})'>
+            style='background-image: url({{ $gallery_hero->items->where('field_key', 'hero_image')->first()->field_value ??  asset('images/gallery.png')  }})'>
         </div>
         <div class="relative z-20 text-center px-6 max-w-4xl">
             <span class="text-accent font-bold uppercase tracking-widest text-sm mb-4 block">{{ __('general.gallery_hero_banner') }}</span>

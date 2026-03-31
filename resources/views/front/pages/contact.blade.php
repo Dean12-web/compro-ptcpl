@@ -10,7 +10,7 @@
         <section class="relative h-64 w-full overflow-hidden">
             <div class="absolute inset-0 bg-primary/80 mix-blend-multiply"></div>
             <div class="absolute inset-0 bg-cover bg-center" data-alt="Modern corporate office building exterior facade"
-                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBAmxaHX-6zw2bCS_OaCw0fT4UI-AvfmPy5XZ2n5-F6yXkOTMBNbKFwlxHJr-jGGpEK7NIg6akhFZBtO8zRD8da79YpNmKM-4ffHLqFiArMKsBtxCbnE2Q3q-yXzj0EnIWagAuc1tjAUOBOek0KTk49E3oNUx2Rp1WBPGw2dgBiChIFgsoEbpPmZ_vNK1OmxZPIeNti-uSbqw3bKHr5WVCnVGe1TObxI9SPffFLywc0fOn78IOV1R54I7hO57NprkR8s9fazWCrS7MX')">
+                style="background-image: url({{ asset('images/contact.png') }})">
             </div>
             <div class="relative flex h-full items-center justify-center px-6">
                 <div class="text-center">
