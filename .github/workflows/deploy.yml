@@ -10,10 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # DEBUG (taruh di dalam steps)
-      - name: Debug FTP Server
-        run: echo "Server is ${{ secrets.FTP_SERVER }}"
-
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -35,26 +31,25 @@ jobs:
           npm install
           npm run build
 
-      - name: Deploy Core
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      # 🚀 DEPLOY CORE (Laravel)
+      - name: Deploy Core via SFTP
+        uses: appleboy/scp-action@v0.1.7
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          host: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./
-          server-dir: /domains/eggtraycpl.com/compro-ptcpl/
-          exclude: |
-            **/.git*
-            **/.env
-            **/node_modules/**
-            public/**
-            storage/**
+          port: 22
+          source: "."
+          target: "/home/u991429839/domains/eggtraycpl.com/compro-ptcpl"
+          rm: false
 
-      - name: Deploy Public
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      # 🚀 DEPLOY PUBLIC (assets + index.php)
+      - name: Deploy Public via SFTP
+        uses: appleboy/scp-action@v0.1.7
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          host: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./public/
-          server-dir: /domains/eggtraycpl.com/public_html/
+          port: 22
+          source: "./public/*"
+          target: "/home/u991429839/domains/eggtraycpl.com/public_html"
