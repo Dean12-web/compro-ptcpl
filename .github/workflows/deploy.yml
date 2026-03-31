@@ -53,3 +53,5 @@ jobs:
           port: 65002
           source: "./public"
           target: "/home/u991429839/domains/eggtraycpl.com/public_html"
+          rm: true
+          
