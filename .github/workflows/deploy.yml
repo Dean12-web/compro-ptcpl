@@ -51,7 +51,9 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: 65002
-          source: "./public/*"
+          source: "public"
           target: "/home/u991429839/domains/eggtraycpl.com/public_html"
+          strip_components: 1
           rm: true
+
           
