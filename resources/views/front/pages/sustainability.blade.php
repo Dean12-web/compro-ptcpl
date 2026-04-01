@@ -63,11 +63,18 @@
                     <div
                         class="absolute -inset-4 bg-primary/5 rounded-2xl rotate-2 group-hover:rotate-0 transition-transform">
                     </div>
+                    @php
+                        $feature2 = $sustainability_conscious_sourcing->items()
+                            ->where('field_key', 'section_image')
+                            ->first();
+                    @endphp
                     <img alt="Close up of recycled paper pulp texture"
                         class="relative rounded-xl shadow-2xl w-full h-[500px] object-cover"
                         data-alt="Macro photography of raw recycled paper pulp texture"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWBsvjctdPWNdm01WtUJOhp-8JjiwwyzS5kiA3QhqYGBanal8DCIr-PBvk3SrUDjrGk8AgwWoXeYxlyMm2Nr8_TZHPvIZ8-BpvCrW5ZxUgct-p6ZNHbPG2WL9EHqsuAcw4W_cgm2xHdp-GkMXDDuX1jxSPjI_pbfMMZKuczSHNmOzgsM2wKH-DaHxOeD8RDyIsS0Bbx800WRLlUdNx9raC62YgG6iX9Zgd2OkjNXnt_z16Jd2R-rQ4BX13gJ8bXdANI9o4934jFFJV" />
-                </div>
+                        src="{{ $feature2 && $feature2->field_value 
+                            ? asset('storage/' . $feature2->field_value) 
+                            : 'https://lh3.googleusercontent.com/aida-public/AB6AXuDWBsvjctdPWNdm01WtUJOhp-8JjiwwyzS5kiA3QhqYGBanal8DCIr-PBvk3SrUDjrGk8AgwWoXeYxlyMm2Nr8_TZHPvIZ8-BpvCrW5ZxUgct-p6ZNHbPG2WL9EHqsuAcw4W_cgm2xHdp-GkMXDDuX1jxSPjI_pbfMMZKuczSHNmOzgsM2wKH-DaHxOeD8RDyIsS0Bbx800WRLlUdNx9raC62YgG6iX9Zgd2OkjNXnt_z16Jd2R-rQ4BX13gJ8bXdANI9o4934jFFJV' }}"/>
+                    </div>
             </div>
         </section>
         <section class="px-4 md:px-20 py-24 bg-background-light">
