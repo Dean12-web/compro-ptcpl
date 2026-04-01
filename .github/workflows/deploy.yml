@@ -54,8 +54,7 @@ jobs:
           source: "public"
           target: "/home/u991429839/domains/eggtraycpl.com/public_html"
           strip_components: 1
-          rm: true
-          exclude : |
-              storage/**
+          rm: false
+
 
           
