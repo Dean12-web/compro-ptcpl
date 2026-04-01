@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Inquiry;
 use App\Models\Product;
+use App\Models\Visitor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
@@ -18,6 +19,13 @@ class DashboardController extends Controller
 
     public function stats()
     {
+        $todayVisitors = Visitor::where('date', today())->count();
+        $monthVisitors = Visitor::whereMonth('date', now()->month)
+            ->whereYear('date', now()->year)
+            ->count();
+
+        $totalVisitors = Visitor::count();
+
         $product_active = Product::where('is_active', true)->count();
 
         $new_inquiry = Inquiry::where('is_read', false)->count();
@@ -26,11 +34,19 @@ class DashboardController extends Controller
 
         $inquiry_this_month = Inquiry::whereMonth('created_at', Carbon::now()->month)->whereYear('created_at', Carbon::now()->year)->where('is_read', false)->count();
 
+        $todayLabel = Carbon::today()->locale('id')->translatedFormat('d F Y');
+        $monthLabel = Carbon::now()->locale('id')->translatedFormat('F Y');
+
         return response()->json([
             'product_active' => $product_active,
             'new_inquiry'    => $new_inquiry,
             'product_this_month' => $product_this_month,
-            'inquiry_this_month' => $inquiry_this_month
+            'inquiry_this_month' => $inquiry_this_month,
+            'today_visitor' => $todayVisitors,
+            'today_label' => $todayLabel,
+            'monthly_visitor' => $monthVisitors,
+            'month_label' => $monthLabel,
+            'total_visitor' => $totalVisitors,
         ]);
     }
 

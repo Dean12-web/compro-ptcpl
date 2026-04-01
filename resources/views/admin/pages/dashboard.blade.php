@@ -4,8 +4,42 @@
     <h2 class="text-lg font-bold text-primary">Dashboard</h2>
 @endsection
 @section('content')
-    <div class="flex-1 overflow-y-auto p-8 bg-background-light dark:bg-background-dark" x-data="dashboardTable()">
-        <!-- Stats Grid -->
+        <div class="flex-1 overflow-y-auto p-8 bg-background-light dark:bg-background-dark" x-data="dashboardTable()">
+        <!-- Visitor Stats Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-primary/10 shadow-sm">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="size-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                        <span class="material-symbols-outlined">today</span>
+                    </div>
+                    <span class="text-primary text-xs font-semibold">Hari Ini</span>
+                </div>
+                <p class="text-slate-500 text-sm font-medium">Pengunjung</p>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white" x-text="stats.today_visitor"></h3>
+                <p class="text-xs text-slate-400" x-text="stats.today_label"></p>
+            </div>
+            <div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-primary/10 shadow-sm">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="size-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                        <span class="material-symbols-outlined">calendar_month</span>
+                    </div>
+                    <span class="text-primary text-xs font-semibold">Bulan Ini</span>
+                </div>
+                <p class="text-slate-500 text-sm font-medium">Pengunjung</p>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white" x-text="stats.monthly_visitor"></h3>
+                <p class="text-xs text-slate-400" x-text="stats.month_label"></p>
+            </div>
+            <div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-primary/10 shadow-sm">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="size-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                        <span class="material-symbols-outlined">visibility</span>
+                    </div>
+                    <span class="text-primary text-xs font-semibold">Total</span>
+                </div>
+                <p class="text-slate-500 text-sm font-medium">Pengunjung</p>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white" x-text="stats.total_visitor"></h3>
+            </div>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-primary/10 shadow-sm">
                 <div class="flex justify-between items-start mb-4">
@@ -129,6 +163,11 @@
                 new_inquiry: 0,
                 product_this_month: 0,
                 inquiry_this_month: 0,
+                today_visitor: 0,
+                monthly_visitor: 0,
+                total_visitor: 0,
+                today_label: '',
+                month_label: '',
             },
 
             init() {
