@@ -6,7 +6,7 @@
                     <div class="size-12">
                         <img src="{{ asset('images/logo/icon_cpl.png') }}" alt="log_cendana_paper_egg_tray">
                     </div>
-                    <h2 class="text-white text-lg font-bold uppercase tracking-tight">Cendana Paper Egg Tray</h2>
+                    <h2 class="text-white font-bold uppercase tracking-tight">Cendana Putera Lestari</h2>
                 </div>
                 <p class="text-slate-400 text-xs leading-relaxed">
                     {{ __('general.footer_title') }}
@@ -15,13 +15,13 @@
             <div>
                 <h4 class="text-white font-bold mb-6">{{ __('general.footer_quick_links') }}</h4>
                 <ul class="flex flex-col gap-3 text-slate-400 text-sm">
-                    <li><a class="hover:text-primary transition-colors" href="#">{{ __('general.footer_about_us') }}</a>
+                    <li><a class="hover:text-primary transition-colors" href="{{ route('about', app()->getLocale()) }}">{{ __('general.footer_about_us') }}</a>
                     </li>
                     <li><a class="hover:text-primary transition-colors"
-                            href="#">{{ __('general.footer_our_products') }}</a></li>
+                            href="{{ route('products', app()->getLocale()) }}">{{ __('general.footer_our_products') }}</a></li>
                     <li><a class="hover:text-primary transition-colors"
-                            href="#">{{ __('general.footer_production_process') }}</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="#">{{ __('general.footer_export') }}</a>
+                            href="{{ route('production', app()->getLocale()) }}">{{ __('general.footer_production_process') }}</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="{{ route('exports', app()->getLocale()) }}">{{ __('general.footer_export') }}</a>
                     </li>
                 </ul>
             </div>
@@ -29,7 +29,7 @@
                 <h4 class="text-white font-bold mb-6">{{ __('general.footer_complience') }}</h4>
                 <ul class="flex flex-col gap-3 text-slate-400 text-sm">
                     <li><a class="hover:text-primary transition-colors"
-                            href="#">{{ __('general.footer_sustainability') }}</a></li>
+                            href="{{ route('sustainability', app()->getLocale()) }}">{{ __('general.footer_sustainability') }}</a></li>
                     <li><a class="hover:text-primary transition-colors"
                             href="#">{{ __('general.footer_pricacy_policy') }}</a></li>
                 </ul>
