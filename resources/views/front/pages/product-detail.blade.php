@@ -7,6 +7,12 @@
 
 @section('content')
 
+    @php
+        $mainImageUrl = $product->primaryImage?->image_path
+            ? asset('storage/' . $product->primaryImage?->image_path)
+            : asset('images/egg_tray_default.png');
+    @endphp
+
     <div class="flex-1 max-w-7xl mx-auto w-full px-4 md:px-20 py-8">
         <nav class="flex items-center gap-2 text-sm text-slate-500 mb-8">
             <a class="hover:text-primary transition-colors" href="{{ route('products',app()->getLocale()) }}">Products</a>
@@ -17,19 +23,25 @@
             <div class="space-y-4">
                 <div
                     class="aspect-square rounded-xl bg-slate-200 overflow-hidden border border-slate-200 shadow-sm">
-                    <div class="w-full h-full bg-center bg-no-repeat bg-cover"
+                    <div id="product-main-image" class="w-full h-full bg-center bg-no-repeat bg-cover"
                         data-alt="Main view of stacked recycled egg trays"
-                        style="background-image: url('{{ $product->primaryImage?->image_path ? asset('storage/' .$product->primaryImage?->image_path ) : asset('images/egg_tray_default.png')  }}');">
+                        style="background-image: url('{{ $mainImageUrl }}');">
                     </div>
                 </div>
                 <div class="grid grid-cols-4 gap-4">
                     @foreach ($product->images as $image )
-                    <div class="aspect-square rounded-lg border-2 border-primary overflow-hidden cursor-pointer">
-                        <div class="w-full h-full bg-center bg-no-repeat bg-cover"
-                            data-alt="Close up of pulp material texture"
-                            style="background-image: url('{{ $image->image_path ? asset('storage/' . $image->image_path) : asset('images/egg_tray_default.png') }}');">
+                        @php
+                            $thumbUrl = $image->image_path
+                                ? asset('storage/' . $image->image_path)
+                                : asset('images/egg_tray_default.png');
+                        @endphp
+                        <div class="aspect-square rounded-lg border-2 border-primary overflow-hidden cursor-pointer"
+                            data-thumbnail-url="{{ $thumbUrl }}">
+                            <div class="w-full h-full bg-center bg-no-repeat bg-cover"
+                                data-alt="Close up of pulp material texture"
+                                style="background-image: url('{{ $thumbUrl }}');">
+                            </div>
                         </div>
-                    </div>
                     @endforeach
                     
                 </div>
@@ -83,6 +95,24 @@
                 </div>
             </div>
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const mainImage = document.getElementById('product-main-image');
+                const thumbnails = document.querySelectorAll('[data-thumbnail-url]');
+
+                thumbnails.forEach((thumbnail) => {
+                    thumbnail.addEventListener('click', () => {
+                        const url = thumbnail.dataset.thumbnailUrl;
+                        if (!url || !mainImage) {
+                            return;
+                        }
+                        mainImage.style.backgroundImage = `url('${url}')`;
+                        thumbnails.forEach((thumb) => thumb.classList.remove('ring-2', 'ring-primary'));
+                        thumbnail.classList.add('ring-2', 'ring-primary');
+                    });
+                });
+            });
+        </script>
         <section class="border-t border-slate-200 pt-16 mb-16">
             <div class="max-w-3xl mx-auto text-center mb-12">
                 <h2 class="text-3xl font-bold mb-4">{{ $product_detail_choose->items->where('field_key','section_title')->first()->field_value ?? ''}}</h2>

@@ -22,10 +22,10 @@
                     Cendana
                 </span>
                 <span class="hidden sm:inline lg:hidden">
-                    Cendana Egg Tray
+                    Cendana Putera Lestari
                 </span>
                 <span class="hidden lg:inline">
-                    Cendana Paper Egg Tray
+                    Cendana Putera Lestari
                 </span>
 
             </a>
