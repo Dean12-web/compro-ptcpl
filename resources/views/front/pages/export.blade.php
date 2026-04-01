@@ -201,7 +201,7 @@
                         <img alt="Stack of cardboard boxes on a wooden pallet wrapped in plastic"
                             class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                             data-alt="Warehouse pallets wrapped in industrial shrink wrap ready for loading"
-                            src="{{ $export_packaging->items->where('field_key', 'packaging_1_image')->first()->field_value ?? 'https://lh3.googleusercontent.com/aida-public/AB6AXuDqEqiv37l_o1qPfuGlbkMYDjCuGCRWHbUrZ7WXUn0TIXeeSiJxcC9ud-UvPLJLzEdU69430sMaFvGagtMOQBLTLmPQZ9h8awafix-_2mDbtYR0h2E6VnZbJvYToZ00utBdFn85e1kOuNXA4JvZcrl-ZxpQGOMTaz7fw1cZNg9eOKJt3nsqLUBYSuaL9n_PeEptz0O-pcwiNN5tb8yo3ItxQ3o3p8XWv4NFsskK5ooBJOnkra-XIuMd63wiyA8jhOfpP2NxOb5HIVqv' }}" />
+                            src="{{ $export_packaging->items->where('field_key', 'packaging_1_image')->first()->field_value ? asset('storage/'.$export_packaging->items->where('field_key', 'packaging_1_image')->first()->field_value ) : 'https://lh3.googleusercontent.com/aida-public/AB6AXuDqEqiv37l_o1qPfuGlbkMYDjCuGCRWHbUrZ7WXUn0TIXeeSiJxcC9ud-UvPLJLzEdU69430sMaFvGagtMOQBLTLmPQZ9h8awafix-_2mDbtYR0h2E6VnZbJvYToZ00utBdFn85e1kOuNXA4JvZcrl-ZxpQGOMTaz7fw1cZNg9eOKJt3nsqLUBYSuaL9n_PeEptz0O-pcwiNN5tb8yo3ItxQ3o3p8XWv4NFsskK5ooBJOnkra-XIuMd63wiyA8jhOfpP2NxOb5HIVqv' }}" />
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
                             <h3 class="text-white font-bold text-xl mb-1">{{ $export_packaging->items->where('field_key', 'packaging_1_title')->first()->field_value ?? '' }}</h3>
@@ -212,7 +212,7 @@
                         <img alt="Interior of a shipping container loaded with boxes"
                             class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                             data-alt="Inside view of a shipping container efficiently loaded with cargo boxes"
-                            src="{{ $export_packaging->items->where('field_key', 'packaging_2_image')->first()->field_value ?? 'https://lh3.googleusercontent.com/aida-public/AB6AXuCoCMfbgz0u3B_Cgy7Kz_EeDTVXBS8vvpn2FFCnG38fJ4oDlVQdBbdZg2zudOKfZB2euaBdVw8edOrpQPLhxMlXOYdutCUy3NkYjjIWWvlZ6qvlzDtSmHyJub4PpUXRM9vYWQBoDpX5phojJL0dFBh333NuzRLZQ-sbaGDZkINL2HONGWGKv6MYwd0HXgW5hIr_kvUhg27dFkKk8nXx2FTdKR_zEZvW4oF3fHySlR_p3xi76N9ivsK5xp2X_aULQhQieotdVpdl3flM' }}" />
+                            src="{{ $export_packaging->items->where('field_key', 'packaging_2_image')->first()->field_value ? asset('storage/' .  $export_packaging->items->where('field_key', 'packaging_2_image')->first()->field_value) : 'https://lh3.googleusercontent.com/aida-public/AB6AXuCoCMfbgz0u3B_Cgy7Kz_EeDTVXBS8vvpn2FFCnG38fJ4oDlVQdBbdZg2zudOKfZB2euaBdVw8edOrpQPLhxMlXOYdutCUy3NkYjjIWWvlZ6qvlzDtSmHyJub4PpUXRM9vYWQBoDpX5phojJL0dFBh333NuzRLZQ-sbaGDZkINL2HONGWGKv6MYwd0HXgW5hIr_kvUhg27dFkKk8nXx2FTdKR_zEZvW4oF3fHySlR_p3xi76N9ivsK5xp2X_aULQhQieotdVpdl3flM' }}" />
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
                             <h3 class="text-white font-bold text-xl mb-1">{{ $export_packaging->items->where('field_key', 'packaging_2_title')->first()->field_value ?? '' }}</h3>
