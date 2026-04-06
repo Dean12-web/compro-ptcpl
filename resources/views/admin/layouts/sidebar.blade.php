@@ -49,7 +49,7 @@
             </div>
             <div class="flex-1 min-w-0">
                 <p class="text-sm font-semibold truncate">Administrator</p>
-                <p class="text-xs text-slate-500 truncate">admin@ptcpl.com</p>
+                <p class="text-xs text-slate-500 truncate">admin@eggtraycpl.com</p>
             </div>
             <form action="{{ route('logout') }}" method="post">
                 @csrf
