@@ -19,11 +19,11 @@ class DashboardController extends Controller
 
     public function stats()
     {
-        $todayVisitors = Visitor::where('date', today())->count();
+        $today = Carbon::today();
+        $todayVisitors = Visitor::where('date', $today)->count();
         $monthVisitors = Visitor::whereMonth('date', now()->month)
             ->whereYear('date', now()->year)
             ->count();
-
         $totalVisitors = Visitor::count();
 
         $product_active = Product::where('is_active', true)->count();
@@ -34,8 +34,23 @@ class DashboardController extends Controller
 
         $inquiry_this_month = Inquiry::whereMonth('created_at', Carbon::now()->month)->whereYear('created_at', Carbon::now()->year)->where('is_read', false)->count();
 
-        $todayLabel = Carbon::today()->locale('id')->translatedFormat('d F Y');
+        $todayLabel = $today->locale('id')->translatedFormat('d F Y');
         $monthLabel = Carbon::now()->locale('id')->translatedFormat('F Y');
+
+        $trendStart = $today->copy()->subDays(6);
+        $visitorsByDate = Visitor::selectRaw('date, COUNT(*) as total')
+            ->whereBetween('date', [$trendStart->toDateString(), $today->toDateString()])
+            ->groupBy('date')
+            ->orderBy('date')
+            ->pluck('total', 'date');
+
+        $trendLabels = [];
+        $trendValues = [];
+        for ($daysAgo = 6; $daysAgo >= 0; $daysAgo--) {
+            $date = $today->copy()->subDays($daysAgo);
+            $trendLabels[] = $date->locale('id')->translatedFormat('d M');
+            $trendValues[] = (int) ($visitorsByDate[$date->toDateString()] ?? 0);
+        }
 
         return response()->json([
             'product_active' => $product_active,
@@ -47,6 +62,10 @@ class DashboardController extends Controller
             'monthly_visitor' => $monthVisitors,
             'month_label' => $monthLabel,
             'total_visitor' => $totalVisitors,
+            'visitor_trend' => [
+                'labels' => $trendLabels,
+                'data' => $trendValues,
+            ],
         ]);
     }
 
