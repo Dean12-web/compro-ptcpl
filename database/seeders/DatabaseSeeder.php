@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             SettingSeeder::class,
             SustainabilityContentBlockSeeder::class,
             UserSeeder::class,
+            TestimonialSeeder::class,
          ]);
     }
 }

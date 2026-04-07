@@ -7,21 +7,26 @@
 
                 <tr>
 
-                    @foreach($columns as $column)
+                @foreach($columns as $column)
+                    @php
+                        $sortable = $column['sortable'] ?? true;
+                        $thClasses = trim('px-6 py-4 text-xs font-bold text-slate-500 uppercase ' . ($sortable ? 'cursor-pointer' : 'cursor-default'));
+                    @endphp
 
-                        <th @click="changeSort('{{ $column['key'] }}')"
-                            class="px-6 py-4 text-xs font-bold text-slate-500 uppercase cursor-pointer">
-                            <div class="flex items-center gap-1">
-                                {{ $column['label'] }}
+                    <th @if($sortable) @click="changeSort('{{ $column['key'] }}')" @endif class="{{ $thClasses }}">
+                        <div class="flex items-center gap-1">
+                            {{ $column['label'] }}
 
+                            @if($sortable)
                                 <span x-show="sort === '{{ $column['key'] }}'">
                                     <span x-show="direction === 'asc'">↑</span>
                                     <span x-show="direction === 'desc'">↓</span>
                                 </span>
-                            </div>
-                        </th>
+                            @endif
+                        </div>
+                    </th>
 
-                    @endforeach
+                @endforeach
 
                 </tr>
 

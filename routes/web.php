@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\InquiryController;
 use App\Http\Controllers\Admin\ProductApiController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PageController;
@@ -85,6 +86,13 @@ Route::prefix('cpl-admin')->middleware(['auth', 'verified'])->group(function () 
     Route::post('/export-country-store', [ExportCountryController::class, 'store'])->name('cpl.export-country-store');
     Route::get('/export-country-data', [ExportCountryController::class, 'view']);
     Route::delete('/export-country-delete/{export_country}', [ExportCountryController::class, 'destroy']);
+
+    Route::get('/testimonials', [TestimonialController::class, 'index'])->name('cpl.testimonials');
+    Route::get('/testimony-view', [TestimonialController::class, 'view']);
+    Route::post('/testimonials', [TestimonialController::class, 'store']);
+    Route::get('/testimonials/{testimonial}', [TestimonialController::class, 'show']);
+    Route::put('/testimonials/{testimonial}', [TestimonialController::class, 'update']);
+    Route::delete('/testimonials/{testimonial}', [TestimonialController::class, 'destroy']);
 });
 
 Route::middleware('auth')->group(function () {

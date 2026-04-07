@@ -30,6 +30,11 @@
             <span class="material-symbols-outlined text-[20px]">view_quilt</span>
             <span class="text-sm font-medium">Konten Web</span>
         </a>
+        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors {{ is_active('cpl.testimonials') }}"
+            href="{{ route('cpl.testimonials') }}">
+            <span class="material-symbols-outlined text-[20px]">contact_page</span>
+            <span class="text-sm font-medium">Testimoni</span>
+        </a>
         <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors {{ is_active('cpl.inquiry-view') }}"
             href="{{ route('cpl.inquiry-view') }}">
             <span class="material-symbols-outlined text-[20px]">chat_bubble</span>
