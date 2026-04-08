@@ -13,6 +13,7 @@ use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Front\ProductController;
+use App\Http\Controllers\front\TestimonyController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,7 @@ Route::group(['prefix' => '{locale}',   'where' => ['locale' => 'en|id'], 'middl
     Route::get('/production', [PageController::class, 'production'])->name('production');
     Route::get('/sustainability', [PageController::class, 'sustainability'])->name('sustainability');
     Route::get('/gallery', [PageController::class, 'gallery'])->name('gallery');
+    Route::get('/testimonials', [TestimonyController::class,'index'])->name('testimonials');
 });
 
 Route::prefix('cpl-admin')->middleware(['auth', 'verified'])->group(function () {

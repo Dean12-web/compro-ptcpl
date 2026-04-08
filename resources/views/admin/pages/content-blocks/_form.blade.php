@@ -232,7 +232,11 @@
                 gallery_packaging_loading_section:'gallery_packaging_loading_section.png',
                 gallery_quality_control_section:'gallery_quality_control_section.png',
 
-                contact_information_section: 'contact_information_section.png'
+                contact_information_section: 'contact_information_section.png',
+
+                testimony_hero: 'testimony_hero.png',
+                testimony_content: 'testimony_content.png',
+                testimony_cta:'testimony_cta.png'
 
 
 

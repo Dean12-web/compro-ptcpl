@@ -21,43 +21,49 @@
             <!-- Tabs -->
             <div class="flex border-b border-primary/10 gap-8">
                 <button @click="changeTab('home')" :class="tab==='home' 
-                        ? 'border-b-2 border-primary text-primary'
-                        : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-bold text-sm">
+                            ? 'border-b-2 border-primary text-primary'
+                            : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-bold text-sm">
                     Home
                 </button>
                 <button @click="changeTab('about')" :class="tab==='about'
-                        ? 'border-b-2 border-primary text-primary'
-                        : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
+                            ? 'border-b-2 border-primary text-primary'
+                            : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
                     About
                 </button>
                 <button @click="changeTab('product')" :class="tab==='product'
-                        ? 'border-b-2 border-primary text-primary'
-                        : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
+                            ? 'border-b-2 border-primary text-primary'
+                            : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
                     Product</button>
                 <button @click="changeTab('product_detail')" :class="tab==='product_detail'
-                        ? 'border-b-2 border-primary text-primary'
-                        : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
+                            ? 'border-b-2 border-primary text-primary'
+                            : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
                     Product Detail</button>
                 <button @click="changeTab('production')" :class="tab==='production'
-                        ? 'border-b-2 border-primary text-primary'
-                        : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
+                            ? 'border-b-2 border-primary text-primary'
+                            : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
                     Production</button>
                 <button @click="changeTab('export')" :class="tab==='export'
-                        ? 'border-b-2 border-primary text-primary'
-                        : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
+                            ? 'border-b-2 border-primary text-primary'
+                            : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
                     Export</button>
                 <button @click="changeTab('sustainability')" :class="tab==='sustainability'
-                        ? 'border-b-2 border-primary text-primary'
-                        : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
+                            ? 'border-b-2 border-primary text-primary'
+                            : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
                     Sustainability
                 </button>
                 <button @click="changeTab('gallery')" :class="tab==='gallery'
-                        ? 'border-b-2 border-primary text-primary'
-                        : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
-                    Gallery</button>
+                            ? 'border-b-2 border-primary text-primary'
+                            : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
+                    Gallery
+                </button>
+                <button @click="changeTab('testimony')" :class="tab==='testimony'
+                    ? 'border-b-2 border-primary text-primary' : 'text-slate-400 hover:text-slate-600'" class=" pb-3
+                    font-medium text-sm">
+                    Testimonials
+                </button>
                 <button @click="changeTab('contact')" :class="tab==='contact'
-                        ? 'border-b-2 border-primary text-primary'
-                        : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
+                            ? 'border-b-2 border-primary text-primary'
+                            : 'text-slate-400 hover:text-slate-600'" class="pb-3 font-medium text-sm">
                     Contact</button>
             </div>
             <!-- Table -->
@@ -94,8 +100,8 @@
 
                         <template x-for="page in pagination.last_page" :key="page">
                             <button @click="goTo(page)" :class="page === pagination.current_page
-                            ? 'bg-primary text-white'
-                            : 'border'" class="px-3 py-1 rounded text-xs">
+                                ? 'bg-primary text-white'
+                                : 'border'" class="px-3 py-1 rounded text-xs">
 
                                 <span x-text="page"></span>
 
@@ -119,39 +125,39 @@
 @endsection
 @include('admin.pages.content-blocks._form')
 <script>
-    function WebContentTable(){
+    function WebContentTable() {
         return {
-            rows:[],
+            rows: [],
             pagination: {},
 
-            tab:'home',
+            tab: 'home',
 
-            search:'',
-            sort:'created_at',
-            direction:'desc',
-            page:1,
+            search: '',
+            sort: 'created_at',
+            direction: 'desc',
+            page: 1,
 
-            init(){
+            init() {
                 this.load()
 
-                this.$watch('search',()=>{
+                this.$watch('search', () => {
                     this.page = 1
                     this.load()
                 })
             },
-            changeTab(section){
+            changeTab(section) {
                 this.tab = section
                 this.page = 1
                 this.load()
             },
 
-            async load(){
+            async load() {
                 let params = new URLSearchParams({
                     search: this.search,
-                    sort:this.sort,
-                    direction:this.direction,
-                    page:this.page,
-                    title:this.tab
+                    sort: this.sort,
+                    direction: this.direction,
+                    page: this.page,
+                    title: this.tab
                 })
 
                 const res = await fetch(`/cpl-admin/web-content-view?${params}`)
@@ -163,10 +169,10 @@
                 this.pagination = data.pagination
             },
 
-            changeSort(field){
-                if(this.sort === field){
+            changeSort(field) {
+                if (this.sort === field) {
                     this.direction = this.direction === 'asc' ? 'desc' : 'asc'
-                }else{
+                } else {
                     this.sort = field
                     this.direction = 'asc'
                 }
@@ -174,7 +180,7 @@
                 this.load()
             },
 
-            goTo(page){
+            goTo(page) {
                 this.page = page
                 this.load()
             }

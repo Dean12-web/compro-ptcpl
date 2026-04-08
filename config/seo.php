@@ -10,6 +10,7 @@ return [
         'sustainability' => 'Sustainability',
         'gallery' => 'Gallery',
         'contact' => 'Contact',
+        'testimonials' => 'Testimonials',
     ],
 
     'locales' => [

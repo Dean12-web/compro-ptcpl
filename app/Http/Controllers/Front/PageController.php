@@ -181,5 +181,6 @@ class PageController extends Controller
 
         return view('front.pages.gallery',compact('gallery_hero','gallery_factory','gallery_production','gallery_packaging','gallery_qc'));
     }
+    
 
 }

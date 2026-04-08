@@ -8,7 +8,8 @@ return  [
     'gallery' => 'Gallery',
     'sustainability' => 'Sustainability',
     'contact' => 'Contact',
-
+    'testimonials' => 'Testimonials',
+    'testimony_cta' => 'Partner With Us',
     'all_materials' => 'All Materials',
     'all_capacity' => 'All Capacity',
     'eggs' => 'Eggs',

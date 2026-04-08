@@ -8,6 +8,8 @@ return  [
     'gallery' => 'Galeri',
     'sustainability' => 'Keberlanjutan',
     'contact' => 'Kontak',
+    'testimonials' => 'Testimoni',
+    'testimony_cta' => 'Kerjasama Dengan Kami',
 
     'all_materials' => 'Semua Material',
     'all_capacity' => 'Semua Kapasitas',

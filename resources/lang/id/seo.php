@@ -46,6 +46,13 @@
             'title' => 'Kontak Cendana Paper Egg Tray, | Permintaan Penawaran',
             'description' => 'Hubungi Cendana paper egg tray untuk informasi produk, spesifikasi, harga, dan kerja sama ekspor.',
             'keywords' => 'kontak produsen egg tray, permintaan penawaran egg tray'
-        ]
+        ],
+
+        'testimonials' => [
+        'title' => 'Testimoni egg tray Cendana | Permintaan Ekspor egg tray',
+        'description' => 'Testimoni egg tray Cendana untuk permintaan ekspor, spesifikasi produk, harga, dan peluang kemitraan',
+        'keywords' => 'hubungi pemasok egg tray Indonesia, permintaan ekspor egg tray'
+    ]
+
     ]
 ?>

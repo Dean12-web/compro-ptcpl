@@ -36,6 +36,7 @@
                 'about' => __('general.about'),
                 'products' => __('general.products'),
                 'production' => __('general.production'),
+                'testimonials' => __('general.testimonials'),
                 'exports' => __('general.export'),
                 'sustainability' => __('general.sustainability'),
                 'gallery' => __('general.gallery'),
