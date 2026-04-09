@@ -11,7 +11,7 @@
         <div class="absolute inset-0 z-0">
             <img alt="Industrial manufacturing facility" class="w-full h-full object-cover opacity-10 mix-blend-overlay"
                 data-alt="Blurred background of a modern industrial warehouse with warm lighting and geometric shelving structures for a professional corporate feel"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLK846AfCIUAFbboDzT71-hibSrCVGQE_AIiaN7Ff8c8cNZYdc5F_ZaNJndoCaramfE_DPLMX1lVH-CGNaed47qDlFn-2Gmcji8r3UY9yDQBxS9i8u4tRBnkxgCxp_myIA87DlCa1RNSUNYJwNh9JevImdnzpZOu3IBneDV7E6_C_nH6nHg10LVFELXHYcd9Tz29H8aVAyLVHTlklGjcMqqsM7UqsOZGr2n3mNZxwxuo9NpmpLl0O3WHAhOdUWD0zJulg95DpUO-DB" />
+                src="{{ $testimony_hero->items->where('field_key','hero_image')->first()->field_value ? asset('storage/'. $testimony_hero->items->where('field_key','hero_image')->first()->field_value) :'https://lh3.googleusercontent.com/aida-public/AB6AXuDLK846AfCIUAFbboDzT71-hibSrCVGQE_AIiaN7Ff8c8cNZYdc5F_ZaNJndoCaramfE_DPLMX1lVH-CGNaed47qDlFn-2Gmcji8r3UY9yDQBxS9i8u4tRBnkxgCxp_myIA87DlCa1RNSUNYJwNh9JevImdnzpZOu3IBneDV7E6_C_nH6nHg10LVFELXHYcd9Tz29H8aVAyLVHTlklGjcMqqsM7UqsOZGr2n3mNZxwxuo9NpmpLl0O3WHAhOdUWD0zJulg95DpUO-DB' }}" />
             <div class="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-transparent"></div>
         </div>
         <div class="relative z-10 max-w-4xl">
@@ -126,7 +126,7 @@
             </p>
             <div class="flex flex-wrap gap-4">
                 <a class="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 rounded font-bold font-headline transition-all hover:bg-primary-fixed"
-                    href="#">
+                    href="{{ route('contact', app()->getLocale()) }}">
                     {{  __('general.testimony_cta')}}
                     <span class="material-symbols-outlined">arrow_forward</span>
                 </a>
