@@ -27,9 +27,9 @@ return  [
 
     'view_details' => 'Lihat Detail',
     'technical_specifications' => 'Spesifikasi Teknis',
-    'dimensions' => 'Dimensi',
+    'dimensions' => 'Dimensi (Tinggi, Panjang, Lebar)',
     'capacity'  => 'Kapasitas',
-    'unit_weight' => 'Berat Unit',
+    'unit_weight' => 'Ukuran telur',
     'material_type' => 'Tipe Material',
 
     'full_name' => 'Nama Lengkap',

@@ -45,14 +45,14 @@
         </div><br>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="space-y-1.5">
-                <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Dimensi</label>
+                <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Dimensi (Tinggi, Panjang, Lebar)</label>
                 <input name="dimensions" x-model="dimensions"
                     class="w-full pl-4 pr-12 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all"
                     placeholder="300 x 300 mm" type="text" />
                 <p x-show="errors.dimensions" x-text="errors.dimensions" class="text-xs text-red-500 mt-1"></p>
             </div>
             <div class="space-y-1.5">
-                <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Berat</label>
+                <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Ukuran telur</label>
                 <div class="relative">
                     <input name="weight" x-model="weight"
                         class="w-full pl-4 pr-12 py-2 bg-slate-50 dark:bg-slate-900 border border-primary/10 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all"

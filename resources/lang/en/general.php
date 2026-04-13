@@ -29,9 +29,9 @@ return  [
 
     //Product Detail
     'technical_specifications' => 'Technical Specifications',
-    'dimensions' => 'Dimensions',
+    'dimensions' => 'Dimensions (Height, Length, Width)',
     'capacity'  => 'Capacity',
-    'unit_weight' => 'Unit Weight',
+    'unit_weight' => 'Egg size',
     'material_type' => 'Material Type',
 
     'full_name' => 'Full Name',
