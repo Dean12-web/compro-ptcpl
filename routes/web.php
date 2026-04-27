@@ -13,7 +13,7 @@ use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Front\ProductController;
-use App\Http\Controllers\front\TestimonyController;
+use App\Http\Controllers\Front\TestimonyController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
