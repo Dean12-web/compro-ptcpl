@@ -41,7 +41,7 @@
                             class="relative bg-slate-200 aspect-[4/3] rounded-xl overflow-hidden shadow-2xl border-8 border-white">
                             <div class="w-full h-full bg-cover bg-center"
                                 data-alt="Close up of stacked recycled paper egg trays"
-                                style="background-image: url({{ $home_hero->items->where('field_key','hero_image')->first()->field_value ? asset('storage/'. $home_hero->items->where('field_key','hero_image')->first()->field_value) : asset('images/eggtray.png') }})">
+                                style="background-image: url({{ $home_hero->items->where('field_key', 'hero_image')->first()->field_value ? asset('storage/' . $home_hero->items->where('field_key', 'hero_image')->first()->field_value) : asset('images/eggtray.png') }})">
                             </div>
                         </div>
                     </div>
@@ -120,11 +120,11 @@
                 </div>
             </div>
             <div
-                class="w-full bg-slate-100 aspect-video md:aspect-[21/9] rounded-2xl overflow-hidden border border-slate-200 relative group shadow-inner">
-                <div class="absolute inset-0 bg-cover bg-center opacity-80"
-                    data-alt="Abstract world map showing shipping routes and global connections" data-location="World Map"
-                    style="background-image: url('{{ asset('images/globe-cpl.png') }}')">
-                </div>
+                class="w-full bg-slate-100 aspect-video md:aspect-[18/9] rounded-2xl overflow-hidden border border-slate-200 relative group shadow-inner">
+
+                <img src="{{ asset('images/location.png') }}"
+                    class="absolute inset-0 w-full h-full object-cover object-center opacity-80" />
+
                 <div class="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent"></div>
             </div>
         </div>
@@ -199,9 +199,7 @@
                             <div class="flex flex-col gap-1">
                                 <label
                                     class="text-slate-500 text-xs font-bold uppercase tracking-widest">{{ __('general.country') }}</label>
-                                <input
-                                    name="country"
-                                    value="{{ old('country') }}"
+                                <input name="country" value="{{ old('country') }}"
                                     class="w-full rounded-lg border-slate-200 focus:border-primary focus:ring-primary text-slate-900"
                                     placeholder="Indonesia" type="text" />
                                 @error('country')
@@ -213,24 +211,20 @@
                             <div class="flex flex-col gap-1">
                                 <label
                                     class="text-slate-500 text-xs font-bold uppercase tracking-widest">{{ __('general.email_address') }}</label>
-                                <input
-                                    name="email"
-                                    value="{{ old('email') }}"
+                                <input name="email" value="{{ old('email') }}"
                                     class="w-full rounded-lg border-slate-200 focus:border-primary focus:ring-primary text-slate-900"
                                     placeholder="john@company.com" type="email" />
-                                    @error('email')
-                                        <span class="text-xs text-red-600">
-                                            {{ $message }}
-                                        </span>
-                                    @enderror
+                                @error('email')
+                                    <span class="text-xs text-red-600">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="flex flex-col gap-1">
                             <label
                                 class="text-slate-500 text-xs font-bold uppercase tracking-widest">{{__('general.phone_number')}}</label>
-                            <input
-                                name="phone"
-                                value="{{ old('phone') }}"
+                            <input name="phone" value="{{ old('phone') }}"
                                 class="w-full rounded-lg border-slate-200 focus:border-primary focus:ring-primary text-slate-900"
                                 placeholder="+62 812 3456 7890" type="tel">
                             @error('phone')
@@ -242,12 +236,11 @@
                         <div class="flex flex-col gap-1">
                             <label
                                 class="text-slate-500 text-xs font-bold uppercase tracking-widest">{{__('general.inquiry_message')}}</label>
-                            <textarea
-                                name="message"
+                            <textarea name="message"
                                 class="w-full rounded-lg border-slate-200 focus:border-primary focus:ring-primary text-slate-900"
                                 placeholder="{{ __('general.placeholder_message') }}" rows="4">
-                                {{ old('message') }}
-                            </textarea>
+                                    {{ old('message') }}
+                                </textarea>
                             @error('message')
                                 <span class="text-xs text-red-600">
                                     {{ $message }}
