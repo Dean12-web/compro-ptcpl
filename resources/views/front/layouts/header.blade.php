@@ -12,8 +12,8 @@
         x-ref="frontHeader"
         class="flex items-center justify-between whitespace-nowrap border-b border-primary/10 bg-white/80 backdrop-blur-md px-6 md:px-20 py-4 fixed inset-x-0 top-0 z-50">
         <div class="flex items-center gap-3 text-primary">
-            <div class="size-8">
-                <img src="{{ asset('images/logo/icon_cpl.png') }}" alt="log_cendana_paper_egg_tray">
+            <div class="size-11">
+                <img src="{{ asset('images/logo/logo_cpl.png') }}" alt="log_cendana_paper_egg_tray">
             </div>
             <a href="{{ route('home', app()->getLocale()) }}" class="text-slate-700 font-bold uppercase tracking-tight
           text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl

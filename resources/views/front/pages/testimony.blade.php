@@ -113,6 +113,62 @@
             </div>
         @endif
     </section>
+    <section class="px-8 md:px-16 lg:px-24 py-20 bg-surface">
+      <div class="mb-12 text-center">
+        <h3 class="text-xs font-bold tracking-[0.2em] uppercase text-outline mb-8">Trusted by Global Partners</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 items-center mb-5">
+          <div class="flex justify-center">
+            <img src="{{ asset('images/logo_Indomaret.png') }}">
+          </div>
+          <div class="flex justify-center">
+            <img src="{{ asset('images/japfa_logo.svg') }}">
+          </div>
+          <div class="flex justify-center">
+            <img src="{{ asset('images/alfamart_logo.png') }}">
+          </div>
+          <div class="flex justify-center">
+            <img src="{{ asset('images/mb_logo.png') }}">
+          </div>
+          <div class="flex justify-center">
+            <img src="{{ asset('images/cm_logo.jpeg') }}" width="50%">
+          </div>
+          <div class="flex justify-center">
+            <img src="{{ asset('images/irian_logo.jpg') }}" width="80%">
+          </div>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 items-center mb-5">
+          <div class="flex justify-center">
+            <img src="{{ asset('images/mabar_logo.jpeg') }}" width="70%">
+          </div>
+          <div class="flex justify-center">
+            <img src="{{ asset('images/spni_logo.png') }}">
+          </div>
+          <div class="flex justify-center">
+            <img src="{{ asset('images/tzuchi_logo.png') }}">
+          </div>
+          <div class="flex justify-center">
+            <img src="{{ asset('images/sido_agung_logo.png') }}">
+          </div>
+          <div class="flex justify-center">
+            <img src="{{ asset('images/lotus_logo.png') }}">
+          </div>
+          <div class="flex justify-center">
+            <img src="{{ asset('images/makro_logo.png') }}" width="80%">
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-center max-w-xl mx-auto">
+          <div class="flex justify-center">
+            <img src="{{ asset('images/bigc_logo.png') }}" width="70%">
+          </div>
+          <div class="flex justify-center">
+            <img src="{{ asset('images/cjmore_logo.webp') }}" width="70%">
+          </div>
+          <div class="flex justify-center">
+            <img src="{{ asset('images/thaifood_logo.png') }}" width="70%">
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- CTA Section -->
     <section class="px-8 md:px-16 lg:px-24 py-32 bg-primary/5 relative overflow-hidden">
         <div class="absolute right-0 top-0 w-1/3 h-full bg-primary opacity-50 skew-x-12 translate-x-1/2">

@@ -3,8 +3,8 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div class="col-span-1 md:col-span-1 flex flex-col gap-4">
                 <div class="flex items-center gap-3 text-primary">
-                    <div class="size-12">
-                        <img src="{{ asset('images/logo/icon_cpl.png') }}" alt="log_cendana_paper_egg_tray">
+                    <div class="size-20">
+                        <img src="{{ asset('images/logo/logo_cpl_black.png') }}" alt="log_cendana_paper_egg_tray">
                     </div>
                     <h2 class="text-white font-bold uppercase tracking-tight">Cendana Putera Lestari</h2>
                 </div>
