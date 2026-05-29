@@ -9,10 +9,9 @@
         <div
             class="group flex flex-col bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300">
             <!-- IMAGE -->
-            <div class="relative aspect-square overflow-hidden bg-slate-100">
-                <div class="w-full h-full bg-center bg-contain bg-no-repeat group-hover:scale-110 transition"
-                    style="background-image: url('{{ $image ? asset('storage/' . $image) : $fallback }}');">
-                </div>
+            <div class="relative aspect-square overflow-hidden bg-white">
+                <img src="{{ $image ? asset('storage/' . $image) : $fallback }}" alt="Product Image"
+                    class="w-full h-full object-contain object-center group-hover:scale-110 transition duration-300">
             </div>
 
             <!-- CONTENT -->
@@ -42,7 +41,8 @@
                 </p>
 
                 <div class="mt-auto">
-                    <a href="{{ route('product-detail', ['locale' => app()->getLocale(),'slug' => $product->slug]) }}" class="w-full bg-slate-100 text-slate-900 font-bold text-sm py-3 rounded-lg group-hover:bg-primary group-hover:text-white transition-colors flex items-center justify-center gap-2">
+                    <a href="{{ route('product-detail', ['locale' => app()->getLocale(), 'slug' => $product->slug]) }}"
+                        class="w-full bg-slate-100 text-slate-900 font-bold text-sm py-3 rounded-lg group-hover:bg-primary group-hover:text-white transition-colors flex items-center justify-center gap-2">
                         {{ __('general.view_details') }}
                         <span class="material-symbols-outlined text-lg">arrow_forward</span>
                     </a>
