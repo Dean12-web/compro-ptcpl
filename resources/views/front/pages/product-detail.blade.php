@@ -22,8 +22,8 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
             <div class="space-y-4">
                 <div
-                    class="aspect-square rounded-xl bg-slate-200 overflow-hidden border border-slate-200 shadow-sm">
-                    <div id="product-main-image" class="w-full h-full bg-center bg-no-repeat bg-cover"
+                    class="aspect-square rounded-xl bg-white overflow-hidden border border-slate-200 shadow-sm">
+                    <div id="product-main-image" class="w-full h-full bg-center bg-no-repeat bg-contain p-4"
                         data-alt="Main view of stacked recycled egg trays"
                         style="background-image: url('{{ $mainImageUrl }}');">
                     </div>
