@@ -10,7 +10,7 @@
             class="group flex flex-col bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300">
             <!-- IMAGE -->
             <div class="relative aspect-square overflow-hidden bg-slate-100">
-                <div class="w-full h-full bg-center bg-contain transform group-hover:scale-110 transition"
+                <div class="w-full h-full bg-center bg-contain bg-no-repeat group-hover:scale-110 transition"
                     style="background-image: url('{{ $image ? asset('storage/' . $image) : $fallback }}');">
                 </div>
             </div>
