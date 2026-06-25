@@ -123,7 +123,7 @@
                 class="w-full bg-slate-100 aspect-video md:aspect-[21/9] rounded-2xl overflow-hidden border border-slate-200 relative group shadow-inner">
                 <div class="absolute inset-0 bg-cover bg-center"
                     data-alt="Abstract world map showing location of cendana putera lestari" data-location="CPL Map"
-                    style="background-image: url('{{ asset('images/cpl-location.png') }}')">
+                    style="background-image: url('{{ asset('images/location-2.jpeg') }}')">
                 </div>
                 <div class="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent"></div>
             </div>
